@@ -6,7 +6,7 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="d-flex align-items-center">
-                    <h5 class="page-title">Dashboard</h5>
+                    <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('trees') }}">Trees</a></li>
@@ -25,7 +25,7 @@
                         <a href="{{ route('trees') }}" class="btn btn-dark p-2">Back to Trees</a>
                     </div>
                 </div>
-                <div class="card-body">                    
+                <div class="card-body">
                     <form method="POST" action="{{ route('edit.tree', $tree->id) }}">
                         @csrf
                         <input type="hidden" name="id" value="{{$tree->id}}">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
 
-                                          
+
                         <div class="row mb-3">
                             <label for="reason" class="col-md-2 col-form-label text-md-end">{{ __('Reason') }}</label>
                             <div class="col-md-10">
@@ -117,7 +117,7 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="d-flex align-items-center">
-                    <h5 class="page-title">Dashboard</h5>
+                    <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('trees') }}">Trees</a></li>
@@ -170,7 +170,7 @@
                             </div>
                         </div>
 
-                                          
+
                         <div class="row mb-3">
                             <label for="reason" class="col-md-2 col-form-label text-md-end">{{ __('Reason') }}</label>
                             <div class="col-md-10">

@@ -5,7 +5,7 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <div class="d-flex align-items-center">
-                    <h5 class="page-title">Dashboard</h5>
+                    <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('employees') }}">Employees</a></li>
                         <li class="breadcrumb-item active">Employee Record</li>
