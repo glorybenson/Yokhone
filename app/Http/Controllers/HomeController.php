@@ -16,6 +16,7 @@ use App\Models\Tree;
 use App\Models\User;
 use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -32,6 +33,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        App::setLocale('fr');
+
         $this->middleware('auth');
         function save_file($file, $path)
         {
@@ -290,7 +293,7 @@ class HomeController extends Controller
     {
         try {
             $data['employee'] = $employee = Employee::find($request->employee_id);
-            //code...            
+            //code...
             $rules = array(
                 'salary_amount' => ['required', 'string', 'max:255'],
                 'salary_start_date' => ['required', 'string', 'max:255'],
@@ -302,7 +305,7 @@ class HomeController extends Controller
             if ($validator->fails()) {
                 Session::flash('warning', 'All fields are required');
                 if (isset($request->id)) {
-                    # code...                    
+                    # code...
                     return back()->withErrors($validator);
                 }
                 return back()->withErrors($validator)->withInput();
@@ -353,7 +356,7 @@ class HomeController extends Controller
     {
         try {
             $data['employee'] = $employee = Employee::find($request->employee_id);
-            //code...            
+            //code...
             $rules = array(
                 'date' => ['required'],
                 'reason' => ['required'],
@@ -365,7 +368,7 @@ class HomeController extends Controller
             if ($validator->fails()) {
                 Session::flash('warning', 'All fields are required');
                 if (isset($request->id)) {
-                    # code...                    
+                    # code...
                     return back()->withErrors($validator);
                 }
                 return back()->withErrors($validator)->withInput();
@@ -431,7 +434,7 @@ class HomeController extends Controller
             if ($validator->fails()) {
                 Session::flash('warning', 'All fields are required');
                 if (isset($request->id)) {
-                    # code...                    
+                    # code...
                     return back()->withErrors($validator);
                 }
                 return back()->withErrors($validator)->withInput();

@@ -34,7 +34,7 @@
                 <div class="loginbox">
                     <div class="login-right">
                         <div class="login-right-wrap">
-                            <h1>Login</h1>
+                            <h1>{{ __('Login') }}</h1>
                             <p class="account-subtitle">Access to our dashboard</p>
                             <form method="POST" action="">
                                 @csrf
