@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="content container-fluid">
-    
+
 <div class="page-header">
         <div class="row align-items-center">
             <div class="col-md-12">
@@ -29,9 +29,9 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
+                                <th>{{ __('First Name') }}</th>
+                                <th>{{ __('Last Name') }}</th>
+                                <th>{{ __('Email') }}</th>
                                 <th>Cell 1 #</th>
                                 <th>Hiring Date</th>
                                 <th>Action</th>

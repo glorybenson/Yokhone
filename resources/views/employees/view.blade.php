@@ -52,11 +52,11 @@
                                         <table class="table mb-0 border-0">
                                             <tbody>
                                                 <tr>
-                                                    <td>First Name</td>
+                                                    <td>{{ __('First Name') }}</td>
                                                     <td>{{$employee->first_name}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Last Name</td>
+                                                    <td>{{ __('Last Name') }}</td>
                                                     <td>{{$employee->last_name}}</td>
                                                 </tr>
                                                 <tr>

@@ -16,9 +16,9 @@
                         <table class="table mb-0 table-striped border-0">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
+                                <th>{{ __('First Name') }}</th>
+                                <th>{{ __('Last Name') }}</th>
+                                <th>{{ __('Email') }}</th>
                                 <th>Created By</th>
                                 <th>Created On</th>
                                 <th>Last Login</th>
