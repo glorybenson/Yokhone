@@ -748,5 +748,25 @@
     "Zambia": "Zambie",
     "Zimbabwe": "Zimbabwe",
     "Zip / Postal Code": "Code postal",
-    "Åland Islands": "Les îles d'Åland"
+    "Åland Islands": "Les îles d'Åland",
+    "Clients": "Clients",
+    "Farms": "Champs",
+    "Trees": "Arbres",
+    "Crops": "Récoltes",
+    "Employees": "Employés",
+    "Finance": "Finance",
+    "Expenses": "Dépenses",
+    "Invoices": "Factures",
+    "Add new users": "Ajouter un nouvel utilisateur",
+    "Created By": "Créé par",
+    "Created On": "Créé le",
+    "Last Login": "Dernière connexion",
+    "Create User": "Créé un Utilisateur",
+    "Back to Users": "Retour aux utilisateurs",
+    "Submit": "Soumettre",
+    "First Name": "Prénom",
+    "Last Name": "Nom de Famille",
+    "User Role": "Permission de l’utilisateur",
+    "Confirm password": "Confirmer le Mot de passe"
 }
+
