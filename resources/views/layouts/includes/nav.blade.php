@@ -42,7 +42,9 @@
                     <span class="status online"></span></span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i> My Profile</a>
+                <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i>
+                    {{ __('My Profile') }}
+                </a>
                 <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i> Change Password</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i> Logout
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
