@@ -1,6 +1,6 @@
 <div class="header">
     <div class="header-left">
-        <a href="{{ route('home') }}" class="logo">Yokhone App
+        <a href="{{ route('home') }}" class="logo">{{__('Yokhone App')}}
             <!-- <img src="assets/img/logo.svg" alt="Logo"> -->
         </a>
         <a href="{{ route('home') }}" class="logo logo-small">PT
@@ -43,10 +43,13 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i>
-                    {{ __('30 Days') }}
+                    {{ __('My Profile') }}
                 </a>
-                <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i> Change Password</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i> Logout
+                <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i>
+                    {{__('Change Password')}}
+                </a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i>
+                    {{__('Logout')}}
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>

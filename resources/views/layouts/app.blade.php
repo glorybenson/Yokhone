@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Yokhone Club Dashboard - {{$title ?? "" }}</title>
+    <title>{{__('Yokhone Club Dashboard')}} - {{$title ?? "" }}</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('logo/logo2.png') }}">
 </head>
