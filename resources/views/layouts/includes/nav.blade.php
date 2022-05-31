@@ -43,7 +43,7 @@
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i>
-                    {{ __('30 Days') }}
+                    {{ @lang('30 Days') }}
                 </a>
                 <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i> Change Password</a>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i> Logout
