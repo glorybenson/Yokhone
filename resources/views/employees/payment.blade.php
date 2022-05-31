@@ -7,8 +7,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">Employees</a></li>
-                        <li class="breadcrumb-item active">Employee Payment History</li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Employee Payment History')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Employee's Payment History</h4>
+                    <h4 class="card-title float-left">{{__('Employee\'s Payment History')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">Back to Employees</a>
+                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">{{__("Back to Employees")
+                        }}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,23 +33,26 @@
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Employee Record</a>
+                                <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active"
+                                   style="border-radius: 18px 18px 0px 0px;">{{__('Employee
+                                    Record')}}</a>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Salary History</a>
+                                <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active"
+                                   style="border-radius: 18px 18px 0px 0px;">{{__('Salary History')}}</a>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">Payment</a>
+                                <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">{{__('Payment')}}</a>
                             </div>
                         </div>
                     </div>
                     <div class="text-right mb-3">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewPayment">
-                            Add New Payment
+                            {{('Add New Payment')}}
                         </button>
                     </div>
                     <!-- Modal -->
@@ -252,7 +256,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                        {{__('Close')}}</button>
                                                     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">Update</button>
                                                 </div>
                                             </form>

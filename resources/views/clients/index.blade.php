@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item active">Clients</li>
+                        <li class="breadcrumb-item active">{{__('Clients')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Clients</h4>
+                    <h4 class="card-title float-left">{{__('Clients')}}</h4>
                     <div class="text-right">
                         <a href="{{ route('create.client') }}" class="btn btn-dark p-2">Add New client</a>
                     </div>
@@ -28,14 +28,14 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>Client Name</th>
-                                <th>Full Address</th>
-                                <th>Contact Full Name</th>
-                                <th>Contact Phone</th>
-                                <th>Contact Email</th>
-                                <th>Date Become Client</th>
-                                <th>Referred By</th>
-                                <th>Action</th>
+                                <th>{{__('Client Name')}}</th>
+                                <th>{{__('Full Address')}}</th>
+                                <th>{{__('Contact Full Name')}}</th>
+                                <th>{{__('Contact Phone')}}</th>
+                                <th>{{__('Email')}}</th>
+                                <th>{{__('Created on')}}</th>
+                                <th>{{__('Referred By')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($clients))

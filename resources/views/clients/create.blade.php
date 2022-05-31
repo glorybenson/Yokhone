@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('clients') }}">Clients</a></li>
-                        <li class="breadcrumb-item active">Update Client Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('clients') }}">{{__('Clients')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Client Data')}}</li>
                     </ul>
                 </div>
             </div>
@@ -164,8 +164,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('clients') }}">Clients</a></li>
-                        <li class="breadcrumb-item active">Create New Client</li>
+                        <li class="breadcrumb-item"><a href="{{ route('clients') }}">{{__('Clients')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Create New Client')}}</li>
                     </ul>
                 </div>
             </div>
@@ -175,7 +175,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create New Client</h4>
+                    <h4 class="card-title float-left">{{__('Create New Client')}}</h4>
                     <div class="text-right">
                         <a href="{{ route('clients') }}" class="btn btn-dark p-2">Back to Clients</a>
                     </div>

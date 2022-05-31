@@ -8,9 +8,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('crops') }}">Crops</a></li>
-                        <li class="breadcrumb-item active">Update Crop Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('crops') }}">{{__('Crops')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Crop Data')}}</li>
                     </ul>
                 </div>
             </div>
@@ -20,9 +20,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Crop Data</h4>
+                    <h4 class="card-title float-left">{{('Update Crop Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('crops') }}" class="btn btn-dark p-2">Back to Crop</a>
+                        <a href="{{ route('crops') }}" class="btn btn-dark p-2">{{__('Back to Crop')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -68,7 +68,7 @@
                             <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}</label>
                             <div class="col-md-10">
                                 <select id="desc" class="select @error('desc') is-invalid @enderror" name="desc" required>
-                                    <option value="">Select Description</option>
+                                    <option value="">{{('Select Description')}}</option>
                                     @if(isset($trees))
                                     @foreach($trees as $tree)
                                     <option value="{{$tree->desc}}" {{ $crop->desc == $tree->desc ? 'selected' : '' }}>{{$tree->desc}}</option>
@@ -155,9 +155,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create New Crop</h4>
+                    <h4 class="card-title float-left">{{__('Create New Crop')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('crops') }}" class="btn btn-dark p-2">Back to Crops</a>
+                        <a href="{{ route('crops') }}" class="btn btn-dark p-2">{{__('Back to Crops')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -167,7 +167,7 @@
                             <label for="farm_id" class="col-md-2 col-form-label text-md-end">{{ __('Farm Name') }}</label>
                             <div class="col-md-10">
                                 <select id="farm_id" class="select @error('farm_id') is-invalid @enderror" name="farm_id" required>
-                                    <option value="">Select Farm</option>
+                                    <option value="">{{__('Select Farm')}}</option>
                                     @if(isset($farms))
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}" {{ old('farm_id') == $farm->id ? 'selected' : '' }}>{{$farm->farm_name}}</option>
@@ -186,9 +186,11 @@
                             <label for="type_of_crop" class="col-md-2 col-form-label text-md-end">{{ __('Type Of Crop') }}</label>
                             <div class="col-md-10">
                                 <select id="type_of_crop" class="form-control select @error('type_of_crop') is-invalid @enderror" name="type_of_crop" required>
-                                    <option value="">Select Type</option>
-                                    <option value="Fruits" {{ old('type_of_crop') == "Fruits" ? 'selected' : '' }}>Fruits</option>
-                                    <option value="Vegetables" {{ old('type_of_crop') == "Vegetables" ? 'selected' : '' }}>Vegetables</option>
+                                    <option value="">{{__('Select Type')}}</option>
+                                    <option value="Fruits" {{ old('type_of_crop') == "Fruits" ? 'selected' : '' }}>
+                                        {{__('Fruits')}}</option>
+                                    <option value="Vegetables" {{ old('type_of_crop') == "Vegetables" ? 'selected' : '' }}>
+                                        {{__('Vegetables')}}</option>
                                 </select>
                                 @error('type_of_crop')
                                 <span class="invalid-feedback" role="alert">
@@ -203,7 +205,7 @@
                             <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}</label>
                             <div class="col-md-10">
                                 <select id="desc" class="select @error('desc') is-invalid @enderror" name="desc" required>
-                                    <option value="">Select Description</option>
+                                    <option value="">{{__('Select Description')}}</option>
                                     @if(isset($trees))
                                     @foreach($trees as $tree)
                                     <option value="{{$tree->desc}}" {{ old('desc') == $tree->desc ? 'selected' : '' }}>{{$tree->desc}}</option>
@@ -235,7 +237,7 @@
                             <label for="weight" class="col-md-2 col-form-label text-md-end">{{ __('Weight') }}</label>
                             <div class="col-md-10">
                                 <select id="weight" class="form-control select @error('weight') is-invalid @enderror" name="weight" required>
-                                    <option value="">Select Type</option>
+                                    <option value="">{{__('Select Type')}}</option>
                                     <option value="KG" {{ old('weight') == "KG" ? 'selected' : '' }}>KG</option>
                                     <option value="Gr" {{ old('weight') == "Gr" ? 'selected' : '' }}>Gr</option>
                                     <option value="To" {{ old('weight') == "To" ? 'selected' : '' }}>To</option>

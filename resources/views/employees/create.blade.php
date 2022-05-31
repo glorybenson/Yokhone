@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">Employees</a></li>
-                        <li class="breadcrumb-item active">Update Employee Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Employee Data')}}</li>
                     </ul>
                 </div>
             </div>
@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Employee Data</h4>
+                    <h4 class="card-title float-left">{{__('Update Employee Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('employees') }}" class="btn btn-dark p-2">Back to Employees</a>
+                        <a href="{{ route('employees') }}" class="btn btn-dark p-2">{{__('Back to Employees')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
