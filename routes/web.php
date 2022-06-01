@@ -22,6 +22,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['user']], function () {
@@ -39,15 +45,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], '/edit-employee/{id}', [App\Http\Controllers\HomeController::class, 'edit_employee'])->name('edit.employee');
         Route::match(['get', 'post'], '/view-employee/{id}', [App\Http\Controllers\HomeController::class, 'view_employee'])->name('view.employee');
         Route::match(['get', 'post'], '/create-employee', [App\Http\Controllers\HomeController::class, 'create_employee'])->name('create.employee');
-        
+
         //Salary Route
         Route::match(['get', 'post'], '/view-employees-salary/{id}', [App\Http\Controllers\HomeController::class, 'employee_salary'])->name('salary.employee');
         Route::post('/add-salary', [App\Http\Controllers\HomeController::class, 'add_salary'])->name('add.salary');
-        
+
         //Record Route
         Route::match(['get', 'post'], '/view-employees-record/{id}', [App\Http\Controllers\HomeController::class, 'employee_record'])->name('record.employee');
         Route::post('/add-record', [App\Http\Controllers\HomeController::class, 'add_record'])->name('add.record');
-        
+
         //Payment Route
         Route::match(['get', 'post'], '/view-employees-payment/{id}', [App\Http\Controllers\HomeController::class, 'employee_payment'])->name('payment.employee');
         Route::post('/add-payment', [App\Http\Controllers\HomeController::class, 'add_payment'])->name('add.payment');
@@ -64,7 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/trees', [App\Http\Controllers\HomeController::class, 'trees'])->name('trees');
         Route::match(['get', 'post'], '/create-tree', [App\Http\Controllers\HomeController::class, 'create_tree'])->name('create.tree');
         Route::match(['get', 'post'], '/edit-tree/{id}', [App\Http\Controllers\HomeController::class, 'edit_tree'])->name('edit.tree');
-    
+
         //Crops Routes
         Route::get('/crops', [App\Http\Controllers\HomeController::class, 'crops'])->name('crops');
         Route::match(['get', 'post'], '/create-crop', [App\Http\Controllers\HomeController::class, 'create_crop'])->name('create.crop');

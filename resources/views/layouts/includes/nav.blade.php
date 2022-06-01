@@ -62,13 +62,13 @@
                 <span class="lang-flag"><img src="/assets/img/icons/united-kingdom.png" alt=""></span>
             </a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/language/en">
                     <div>
                         <img src="/assets/img/icons/united-kingdom.png" alt="">
                         <span>English</span>
                     </div>
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/language/fr">
                     <div>
                         <img src="/assets/img/icons/france.png" alt="">
                         <span>Français</span>
