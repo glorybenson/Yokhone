@@ -33,8 +33,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        App::setLocale('fr');
-
         $this->middleware('auth');
         function save_file($file, $path)
         {
