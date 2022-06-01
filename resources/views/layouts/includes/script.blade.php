@@ -19,6 +19,6 @@
 
 <script>
     $(document).ready(function() {
-        $('table').DataTable();
+        $('table').DataTable({{ App::getLocale() === 'fr' ? " {language: {url: '/assets/plugins/fr-FR.json'\}\}" : '' }});
     });
 </script>
