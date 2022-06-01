@@ -770,6 +770,16 @@
     "User Role": "Permission de l’utilisateur",
     "Confirm password": "Confirmer le Mot de passe",
     "Access to our dashboard": "Accéder à notre tableau de bord",
-    "Add New Client": "Ajouter un nouveau client"
+    "Add New Client": "Ajouter un nouveau client",
+    "Client Name": "Nom du client",
+    "Full Address": "Adresse complète",
+    "Contact Full Name": "Nom complet du contact",
+    "Contact Phone": "Numéro du contact",
+    "Contact Email": "Email du contact",
+    "Date Become Client": "Date Devenir Client",
+    "Referred By": "Référencé par",
+    "Create New Client": "Créer un nouveau client",
+    "Back to Clients": "Retour aux Clients",
+    "Update Client Data": "Mettre à jour les données des clients"
 }
 

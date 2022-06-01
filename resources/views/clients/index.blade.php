@@ -33,7 +33,7 @@
                                 <th>{{__('Contact Full Name')}}</th>
                                 <th>{{__('Contact Phone')}}</th>
                                 <th>{{__('Email')}}</th>
-                                <th>{{__('Created on')}}</th>
+                                <th>{{__('Date Become Client')}}</th>
                                 <th>{{__('Referred By')}}</th>
                                 <th>{{__('Action')}}</th>
                             </thead>
