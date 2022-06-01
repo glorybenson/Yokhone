@@ -35,12 +35,12 @@
                     <div class="login-right">
                         <div class="login-right-wrap">
                             <h1>{{ __('Login') }}</h1>
-                            <p class="account-subtitle">Access to our dashboard</p>
+                            <p class="account-subtitle">{{__('Access to our dashboard')}}</p>
                             <form method="POST" action="">
                                 @csrf
                                 <input type="hidden" name="timezone" id="timezone">
                                 <div class="form-group">
-                                    <label class="form-control-label">Email Address</label>
+                                    <label class="form-control-label">{{__('Email Address')}}</label>
                                     <input type="email" name="email" value="{{ old('email') }}" class="form-control @error('email') is-invalid @enderror">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-control-label">Password</label>
+                                    <label class="form-control-label">{{__('Password')}}</label>
                                     <div class="pass-group">
                                         <input type="password" name="password" class="form-control pass-input @error('password') is-invalid @enderror">
                                         @error('password')
@@ -70,12 +70,14 @@
 
                                         @if (Route::has('password.request'))
                                         <div class="col-6 text-right">
-                                            <a class="forgot-link" href="{{ route('password.request') }}">Forgot Password ?</a>
+                                            <a class="forgot-link" href="{{ route('password.request') }}">
+                                                {{__('Forgot Password')}}?
+                                            </a>
                                         </div>
                                         @endif
                                     </div>
                                 </div>
-                                <button class="btn btn-lg btn-block btn-primary" type="submit">Login</button>
+                                <button class="btn btn-lg btn-block btn-primary" type="submit">{{__('Login')}}</button>
                             </form>
                         </div>
                     </div>
