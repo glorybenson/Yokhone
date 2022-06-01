@@ -129,7 +129,7 @@
                     <form method="POST" action="{{ route('create.user') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="first_name" class="col-md-2 col-form-label text-md-end">{{ __('First Name') }}</label>
+                            <label for="first_name" class="col-md-2 col-form-label text-md-end">{{ __('First Name') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" autocomplete="name" required>
@@ -143,7 +143,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="last_name" class="col-md-2 col-form-label text-md-end">{{ __('Last Name') }}</label>
+                            <label for="last_name" class="col-md-2 col-form-label text-md-end">{{ __('Last Name') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="name" autofocus>
@@ -157,7 +157,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('E-Mail Address') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -171,7 +171,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="role" class="col-md-2 col-form-label text-md-end">{{ __('User Role') }}</label>
+                            <label for="role" class="col-md-2 col-form-label text-md-end">{{ __('User Role') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <select multiple class="select @error('role') is-invalid @enderror" name="role[]" required aria-label=".form-select-lg example">
                                     <option>Select Role</option>
@@ -190,7 +190,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-2 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-2 col-form-label text-md-end">{{ __('Password') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -204,7 +204,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-2 col-form-label text-md-end">{{ __('Confirm Password') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
