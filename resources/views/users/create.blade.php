@@ -10,7 +10,7 @@
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">{{__('User')}}</a></li>
-                        <li class="breadcrumb-item active">{{__('Update User Data')}}</li>
+                        <li class="breadcrumb-item active">{{__('Update User')}}</li>
                     </ul>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">User</a></li>
-                        <li class="breadcrumb-item active">Create New User</li>
+                        <li class="breadcrumb-item active">{{__('Create User')}}</li>
                     </ul>
                 </div>
             </div>
