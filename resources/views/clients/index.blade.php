@@ -20,7 +20,7 @@
                 <div class="card-header">
                     <h4 class="card-title float-left">{{__('Clients')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.client') }}" class="btn btn-dark p-2">Add New client</a>
+                        <a href="{{ route('create.client') }}" class="btn btn-dark p-2">{{__('Add New Client')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
