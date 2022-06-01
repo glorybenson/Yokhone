@@ -16,7 +16,7 @@
     <div class="top-nav-search ml-5">
         <h5 style="margin-top: 18px; position: relative; width:360px">
             @php
-                \Carbon\Carbon::setlocale(\Illuminate\Support\Facades\App::getLocale());
+                \Carbon\Carbon::setlocale(\Illuminate\Support\Facades\App::getLocale() === 'fr' ? 'fr_FR' : 'en');
             @endphp
             {{ \Carbon\Carbon::now()
                 ->timezone(Auth::user()->timezone)
