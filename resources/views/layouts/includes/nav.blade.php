@@ -15,7 +15,10 @@
     </div>
     <div class="top-nav-search ml-5">
         <h5 style="margin-top: 18px; position: relative; width:360px">
-            {{ \Carbon\Carbon::setLocale(App::getLocale())->now()
+            @php
+                \Carbon\Carbon::setlocale(\Illuminate\Support\Facades\App::getLocale());
+            @endphp
+            {{ \Carbon\Carbon::now()
                 ->timezone(Auth::user()->timezone)
                 ->format('D, M j, Y \a\t g:ia') }}
         </h5>
