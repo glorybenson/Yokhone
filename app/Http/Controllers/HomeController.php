@@ -177,14 +177,14 @@ class HomeController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password)
                 ]);
-                send_notification(trans('Created a new user '), $request->first_name, $request->last_name);
+                send_notification('Created a new user ', $request->first_name, $request->last_name);
 
-                Session::flash('success', trans("User created successfully"));
+                Session::flash('success', "User created successfully");
                 return redirect()->route('home');
             }
 
             $data['roles'] = Role::where('name', '!=', 'Admin')->get();
-            $data['title'] = trans("Create User");
+            $data['title'] = "Create User";
             return view('users.create', $data);
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -207,7 +207,7 @@ class HomeController extends Controller
                 // $validator->setAttributeNames($fieldNames);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', trans('All fields are required'));
+                    Session::flash('warning', 'All fields are required');
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -217,14 +217,14 @@ class HomeController extends Controller
                 $user->email = $request->email;
                 $user->roles = $request->role;
                 $user->save();
-                send_notification(trans('Updated a user data'), $user->first_name, $user->last_name);
-                Session::flash('success', trans("User updated successfully"));
+                send_notification('Updated a user data', $user->first_name, $user->last_name);
+                Session::flash('success', "User updated successfully");
                 return redirect()->route('home');
             }
             $data['mode'] = "edit";
             $data['roles'] = Role::where('name', '!=', 'Admin')->get();
             $data['user'] = User::where('id', $id)->with('user_role')->first();
-            $data['title'] = trans("Edit User");
+            $data['title'] = "Edit User";
             return view('users.create', $data);
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -237,17 +237,17 @@ class HomeController extends Controller
         try {
             //code...
             if (!in_array(1, Auth::user()->roles)) {
-                Session::flash('permission_warning', trans('You no not have access to delete this record'));
+                Session::flash('permission_warning', 'You no not have access to delete this record');
                 return back();
             }
             $user = User::find($id);
             if ($user->role == 1) {
-                Session::flash('permission_warning', trans('The Admin can not be deleted'));
+                Session::flash('permission_warning', 'The Admin can not be deleted');
                 return back();
             }
             $user->delete();
-            send_notification(trans('Updated a user data'), $user->first_name, $user->last_name);
-            Session::flash('success', trans('User Deleted successfully'));
+            send_notification('Updated a user data', $user->first_name, $user->last_name);
+            Session::flash('success', 'User Deleted successfully');
             return redirect()->route('home');
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -380,7 +380,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated record for employee', $employee->first_name, $employee->last_name);
 
-                Session::flash('success', "ecord Updated successfully");
+                Session::flash('success', "Record Updated successfully");
                 return back();
             }
 

@@ -15,7 +15,7 @@
                             <form action="" method="POST">
                                 <i onclick="deleteNotification(this, '{{$notification->id}}', '{{csrf_token()}}')" class="feather-x-circle close-notification"></i>
                             </form>
-                            <p class="noti-details"><span class="noti-title"></span> {{$notification->data['message']}}
+                            <p class="noti-details"><span class="noti-title"></span> {{__($notification->data['message'])}}
                                 <span class="noti-title">
                                     @if($notification->data['data'] != ' ')
                                     <b>
@@ -37,7 +37,10 @@
         </ul>
     </div>
     <div class="topnav-dropdown-footer">
-        <a href="{{ route('delete.all.notification') }}" onclick="return confirm('Are you sure you want to clear all notifications?')">Clear all Notifications</a>
+        <a href="{{ route('delete.all.notification') }}"
+           onclick="return confirm('{{__('Are you sure you want to clear all notifications?')}}')">
+            {{__('Clear all Notifications')}}
+        </a>
     </div>
 </div>
 
