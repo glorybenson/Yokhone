@@ -23,7 +23,7 @@
                 @if(in_array(1, Auth::user()->roles) || in_array(4, Auth::user()->roles))
                 <li class="{{ request()->is('farms') || request()->is('edit-farm/*') || request()->is('create-farm') || request()->is('trees') || request()->is('edit-tree/*') || request()->is('create-tree') || request()->is('crops') || request()->is('edit-crop/*') || request()->is('create-crop')  ? 'active active-now' : '' }}">
                     <a href="#"><i class="feather-user-plus"></i>
-                        <span class="shape1"></span><span class="shape2"></span> <span> Farm</span> <span class="menu-arrow"></span></a>
+                        <span class="shape1"></span><span class="shape2"></span> <span>{{__('Farm')}}</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a class="{{ request()->is('farms') || request()->is('edit-farm/*') || request()->is
                         ('create-farm')  ? 'active' : '' }}" href="{{ route('farms') }}">{{__('Farm')}}</a></li>
