@@ -59,13 +59,17 @@
 
         <li class="nav-item dropdown has-arrow main-drop ml-md-3">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="lang-flag"><img src="/assets/img/icons/united-kingdom.png" alt=""></span>
+                <span class="lang-flag">
+                    <img src="{{App::getLocale() === 'en'
+                        ? '/assets/img/icons/united-kingdom.png'
+                        : '/assets/img/icons/france.png' }}" alt="">
+                </span>
             </a>
             <div class="dropdown-menu">
                 <a class="dropdown-item" href="/language/en">
                     <div>
                         <img src="/assets/img/icons/united-kingdom.png" alt="">
-                        <span>English {{ App::getLocale() }}</span>
+                        <span>English</span>
                     </div>
                 </a>
                 <a class="dropdown-item" href="/language/fr">
