@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item active">Update Farm Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Farm Data')}}</li>
                     </ul>
                 </div>
             </div>
@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Farm Data</h4>
+                    <h4 class="card-title float-left">{{__('Update Farm Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('farms') }}" class="btn btn-dark p-2">Back to Farms</a>
+                        <a href="{{ route('farms') }}" class="btn btn-dark p-2">{{__('Back to Farms')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -129,8 +129,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item active">Create New Farm</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Create New Farm')}}</li>
                     </ul>
                 </div>
             </div>
@@ -140,9 +140,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create New Farm</h4>
+                    <h4 class="card-title float-left">{{__('Create New Farm')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('farms') }}" class="btn btn-dark p-2">Back to Farms</a>
+                        <a href="{{ route('farms') }}" class="btn btn-dark p-2">{{__('Back to Farms')}}</a>
                     </div>
                 </div>
                 <div class="card-body">

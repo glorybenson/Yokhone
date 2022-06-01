@@ -8,9 +8,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('trees') }}">Trees</a></li>
-                        <li class="breadcrumb-item active">Update Tree Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('trees') }}">{{__('Trees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Tree Data')}}</li>
                     </ul>
                 </div>
             </div>
@@ -20,9 +20,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Tree Data</h4>
+                    <h4 class="card-title float-left">{{__('Update Tree Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('trees') }}" class="btn btn-dark p-2">Back to Trees</a>
+                        <a href="{{ route('trees') }}" class="btn btn-dark p-2">{{__('Back to Trees')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -33,7 +33,7 @@
                             <label for="farm_id" class="col-md-2 col-form-label text-md-end">{{ __('Farm Name') }}</label>
                             <div class="col-md-10">
                                 <select id="farm_id" class="select form-control @error('farm_id') is-invalid @enderror" name="farm_id" required>
-                                    <option value="">Select Farm</option>
+                                    <option value="">{{__('Select Farm')}}</option>
                                     @if(isset($farms))
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}" {{ $tree->farm_id == $farm->id ? 'selected' : '' }}>{{$farm->farm_name}}</option>
@@ -119,9 +119,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('trees') }}">Trees</a></li>
-                        <li class="breadcrumb-item active">Create New Tree</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('trees') }}">{{__('Trees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Create New Tree')}}</li>
                     </ul>
                 </div>
             </div>
@@ -131,9 +131,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create New Tree</h4>
+                    <h4 class="card-title float-left">{{__('Create New Tree')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('trees') }}" class="btn btn-dark p-2">Back to Trees</a>
+                        <a href="{{ route('trees') }}" class="btn btn-dark p-2">{{__('Back to Trees')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -143,7 +143,7 @@
                             <label for="farm_id" class="col-md-2 col-form-label text-md-end">{{ __('Farm Name') }}</label>
                             <div class="col-md-10">
                                 <select id="farm_id" class="select @error('farm_id') is-invalid @enderror" name="farm_id" required>
-                                    <option value="">Select Farm</option>
+                                    <option value="">{{__('Select Farm')}}</option>
                                     @if(isset($farms))
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}" {{ old('farm_id') == $farm->id ? 'selected' : '' }}>{{$farm->farm_name}}</option>

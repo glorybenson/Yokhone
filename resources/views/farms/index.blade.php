@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item active">Farms</li>
+                        <li class="breadcrumb-item active">{{__('Farms')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Farms</h4>
+                    <h4 class="card-title float-left">{{__('Farms')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.farm') }}" class="btn btn-dark p-2">Add New Farm</a>
+                        <a href="{{ route('create.farm') }}" class="btn btn-dark p-2">{{__('Add New Farm')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -28,14 +28,14 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>Farm Name</th>
-                                <th>Farm Description</th>
-                                <th>Acquisition Date</th>
-                                <th>Surface</th>
-                                <th>Amount</th>
-                                <th>Latitude</th>
-                                <th>Longitude</th>
-                                <th>Action</th>
+                                <th>{{__('Farm Name')}}</th>
+                                <th>{{__('Farm Description')}}</th>
+                                <th>{{__('Acquisition Date')}}</th>
+                                <th>{{__('Surface')}}</th>
+                                <th>{{__('Amount')}}</th>
+                                <th>{{__('Latitude')}}</th>
+                                <th>{{__('Longitude')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($farms))

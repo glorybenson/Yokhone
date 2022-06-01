@@ -9,7 +9,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item active">Change Password</li>
+                        <li class="breadcrumb-item active">{{__('Change Password')}}</li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +19,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Change Password</h4>
+                    <h4 class="card-title float-left">{{__('Change Password')}}</h4>
                     <div class="text-right">
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item active">Update Profile</li>
+                        <li class="breadcrumb-item active">{{__('Update Profile')}}</li>
                     </ul>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">My Profile</h4>
+                    <h4 class="card-title float-left">{{__('My Profile')}}</h4>
                     <div class="text-right">
                     </div>
                 </div>

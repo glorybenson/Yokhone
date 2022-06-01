@@ -7,8 +7,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">Employees</a></li>
-                        <li class="breadcrumb-item active">Employee Salary History</li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Employee Salary History')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Employee's Salary History</h4>
+                    <h4 class="card-title float-left">{{__("Employee's Salary History")}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">Back to Employees</a>
+                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">
+                            {{__('Back to Employees')}}
+                        </a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,23 +34,27 @@
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Employee Record</a>
+                                <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                    {{__('Employee Record')}}
+                                </a>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">Salary History</a>
+                                <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">{{__('Salary History')}}</a>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="text-center">
-                                <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Payment</a>
+                                <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                    {{__('Payment')}}
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="text-right mb-3">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewSalary">
-                            Add New Salary
+                            {{__('Add New Salary')}}
                         </button>
                     </div>
                     <!-- Modal -->
@@ -56,7 +62,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add New Salary</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Salary')}}</h5>
                                 </div>
                                 <form method="POST" action="{{ route('add.salary') }}">
                                     <div class="modal-body">
@@ -98,8 +104,9 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">Add</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('Close')}}</button>
+                                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">
+                                            {{__('Add')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -110,10 +117,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Salary Amount</th>
-                                    <th>Salary Start Date</th>
-                                    <th>Salary End Date</th>
-                                    <th>Action</th>
+                                    <th>{{__('Salary Amount')}}</th>
+                                    <th>{{__('Salary Start Date')}}</th>
+                                    <th>{{__('Salary End Date')}}</th>
+                                    <th>{{__('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -133,7 +140,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Salary</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">{{__('Edit Salary')}}</h5>
                                             </div>
                                             <form method="POST" action="{{ route('add.salary') }}">
                                                 <div class="modal-body">
@@ -174,8 +181,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to submit this form?')">Update</button>
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                        {{__('Close')}}</button>
+                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to submit this form?')">
+                                                        {{__('Update')}}</button>
                                                 </div>
                                             </form>
                                         </div>

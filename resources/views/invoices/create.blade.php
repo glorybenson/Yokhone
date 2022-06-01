@@ -8,9 +8,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item"><a href="{{ route('invoices') }}">Invoice</a></li>
-                        <li class="breadcrumb-item active">Update Invoice</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('invoices') }}">{{__('Invoice')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Invoice')}}</li>
                     </ul>
                 </div>
             </div>
@@ -20,9 +20,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Invoice Data</h4>
+                    <h4 class="card-title float-left">{{__('Update Invoice Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('invoices') }}" class="btn btn-dark p-2">Back to Invoices</a>
+                        <a href="{{ route('invoices') }}" class="btn btn-dark p-2">{{__('Back to Invoices')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -30,10 +30,10 @@
                         @csrf
                         <input type="hidden" name="id" value="{{ $invoice->id }}">
                         <div class="row">
-                            <label for="client_name" class="col-md-2 col-form-label text-md-end">Client Name</label>
+                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="form-control select @error('client_name') is-invalid @enderror" name="client_name" required>
-                                    <option value="">Select a Client</option>
+                                    <option value="">{{__('Select a Client')}}</option>
                                     @if(isset($clients))
                                     @foreach($clients as $client)
                                     <option value="{{$client->id}}" {{ $invoice->client_id == $client->id ? 'selected' : '' }}>{{$client->client_name}}</option>
@@ -136,7 +136,7 @@
 
 
                         <div class="row">
-                            <label for="crop" class="col-md-2 col-form-label text-md-end">Crop</label>
+                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select onchange="loadFarm(this, '{{csrf_token()}}')" id="crop_id" class="form-control select @error('crop') is-invalid @enderror" name="crop" required>
                                     <option value="">Select an crop</option>
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">Farm</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
                             <div class="col-md-10 mb-3">
                                 <input readonly type="hidden" id="farm_id" name="farm" value="{{ $invoice->farm }}" class="form-control" placeholder="Farm ID" required>
                                 <input readonly type="text" id="farm_value" class="form-control" placeholder="Farm Name">
@@ -185,9 +185,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item"><a hrer="{{ route('invoices') }}">Invoices</a></li>
-                        <li class="breadcrumb-item active">Create New Invoice</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
+                        <li class="breadcrumb-item"><a hrer="{{ route('invoices') }}">{{__('Invoices')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Create New Invoice')}}</li>
                     </ul>
                 </div>
             </div>
@@ -197,19 +197,20 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create Invoice</h4>
+                    <h4 class="card-title float-left">{{__('Create Invoice')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('invoices') }}" class="btn btn-dark p-2">Back to Invoices</a>
+                        <a href="{{ route('invoices') }}" class="btn btn-dark p-2">{{__('Back to Invoices')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('create.invoice') }}">
                         @csrf
                         <div class="row">
-                            <label for="client_name" class="col-md-2 col-form-label text-md-end">Client Name</label>
+                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')
+                            }}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="form-control select @error('client_name') is-invalid @enderror" name="client_name">required
-                                    <option value="">Select a Client</option>
+                                    <option value="">{{__('Select a Client')}}</option>
                                     @if(isset($clients))
                                     @foreach($clients as $client)
                                     <option value="{{$client->id}}" {{ old('client_name') == $client->id ? 'selected' : '' }}>{{$client->client_name}}</option>
@@ -310,10 +311,10 @@
                         </div>
 
                         <div class="row">
-                            <label for="crop" class="col-md-2 col-form-label text-md-end">Crop</label>
+                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select onchange="loadFarm(this, '{{csrf_token()}}')" id="crop_id" class="form-control select @error('crop') is-invalid @enderror" name="crop" required>
-                                    <option value="">Select an crop</option>
+                                    <option value="">{{__('Select an crop')}}</option>
                                     @if(isset($crops))
                                     @foreach($crops as $crop)
                                     <option value="{{$crop->id}}" {{ old('crop') == $crop->id ? 'selected' : '' }}>{{$crop->date}} - {{$crop->type_of_crop}} - {{$crop->desc}}</option>
@@ -329,7 +330,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">Farm</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
                             <div class="col-md-10 mb-3">
                                 <input readonly type="hidden" id="farm_id" name="farm" value="{{old('farm')}}" class="form-control" placeholder="Farm ID" required>
                                 <input readonly type="text" id="farm_value" class="form-control" placeholder="Farm Name">

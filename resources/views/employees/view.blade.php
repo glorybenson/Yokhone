@@ -7,8 +7,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">Employees</a></li>
-                        <li class="breadcrumb-item active">Employee's Data</li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
+                        <li class="breadcrumb-item active">{{__("Employee's Data")}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,10 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Employee's Data</h4>
+                    <h4 class="card-title float-left">{{__("Employee's Data")}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">Back to Employees</a>
+                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">{{__('Back to Employees')
+                        }}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -34,17 +35,22 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="text-center">
-                                        <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Employee Record</a>
+                                        <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                            {{__('Employee Record')}}
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="text-center">
-                                        <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Salary History</a>
+                                        <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                            {{__('Salary History')}}
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="text-center">
-                                        <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">Payment</a>
+                                        <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light
+                                         active" style="border-radius: 18px 18px 0px 0px;">{{__('Payment')}}</a>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -76,7 +82,7 @@
                                                     <td>{{$employee->CIN}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>C.I.N Proof</td>
+                                                    <td>{{__('C.I.N Proof')}}</td>
                                                     <td>
                                                         <div class="documents-card d-flex mb-1">
                                                             <div class="documennts d-flex">
@@ -101,19 +107,19 @@
                                                     <td>{{$employee->cell_2}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Address</td>
+                                                    <td>{{__('Address')}}</td>
                                                     <td>{{$employee->address}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Contact 1 Full Name</td>
+                                                    <td>{{__('Contact 1 Full Name')}}</td>
                                                     <td>{{$employee->contact_full_name}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Contact 1 Cell#</td>
+                                                    <td>{{__('Contact 1 Cell')}}#</td>
                                                     <td>{{$employee->contact_1_cell}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Contact 1 Cell2#</td>
+                                                    <td>{{('Contact 1 Cell')}}2#</td>
                                                     <td>{{$employee->contact_1_cell2}}</td>
                                                 </tr>
                                             </tbody>

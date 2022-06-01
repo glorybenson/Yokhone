@@ -7,8 +7,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">Farms</a></li>
-                        <li class="breadcrumb-item active">Tree</li>
+                        <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Tree')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Trees</h4>
+                    <h4 class="card-title float-left">{{__('Trees')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.tree') }}" class="btn btn-dark p-2">Add New Tree</a>
+                        <a href="{{ route('create.tree') }}" class="btn btn-dark p-2">{{__('Add New Tree')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -28,12 +28,12 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>Farm Name</th>
-                                <th>Description</th>
-                                <th>Reason</th>
-                                <th>Quality</th>
-                                <th>Date Planted</th>
-                                <th>Action</th>
+                                <th>{{__('Farm Name')}}</th>
+                                <th>{{__('Description')}}</th>
+                                <th>{{__('Reason')}}</th>
+                                <th>{{__('Quality')}}</th>
+                                <th>{{__('Date Planted')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($trees))

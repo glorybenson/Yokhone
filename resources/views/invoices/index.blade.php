@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item active">Invoices</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
+                        <li class="breadcrumb-item active">{{__('Invoices')}}</li>
                     </ul>
                 </div>
             </div>
@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Invoices</h4>
+                    <h4 class="card-title float-left">{{__('Invoices')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.invoice') }}" class="btn btn-dark p-2">Add New Invoice</a>
+                        <a href="{{ route('create.invoice') }}" class="btn btn-dark p-2">{{__('Add New Invoice')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,17 +29,17 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>Client Name</th>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Unit Price</th>
-                                <th>Total Price before discount</th>
-                                <th>Discount</th>
-                                <th>Total Price after discount</th>
-                                <th>Crop</th>
-                                <th>Farm</th>
-                                <th>Action</th>
+                                <th>{{__('Client Name')}}</th>
+                                <th>{{__('Date')}}</th>
+                                <th>{{__('Description')}}</th>
+                                <th>{{__('Quantity')}}</th>
+                                <th>{{__('Unit Price')}}</th>
+                                <th>{{__('Total Price before discount')}}</th>
+                                <th>{{__('Discount')}}</th>
+                                <th>{{__('Total Price after discount')}}</th>
+                                <th>{{__('Crop')}}</th>
+                                <th>{{__('Farm')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($invoices))

@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item active">Expenses</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
+                        <li class="breadcrumb-item active">{{__('Expenses')}}</li>
                     </ul>
                 </div>
             </div>
@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Expenses</h4>
+                    <h4 class="card-title float-left">{{__('Expenses')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.expense') }}" class="btn btn-dark p-2">Add New Expense</a>
+                        <a href="{{ route('create.expense') }}" class="btn btn-dark p-2">{{__('Add New Expense')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -29,12 +29,12 @@
                         <table class="table mb-0 table-striped border-0 data-table" id="datatable">
                             <thead class="thead-light">
                                 <th>#</th>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Amount</th>
-                                <th>Farm Name</th>
-                                <th>Employee making the expense</th>
-                                <th>Action</th>
+                                <th>{{__('Date')}}</th>
+                                <th>{{__('Description')}}</th>
+                                <th>{{__('Amount')}}</th>
+                                <th>{{__('Farm Name')}}</th>
+                                <th>{{__('Employee making the expense')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($expenses))

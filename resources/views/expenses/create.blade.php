@@ -9,8 +9,8 @@
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item"><a href="{{ route('expenses') }}">Expenses</a></li>
-                        <li class="breadcrumb-item active">Update Expense</li>
+                        <li class="breadcrumb-item"><a href="{{ route('expenses') }}">{{__('Expenses')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Update Expense')}}</li>
                     </ul>
                 </div>
             </div>
@@ -20,9 +20,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Expense Data</h4>
+                    <h4 class="card-title float-left">{{__('Update Expense Data')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('expenses') }}" class="btn btn-dark p-2">Back to Expenses</a>
+                        <a href="{{ route('expenses') }}" class="btn btn-dark p-2">{{__('Back to Expenses')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -66,10 +66,10 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">Farm</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('farm') is-invalid @enderror" name="farm">
-                                    <option value="">Select a Farm</option>
+                                    <option value="">{{__('Select a Farm')}}</option>
                                     @if(isset($farms))
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}" {{ $expense->farm_id == $farm->id ? 'selected' : '' }}>{{$farm->farm_name}}</option>
@@ -85,10 +85,10 @@
                         </div>
 
                         <div class="row">
-                            <label for="employee" class="col-md-2 col-form-label text-md-end">Employee</label>
+                            <label for="employee" class="col-md-2 col-form-label text-md-end">{{__('Employee')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('employee') is-invalid @enderror" name="employee">
-                                    <option value="">Select an Employee</option>
+                                    <option value="">{{__('Select an Employee')}}</option>
                                     @if(isset($employees))
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}" {{ $expense->employee_id == $employee->id ? 'selected' : '' }}>{{$employee->first_name}} {{$employee->last_name}}</option>
@@ -121,9 +121,9 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
-                        <li class="breadcrumb-item"><a href="{{ route('expenses') }}">Expenses</a></li>
-                        <li class="breadcrumb-item active">Create New Expense</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('expenses') }}">{{__('Expenses')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('Create New Expense')}}</li>
                     </ul>
                 </div>
             </div>
@@ -133,9 +133,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create Expenses</h4>
+                    <h4 class="card-title float-left">{{__('Create Expenses')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('expenses') }}" class="btn btn-dark p-2">Back to Expenses</a>
+                        <a href="{{ route('expenses') }}" class="btn btn-dark p-2">{{__('Back to Expenses')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -179,10 +179,10 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">Farm</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('farm') is-invalid @enderror" name="farm">
-                                    <option value="">Select a Farm</option>
+                                    <option value="">{{__('Select a Farm')}}</option>
                                     @if(isset($farms))
                                     @foreach($farms as $farm)
                                     <option value="{{$farm->id}}" {{ old('farm') == $farm->id ? 'selected' : '' }}>{{$farm->farm_name}}</option>
@@ -198,10 +198,10 @@
                         </div>
 
                         <div class="row">
-                            <label for="employee" class="col-md-2 col-form-label text-md-end">Employee</label>
+                            <label for="employee" class="col-md-2 col-form-label text-md-end">{{__('Employee')}}</label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('employee') is-invalid @enderror" name="employee">
-                                    <option value="">Select an Employee</option>
+                                    <option value="">{{__('Select an Employee')}}</option>
                                     @if(isset($employees))
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}" {{ old('employee') == $employee->id ? 'selected' : '' }}>{{$employee->first_name}} {{$employee->last_name}}</option>
