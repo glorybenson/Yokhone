@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item active">Users</li>
+                        <li class="breadcrumb-item active">{{__('Users')}}</li>
                     </ul>
                 </div>
             </div>
@@ -18,9 +18,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Users</h4>
+                    <h4 class="card-title float-left">{{__('Users')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('create.user') }}" class="btn btn-dark p-2">Add New User</a>
+                        <a href="{{ route('create.user') }}" class="btn btn-dark p-2">{{__('Add New User')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -31,10 +31,10 @@
                                 <th>{{ __('First Name') }}</th>
                                 <th>{{ __('Last Name') }}</th>
                                 <th>{{ __('Email') }}</th>
-                                <th>Created By</th>
-                                <th>Created On</th>
-                                <th>Last Login</th>
-                                <th>Action</th>
+                                <th>{{__('Created By')}}</th>
+                                <th>{{__('Created On')}}</th>
+                                <th>{{__('Last Login')}}</th>
+                                <th>{{__('Action')}}</th>
                             </thead>
                             <tbody>
                                 @if(isset($users))
@@ -57,7 +57,9 @@
 
                                             @if(in_array(1, Auth::user()->roles))
                                             @if(!in_array(1, $user->roles))
-                                            <a href="{{ route('delete.user', $user->id) }}" onclick="return confirm('Are you sure you want to delete this user?')" title="Delete" class="btn btn-sm p-2" title="Edit"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('delete.user', $user->id) }}" onclick="return confirm
+                                            ('{{__('Are you sure you want to delete this user?')}}')" title="Delete"
+                                               class="btn btn-sm p-2" title="Edit"><i class="fa fa-trash"></i></a>
                                             @endif
                                             @endif
                                         </div>
