@@ -177,14 +177,14 @@
                 <div class="card-header">
                     <h4 class="card-title float-left">{{__('Create New Client')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('clients') }}" class="btn btn-dark p-2">Back to Clients</a>
+                        <a href="{{ route('clients') }}" class="btn btn-dark p-2">{{__('Back to Clients')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('create.client') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{ __('Client Name') }}</label>
+                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{ __('Client Name') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="client_name" type="text" class="form-control @error('client_name') is-invalid @enderror" name="client_name" value="{{ old('client_name') }}" autocomplete="name" required>
                                 @error('client_name')
@@ -196,7 +196,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="full_address" class="col-md-2 col-form-label text-md-end">{{ __('Full Address') }}</label>
+                            <label for="full_address" class="col-md-2 col-form-label text-md-end">{{ __('Full Address') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <textarea id="full_address" class="form-control @error('full_address') is-invalid @enderror" required name="full_address">{{ old('full_address') }}</textarea>
                                 @error('full_address')
@@ -208,7 +208,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="contact_full_name" class="col-md-2 col-form-label text-md-end">{{ __('Contact Full Name') }}</label>
+                            <label for="contact_full_name" class="col-md-2 col-form-label text-md-end">{{ __('Contact Full Name') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="contact_full_name" type="text" class="form-control @error('contact_full_name') is-invalid @enderror" required name="contact_full_name" value="{{ old('contact_full_name') }}" autocomplete="date">
                                 @error('contact_full_name')
@@ -220,7 +220,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="contact_phone" class="col-md-2 col-form-label text-md-end">{{ __('Contact Phone') }}</label>
+                            <label for="contact_phone" class="col-md-2 col-form-label text-md-end">{{ __('Contact Phone') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="contact_phone" type="number" class="form-control @error('contact_phone') is-invalid @enderror" name="contact_phone" value="{{ old('contact_phone') }}" required>
                                 @error('contact_phone')
@@ -232,7 +232,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="contact_email" class="col-md-2 col-form-label text-md-end">{{ __('Contact Email') }}</label>
+                            <label for="contact_email" class="col-md-2 col-form-label text-md-end">{{ __('Contact Email') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="contact_email" type="email" class="form-control @error('contact_email') is-invalid @enderror" name="contact_email" value="{{ old('contact_email') }}" required>
                                 @error('contact_email')
@@ -244,7 +244,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="date_become_client" class="col-md-2 col-form-label text-md-end">{{ __('Date Become Client') }}</label>
+                            <label for="date_become_client" class="col-md-2 col-form-label text-md-end">{{ __('Date Become Client') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="date_become_client" type="date" class="form-control @error('date_become_client') is-invalid @enderror" name="date_become_client" value="{{ old('date_become_client') }}" required>
                                 @error('date_become_client')
@@ -255,12 +255,12 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="referred_by" class="col-md-2 col-form-label text-md-end">{{ __('Referred By') }}</label>
+                            <label for="referred_by" class="col-md-2 col-form-label text-md-end">{{ __('Referred By') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <select class="select @error('referred_by') is-invalid @enderror" onchange="referred(this.value)" id="referred_by_id" name="referred_by">
-                                    <option value="">Select an option</option>
-                                    <option value="employee" {{ old('referred_by') == 'employee' ? 'selected' : '' }}>Employee</option>
-                                    <option value="other" {{ old('referred_by') == 'other' ? 'selected' : '' }}>Other</option>
+                                    <option value="">{{ __('Select an option') }}</option>
+                                    <option value="employee" {{ old('referred_by') == 'employee' ? 'selected' : '' }}>{{ __('Employee') }}</option>
+                                    <option value="other" {{ old('referred_by') == 'other' ? 'selected' : '' }}>{{ __('Other') }}</option>
                                 </select>
                                 @error('referred_by')
                                 <span class="invalid-feedback" role="alert">
@@ -274,7 +274,7 @@
                             <label for="employee" class="col-md-2 col-form-label text-md-end"></label>
                             <div class="col-md-10 mb-3" id="employee_div" style="display: none;">
                                 <select class="select @error('employee') is-invalid @enderror" name="employee">
-                                    <option value="">Select an Employee</option>
+                                    <option value="">{{ __('Select an Employee') }}</option>
                                     @if(isset($employees))
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}" {{ old('employee') == $employee->id ? 'selected' : '' }}>{{$employee->first_name}} {{$employee->last_name}}</option>
