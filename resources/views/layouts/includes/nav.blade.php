@@ -65,7 +65,7 @@
                 <a class="dropdown-item" href="/language/en">
                     <div>
                         <img src="/assets/img/icons/united-kingdom.png" alt="">
-                        <span>English</span>
+                        <span>English {{ App::getLocale() }}</span>
                     </div>
                 </a>
                 <a class="dropdown-item" href="/language/fr">

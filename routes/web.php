@@ -25,8 +25,7 @@ Auth::routes();
 Route::get('/language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
-    echo $locale . '---' . \Illuminate\Support\Facades\Session::get('locale');
-    //return redirect()->back();
+    return redirect()->back();
 });
 
 Route::group(['middleware' => ['auth']], function () {
