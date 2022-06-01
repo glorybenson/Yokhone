@@ -22,10 +22,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('language/{locale}', function ($locale) {
+Route::get('/language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
-    return redirect()->back();
+    echo $locale . '---' . \Illuminate\Support\Facades\Session::get('locale');
+    //return redirect()->back();
 });
 
 Route::group(['middleware' => ['auth']], function () {
