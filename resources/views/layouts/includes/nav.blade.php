@@ -41,27 +41,6 @@
 
         <li class="nav-item dropdown has-arrow main-drop ml-md-3">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <span class="user-img"><img src="{{ asset('avatar.png') }}" alt="">
-                    <span class="status online"></span></span>
-            </a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i>
-                    {{ __('My Profile') }}
-                </a>
-                <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i>
-                    {{__('Change Password')}}
-                </a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i>
-                    {{__('Logout')}}
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </a>
-            </div>
-        </li>
-
-        <li class="nav-item dropdown has-arrow main-drop ml-md-3">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img">
                     <img src="{{App::getLocale() === 'en'
                         ? '/assets/img/icons/united-kingdom.png'
@@ -80,6 +59,27 @@
                         <img src="/assets/img/icons/france.png" alt="">
                         <span>Français</span>
                     </div>
+                </a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown has-arrow main-drop ml-md-3">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <span class="user-img"><img src="{{ asset('avatar.png') }}" alt="">
+                    <span class="status online"></span></span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('my.profile') }}"><i class="feather-user"></i>
+                    {{ __('My Profile') }}
+                </a>
+                <a class="dropdown-item" href="{{ route('change.password') }}"><i class="fa fa-lock"></i>
+                    {{__('Change Password')}}
+                </a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="feather-power"></i>
+                    {{__('Logout')}}
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </a>
             </div>
         </li>
