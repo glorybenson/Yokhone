@@ -54,6 +54,27 @@
                         @csrf
                     </form>
                 </a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown has-arrow main-drop ml-md-3">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <span class="lang-flag"><img src="/assets/img/icons/united-kingdom.png" alt=""></span>
+            </a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">
+                    <div>
+                        <img src="/assets/img/icons/united-kingdom.png" alt="">
+                        <span>English</span>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div>
+                        <img src="/assets/img/icons/france.png" alt="">
+                        <span>Français</span>
+                    </div>
+                </a>
+            </div>
         </li>
     </ul>
 
