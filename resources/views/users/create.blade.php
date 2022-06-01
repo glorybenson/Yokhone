@@ -120,9 +120,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Create User</h4>
+                    <h4 class="card-title float-left">{{__('Create User')}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('home') }}" class="btn btn-dark p-2">Back to Users</a>
+                        <a href="{{ route('home') }}" class="btn btn-dark p-2">{{__('Back to Users')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
