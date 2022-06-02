@@ -77,7 +77,7 @@
 
                             <div class="col-md-10">
                                 <select multiple class="select select2-hidden-accessible @error('role') is-invalid @enderror" name="role[]" required>
-                                    <option value="">Select Role</option>
+                                    <option value="">{{ __('Select Role') }}</option>
                                     @if(isset($roles))
                                     @foreach($roles as $role)
                                     <option value="{{ $role->id }}" {{ in_array($role->id, $user->roles) ? 'selected' : ''}}>{{$role->name}}</option>
