@@ -20,8 +20,7 @@
                 <div class="card-header">
                     <h4 class="card-title float-left">{{__("Employee's Data")}}</h4>
                     <div class="text-right">
-                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">{{__('Back to Employees')
-                        }}</a>
+                        <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">{{__('Back to Employees')}}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -66,19 +65,19 @@
                                                     <td>{{$employee->last_name}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Email Address</td>
+                                                    <td>{{ __('Email Address') }}</td>
                                                     <td>{{$employee->email}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Employee ID</td>
+                                                    <td>{{ __('Employee ID') }}</td>
                                                     <td>{{$employee->employee_id}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Hiring Date</td>
+                                                    <td>{{ __('Hiring Date') }}</td>
                                                     <td>{{$employee->hiring_date}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>C.I.N</td>
+                                                    <td>{{ __('C.I.N') }}</td>
                                                     <td>{{$employee->CIN}}</td>
                                                 </tr>
                                                 <tr>
@@ -87,7 +86,7 @@
                                                         <div class="documents-card d-flex mb-1">
                                                             <div class="documennts d-flex">
                                                                 <i class="far fa-file-pdf pdf-icon"></i>
-                                                                <p>{{$employee->first_name}} {{$employee->last_name}}'s C.I.N Proof</p>
+                                                                <p>{{$employee->first_name}} {{$employee->last_name}}'s {{ __('C.I.N Proof') }}</p>
                                                             </div>
                                                             <div class="actions d-flex">
                                                                 <a download="" target="blank" href="{{ asset('CIN_PROOF/'.$employee->CIN_proof) }}"><i class="far fa-arrow-alt-circle-down"></i></a>
@@ -99,11 +98,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Cell1#</td>
+                                                    <td>{{__('Cell1')}}</td>
                                                     <td>{{$employee->cell_1}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Cell2#</td>
+                                                    <td>{{__('Cell2')}}</td>
                                                     <td>{{$employee->cell_2}}</td>
                                                 </tr>
                                                 <tr>
@@ -115,18 +114,18 @@
                                                     <td>{{$employee->contact_full_name}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{{__('Contact 1 Cell')}}#</td>
+                                                    <td>{{__('Contact 1 Cell')}}</td>
                                                     <td>{{$employee->contact_1_cell}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{{('Contact 1 Cell')}}2#</td>
+                                                    <td>{{__('Contact 1 Cell2')}}</td>
                                                     <td>{{$employee->contact_1_cell2}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="text-right">
-                                        <a href="{{ route('edit.employee', $employee->id) }}" class="btn btn-sm p-2 btn-primary" title="Edit">Edit Employee</a>
+                                        <a href="{{ route('edit.employee', $employee->id) }}" class="btn btn-sm p-2 btn-primary" title="Edit">{{__('Edit Employee')}}</a>
                                     </div>
                                 </div>
                             </div>

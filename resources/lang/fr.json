@@ -876,7 +876,14 @@
     "Create New Tree": "Créer un nouvel arbre",
     "Select Reason": "Sélectionnez la raison",
     "Death": "Décès",
-    "Quantity": "Quantité"
+    "Quantity": "Quantité",
+    "Payment": "Paiement",
+    "Employee's Data": "Données de l'employé",
+    "Employee Record": "Dossier salarié",
+    "Salary History": "Historique des salaires",
+    "C.I.N Proof": "Preuve C.I.N",
+    "Edit Employee": "Edit Employee"
+
     
 }
 
