@@ -750,7 +750,7 @@
     "Zip / Postal Code": "Code postal",
     "Åland Islands": "Les îles d'Åland",
     "Clients": "Clients",
-    "Farms": "Champs",
+    "Farms": "Fermes",
     "Trees": "Arbres",
     "Crops": "Récoltes",
     "Employees": "Employés",
@@ -887,8 +887,17 @@
     "Clear all Notifications": "Effacer toutes les notifications",
     "Are you sure you want to clear all notifications?": "Voulez-vous vraiment effacer toutes les notifications ?",
     "Employee Payment History": "Historique des paiements des employés",
-    "Employee's Payment History": "Historique des paiements des employés"
-
-    
+    "Employee's Payment History": "Historique des paiements des employés",
+    "Add New Payment": "Ajouter un nouveau paiement",
+    "Date of salary payment": "Date de versement du salaire",
+    "Payment method": "Mode de paiement",
+    "Cash": "En espèces",
+    "Orange money": "Argent orange",
+    "Wave": "Vague",
+    "Cheque": "Chèque",
+    "Payment proof": "Preuve de payement",
+    "No file chosen": "Aucun fichier choisi",
+    "Edit Payment": "Modifier le paiement"
+ 
 }
 

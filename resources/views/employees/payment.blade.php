@@ -34,8 +34,7 @@
                         <div class="col-md-3">
                             <div class="text-center">
                                 <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active"
-                                   style="border-radius: 18px 18px 0px 0px;">{{__('Employee
-                                    Record')}}</a>
+                                   style="border-radius: 18px 18px 0px 0px;">{{__('Employee Record')}}</a>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -60,14 +59,14 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add New Payment</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Payment')}}</h5>
                                 </div>
                                 <form method="POST" action="{{ route('add.payment') }}" enctype="multipart/form-data">
                                     <div class="modal-body">
                                         @csrf
                                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                         <div class="row mb-3">
-                                            <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}</label>
+                                            <label for="amount" class="col-md-4 col-form-label text-md-end">{{__('Amount') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input id="amount" type="number" required class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" autocomplete="first name" autofocus>
                                                 @error('amount')
@@ -78,7 +77,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="date" class="col-md-4 col-form-label text-md-end">{{ __('Date of salary payment') }}</label>
+                                            <label for="date" class="col-md-4 col-form-label text-md-end">{{__('Date of salary payment') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input id="date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="first name" autofocus>
 
@@ -90,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="details" class="col-md-4 col-form-label text-md-end">{{ __('Details') }}</label>
+                                            <label for="details" class="col-md-4 col-form-label text-md-end">{{__('Details') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <textarea required class="form-control @error('details') is-invalid @enderror" name="details">{{ old('details') }}</textarea>
                                                 @error('details')
@@ -101,14 +100,14 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="payment_method" class="col-md-4 col-form-label text-md-end">{{ __('Payment method') }}</label>
+                                            <label for="payment_method" class="col-md-4 col-form-label text-md-end">{{__('Payment method') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <select class="select form-control @error('payment_method') is-invalid @enderror" name="payment_method" required>
-                                                    <option value="">Select Option</option>
-                                                    <option value="Orange money" {{ old('payment_method') == "Orange money" ? 'selected' : '' }}>Orange money</option>
-                                                    <option value="Cash" {{ old('payment_method') == "Cash" ? 'selected' : '' }}>Cash</option>
-                                                    <option value="Wave" {{ old('payment_method') == "Wave" ? 'selected' : '' }}>Wave</option>
-                                                    <option value="Cheque" {{ old('payment_method') == "Cheque" ? 'selected' : '' }}>Cheque</option>
+                                                    <option value="">{{__('Select Option') }}</option>
+                                                    <option value="Orange money" {{ old('payment_method') == "Orange money" ? 'selected' : '' }}>{{__('Orange money') }}</option>
+                                                    <option value="Cash" {{ old('payment_method') == "Cash" ? 'selected' : '' }}>{{__('Cash') }}</option>
+                                                    <option value="Wave" {{ old('payment_method') == "Wave" ? 'selected' : '' }}>{{__('Wave') }}</option>
+                                                    <option value="Cheque" {{ old('payment_method') == "Cheque" ? 'selected' : '' }}>{{__('Cheque') }}</option>
                                                 </select>
                                                 @error('payment_method')
                                                 <span class="invalid-feedback" role="alert">
@@ -118,7 +117,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="payment_proof" class="col-md-4 col-form-label text-md-end">{{ __('Payment proof') }}</label>
+                                            <label for="payment_proof" class="col-md-4 col-form-label text-md-end">{{ __('Payment proof') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input type="file" accept="" class="form-control @error('payment_proof') is-invalid @enderror" name="payment_proof" required>
                                                 @error('payment_proof')
@@ -130,8 +129,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">Add</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                                        <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">{{ __('Add') }}</button>
                                     </div>
                                 </form>
                             </div>
@@ -142,11 +141,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Details</th>
-                                    <th>Payment Method</th>
-                                    <th>Payment Proof</th>
+                                    <th>{{__('Amount') }}</th>
+                                    <th>{{__('Date') }}</th>
+                                    <th>{{__('Details') }}</th>
+                                    <th>{{__('Payment Method') }}</th>
+                                    <th>{{__('Payment Proof') }}</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -163,7 +162,7 @@
                                         <div class="documents-card d-flex mb-1" style="padding: 10px;">
                                             <div class="documennts d-flex">
                                                 <i class="far fa-file-pdf pdf-icon"></i>
-                                                <p>Payment Proof</p>
+                                                <p>{{__('Payment Proof') }}</p>
                                             </div>
                                             <div class="actions d-flex">
                                                 <a download="" target="blank" href="{{ asset('PAYMENT_PROOF/'.$payment->payment_proof) }}"><i class="far fa-arrow-alt-circle-down"></i></a>
@@ -180,7 +179,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Payment</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">{{__('Edit Payment') }}</h5>
                                             </div>
                                             <form method="POST" action="{{ route('add.payment') }}" enctype="multipart/form-data">
                                                 <div class="modal-body">
@@ -225,11 +224,11 @@
                                                         <label for="payment_method" class="col-md-4 col-form-label text-md-end">{{ __('Payment method') }}</label>
                                                         <div class="col-md-8">
                                                             <select class="select form-control @error('payment_method') is-invalid @enderror" name="payment_method" required>
-                                                                <option value="">Select Option</option>
-                                                                <option value="Orange money" {{ $payment->payment_method == "Orange money" ? 'selected' : '' }}>Orange money</option>
-                                                                <option value="Cash" {{ $payment->payment_method == "Cash" ? 'selected' : '' }}>Cash</option>
-                                                                <option value="Wave" {{ $payment->payment_method == "Wave" ? 'selected' : '' }}>Wave</option>
-                                                                <option value="Cheque" {{ $payment->payment_method == "Cheque" ? 'selected' : '' }}>Cheque</option>
+                                                                <option value="">{{ __('Select Option') }}</option>
+                                                                <option value="Orange money" {{ $payment->payment_method == "Orange money" ? 'selected' : '' }}>{{__('Orange money') }}</option>
+                                                                <option value="Cash" {{ $payment->payment_method == "Cash" ? 'selected' : '' }}>{{__('Cash') }}</option>
+                                                                <option value="Wave" {{ $payment->payment_method == "Wave" ? 'selected' : '' }}>{{__('Wave') }}</option>
+                                                                <option value="Cheque" {{ $payment->payment_method == "Cheque" ? 'selected' : '' }}>{{__('Cheque') }}</option>
                                                             </select>
                                                             @error('payment_method')
                                                             <span class="invalid-feedback" role="alert">
@@ -258,7 +257,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                         {{__('Close')}}</button>
-                                                    <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">Update</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">{{__('Update') }}</button>
                                                 </div>
                                             </form>
                                         </div>
