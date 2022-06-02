@@ -19,13 +19,13 @@
                                 <span class="noti-title">
                                     @if($notification->data['data'] != ' ')
                                     <b>
-                                        <spaceless> - {{__($notification->data['data'])}}</spaceless>
+                                        <spaceless> - {{$notification->data['data']}}</spaceless>
                                     </b>
                                     @else
                                     @endif
                                 </span>
                             </p>
-                            <p class="noti-time"><span class="notification-time">{{__($notification->created_at->diffForHumans())}}</span></p>
+                            <p class="noti-time"><span class="notification-time">{{$notification->created_at->diffForHumans()}}</span></p>
                         </div>
                     </div>
                 </a>
