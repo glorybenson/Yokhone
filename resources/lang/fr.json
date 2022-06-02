@@ -882,7 +882,12 @@
     "Employee Record": "Dossier salarié",
     "Salary History": "Historique des salaires",
     "C.I.N Proof": "Preuve C.I.N",
-    "Edit Employee": "Modifier l'employé"
+    "Edit Employee": "Modifier l'employé",
+    "Notifications": "Avis",
+    "Clear all Notifications": "Effacer toutes les notifications",
+    "Are you sure you want to clear all notifications?": "Voulez-vous vraiment effacer toutes les notifications ?",
+    "Employee Payment History": "Historique des paiements des employés",
+    "Employee's Payment History": "Historique des paiements des employés"
 
     
 }

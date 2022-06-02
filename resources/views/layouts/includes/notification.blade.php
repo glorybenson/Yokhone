@@ -1,6 +1,6 @@
 <div class="notifications">
     <div class="topnav-dropdown-header">
-        <span class="notification-title">Notifications</span>
+        <span class="notification-title">{{ __('Notifications') }}</span>
         <a href="javascript:void(0)" class="clear-noti"> <i class="feather-x-circle"></i> </a>
     </div>
     <div class="noti-content">
