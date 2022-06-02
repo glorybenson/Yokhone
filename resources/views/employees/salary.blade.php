@@ -69,7 +69,7 @@
                                         @csrf
                                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                         <div class="row mb-3">
-                                            <label for="salary_amount" class="col-md-4 col-form-label text-md-end">{{ __('Salary Amount') }}</label>
+                                            <label for="salary_amount" class="col-md-4 col-form-label text-md-end">{{ __('Salary Amount') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-6">
                                                 <input id="salary_amount" type="number" required class="form-control @error('salary_amount') is-invalid @enderror" name="salary_amount" value="{{ old('salary_amount') }}" autocomplete="first name" autofocus> @error('salary_amount')
                                                 <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="salary_start_date" class="col-md-4 col-form-label text-md-end">{{ __('Salary Start Date') }}</label>
+                                            <label for="salary_start_date" class="col-md-4 col-form-label text-md-end">{{ __('Salary Start Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-6">
                                                 <input id="salary_start_date" type="date" required class="form-control @error('salary_start_date') is-invalid @enderror" name="salary_start_date" value="{{ old('salary_start_date') }}" autocomplete="first name" autofocus>
 
@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="salary_end_date" class="col-md-4 col-form-label text-md-end">{{ __('Salary End Date') }}</label>
+                                            <label for="salary_end_date" class="col-md-4 col-form-label text-md-end">{{ __('Salary End Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-6">
                                                 <input id="salary_end_date" type="date" required class="form-control @error('salary_end_date') is-invalid @enderror" name="salary_end_date" value="{{ old('salary_end_date') }}" autocomplete="first name" autofocus>
 
