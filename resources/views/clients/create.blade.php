@@ -292,7 +292,7 @@
                         <div class="row">
                             <label for="note" class="col-md-2 col-form-label text-md-end"></label>
                             <div class="col-md-10 mb-3" id="other_div" style="display: none;">
-                                <textarea id="note" class="form-control @error('note') is-invalid @enderror" placeholder={{ __('Write a short note here...') }} name="note">{{ old('note') }}</textarea>
+                                <textarea id="note" class="form-control @error('note') is-invalid @enderror" placeholder={{ __('Write') }} name="note">{{ old('note') }}</textarea>
                                 @error('note')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
