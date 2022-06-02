@@ -9,7 +9,7 @@
                     <h5 class="page-title">{{__('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
                         <li class="breadcrumb-item"><a href="{{ route('farms') }}">{{__('Farms')}}</a></li>
-                        <li class="breadcrumb-item active">{{(__"Crops")}}</li>
+                        <li class="breadcrumb-item active">{{(__'Crops')}}</li>
                     </ul>
                 </div>
             </div>
