@@ -51,7 +51,7 @@
                     </div>
                     <div class="text-right mb-3">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewPayment">
-                            {{('Add New Payment')}}
+                            {{__('Add New Payment')}}
                         </button>
                     </div>
                     <!-- Modal -->
@@ -117,7 +117,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="payment_proof" class="col-md-4 col-form-label text-md-end">{{ __('Payment proof') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="payment_proof" class="col-md-4 col-form-label text-md-end">{{__('Payment proof') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input type="file" accept="" class="form-control @error('payment_proof') is-invalid @enderror" name="payment_proof" required>
                                                 @error('payment_proof')
