@@ -880,6 +880,7 @@
     "Payment": "Paiement",
     "Employee's Data": "Données de l'employé",
     "Employee Record": "Dossier salarié",
+    "Employee's Record": "Dossier salarié",
     "Salary History": "Historique des salaires",
     "C.I.N Proof": "Preuve C.I.N",
     "Edit Employee": "Modifier l'employé",
@@ -899,7 +900,10 @@
     "Payment Proof": "Preuve de payement",
     "No file chosen": "Aucun fichier choisi",
     "Edit Payment": "Modifier le paiement",
-    "Select Option": "Sélectionner une option"
+    "Select Option": "Sélectionner une option",
+    "Add New Record": "Ajouter un nouvel enregistrement",
+    "Coaching": "encadrement",
+    "Sanction": "Sanction"
  
 }
 

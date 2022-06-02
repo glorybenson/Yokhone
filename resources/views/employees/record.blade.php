@@ -63,7 +63,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Record<')}}/h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Record')}}</h5>
                                 </div>
                                 <form method="POST" action="{{ route('add.record') }}">
                                     <div class="modal-body">
@@ -100,7 +100,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="details" class="col-md-3 col-form-label text-md-end">{{ __('Details') }}</label>
+                                            <label for="details" class="col-md-3 col-form-label text-md-end">{{__('Details') }}</label>
                                             <div class="col-md-8">
                                                 <textarea id="details" required class="form-control @error('details') is-invalid @enderror" name="details">{{ old('details') }}</textarea>
                                                 @error('details')
@@ -115,7 +115,7 @@
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                             {{__('Close')}}
                                         </button>
-                                        <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to submit this form?')">
+                                        <button type="submit" class="btn btn-primary" onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">
                                             {{__('Add')}}
                                         </button>
                                     </div>
@@ -128,10 +128,10 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Date</th>
-                                    <th>Reason</th>
-                                    <th>Details</th>
-                                    <th>Action</th>
+                                    <th>{{__('Date')}}</th>
+                                    <th>{{__('Reason')}}</th>
+                                    <th>{{__('Details')}}</th>
+                                    <th>{{__('Action')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -151,7 +151,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Salary</h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Salary') }}</h5>
                                             </div>
                                             <form method="POST" action="{{ route('add.record') }}">
                                                 <div class="modal-body">
@@ -159,7 +159,7 @@
                                                     <input type="hidden" name="id" value="{{$record->id}}">
                                                     <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                                     <div class="row mb-3">
-                                                        <label for="date" class="col-md-3 col-form-label text-md-end">{{ __('Date') }}</label>
+                                                        <label for="date" class="col-md-3 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
                                                             <input id="date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ $record->date }}">
                                                             @error('date')
@@ -170,10 +170,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                        <label for="reason" class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}</label>
+                                                        <label for="reason" class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
                                                             <select class="select @error('reason') is-invalid @enderror" name="reason" required>
-                                                                <option value="">Select Reason</option>
+                                                                <option value="">{{__('Select Reason')}}</option>
                                                                 <option value="Coaching" {{ $record->reason == 'Coaching' ? 'selected' : ''}}>
                                                                     {{__('Coaching')}}</option>
                                                                 <option value="Warning" {{ $record->reason == 'Warning' ? 'selected' : ''}}>
@@ -189,7 +189,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                        <label for="details" class="col-md-3 col-form-label text-md-end">{{ __('Details') }}</label>
+                                                        <label for="details" class="col-md-3 col-form-label text-md-end">{{ __('Details') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
                                                             <textarea id="details" required class="form-control @error('details') is-invalid @enderror" name="details">{{ $record->details }}</textarea>
                                                             @error('details')
@@ -203,7 +203,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                         {{__('Close')}}</button>
-                                                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure you want to submit this form?')">
+                                                    <button type="submit" class="btn btn-success" onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">
                                                         {{__('Update')}}</button>
                                                 </div>
                                             </form>
