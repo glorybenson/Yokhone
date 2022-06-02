@@ -865,7 +865,9 @@
     "Select an Employee": "Sélectionnez un employé",
     "Fruits": "Des fruits",
     "Vegetables": "Des légumes",
-    "Are you sure you want to submit this form?": "Êtes-vous sûr de vouloir soumettre ce formulaire ?"
+    "Are you sure you want to submit this form?": "Êtes-vous sûr de vouloir soumettre ce formulaire ?",
+    "Update Crop Data": "Mettre à jour les données de récolte",
+    "Back to Crop": "Retour à Récolte"
     
 }
 
