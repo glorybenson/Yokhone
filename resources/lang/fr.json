@@ -867,7 +867,12 @@
     "Vegetables": "Des légumes",
     "Are you sure you want to submit this form?": "Êtes-vous sûr de vouloir soumettre ce formulaire ?",
     "Update Crop Data": "Mettre à jour les données de récolte",
-    "Back to Crop": "Retour à Récolte"
+    "Back to Crop": "Retour à Récolte",
+    "Add New Crop": "Ajouter une nouvelle récolte",
+    "Update Farm Data": "Mettre à jour les données des champs",
+    "Add New Tree": "Ajouter un nouvel arbre",
+    "Update Tree Data": "Mettre à jour les données de l'arbre",
+    "Back to Trees": "Retour à Arbres"
     
 }
 
