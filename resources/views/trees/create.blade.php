@@ -65,7 +65,7 @@
                             <label for="reason" class="col-md-2 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <select id="reason" class="select form-control @error('reason') is-invalid @enderror" name="reason" required>
-                                    <option value="">Select Reason</option>
+                                    <option value="">{{ __('Select Reason') }}</option>
                                     <option value="Plantation" {{ $tree->reason == "Plantation" ? 'selected' : '' }}>{{ __('Plantation') }}</option>
                                     <option value="Death" {{ $tree->reason == "Death" ? 'selected' : '' }}>{{ __('Death') }}</option>
                                 </select>
@@ -175,7 +175,7 @@
                             <label for="reason" class="col-md-2 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <select id="reason" class="form-control select @error('reason') is-invalid @enderror" name="reason" required>
-                                    <option value="">Select Reason</option>
+                                    <option value="">{{ __('Select Reason') }}</option>
                                     <option value="Plantation" {{ old('reason') == "Plantation" ? 'selected' : '' }}>{{ __('Plantation') }}</option>
                                     <option value="Death" {{ old('reason') == "Death" ? 'selected' : '' }}>{{ __('Death') }}</option>
                                 </select>
