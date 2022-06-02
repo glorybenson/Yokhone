@@ -19,9 +19,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title float-left">Update Client Data</h4>
+                    <h4 class="card-title float-left">{{ __('Update Client Data') }}</h4>
                     <div class="text-right">
-                        <a href="{{ route('clients') }}" class="btn btn-dark p-2">Back to Clients</a>
+                        <a href="{{ route('clients') }}" class="btn btn-dark p-2">{{ __('Back to Clients') }}</a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -119,7 +119,7 @@
                             <label for="employee" class="col-md-2 col-form-label text-md-end"></label>
                             <div class="col-md-10 mb-3" id="employee_div" style="display: none;">
                                 <select class="select @error('employee') is-invalid @enderror" name="employee">
-                                    <option value="">Select an Employee</option>
+                                    <option value="">{{ __('Select an Employee') }}</option>
                                     @if(isset($employees))
                                     @foreach($employees as $employee)
                                     <option value="{{$employee->id}}" {{ $client->employee_id == $employee->id ? 'selected' : '' }}>{{$employee->first_name}} {{$employee->last_name}}</option>
@@ -137,7 +137,7 @@
                         <div class="row">
                             <label for="note" class="col-md-2 col-form-label text-md-end"></label>
                             <div class="col-md-10 mb-3" id="other_div" style="display: none;">
-                                <textarea id="note" class="form-control @error('note') is-invalid @enderror" placeholder="Write a shot note here..." name="note">{{ $client->note }}</textarea>
+                                <textarea id="note" class="form-control @error('note') is-invalid @enderror" placeholder="{{ __('Write') }}" name="note">{{ $client->note }}</textarea>
                                 @error('note')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
