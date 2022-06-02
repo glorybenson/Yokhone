@@ -904,7 +904,12 @@
     "Add New Record": "Ajouter un nouvel enregistrement",
     "Coaching": "encadrement",
     "Sanction": "Sanction",
-    "Warning": "Avertissement"
+    "Warning": "Avertissement",
+    "Employee Salary History": "Historique des salaires des employés",
+    "Add New Salary": "Add New Salary",
+    "Salary Amount": "Salary Amount",
+    "Salary Start Date": "Montant du salaire",
+    "Salary End Date": "Date de fin de salaire"
  
 }
 
