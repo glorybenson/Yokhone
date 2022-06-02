@@ -32,7 +32,7 @@
                         <input type="hidden" name="id" value="{{ $user->id }}">
 
                         <div class="row mb-3">
-                            <label for="first_name" class="col-md-2 col-form-label text-md-end">{{ __('First Name') }}</label>
+                            <label for="first_name" class="col-md-2 col-form-label text-md-end">{{ __('First Name') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" autocomplete="first name" required>
@@ -45,7 +45,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="last_name" class="col-md-2 col-form-label text-md-end">{{ __('Last Name') }}</label>
+                            <label for="last_name" class="col-md-2 col-form-label text-md-end">{{ __('Last Name') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autocomplete="last name">
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('E-Mail Address') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('User Role') }}</label>
+                            <label for="email" class="col-md-2 col-form-label text-md-end">{{ __('User Role') }}<span style="color:#ff0000">*</span></label>
 
                             <div class="col-md-10">
                                 <select multiple class="select select2-hidden-accessible @error('role') is-invalid @enderror" name="role[]" required>
@@ -109,7 +109,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">User</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{__('User')}}</a></li>
                         <li class="breadcrumb-item active">{{__('Create User')}}</li>
                     </ul>
                 </div>
