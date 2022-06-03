@@ -940,7 +940,9 @@
     "Expense not found": "Dépense introuvable",
     "Invoice created successfully": "Facture créée avec succès",
     "Invoice not found": "Facture introuvable",
-    "Invoice data updated successfully": "Données de facturation mises à jour avec succès"
+    "Invoice data updated successfully": "Données de facturation mises à jour avec succès",
+    "Select a Client": "Sélectionnez un client",
+    "Select a crop": "Sélectionnez une culture"
  
 }
 
