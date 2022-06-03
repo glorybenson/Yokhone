@@ -910,7 +910,19 @@
     "Salary Amount": "Montant du salaire",
     "Salary Start Date": "Montant du salaire",
     "Salary End Date": "Date de fin de salaire",
-    "User": "Utilisateur"
+    "User": "Utilisateur",
+    "Password must 8 character long, maximum of 16 character, One English uppercase characters (A – Z), One English lowercase characters (a – z), One Base 10 digits (0 – 9) and One Non-alphanumeric (For example: !, $, #, or %)": "Le mot de passe doit comporter 8 caractères, un maximum de 16 caractères, un caractère anglais majuscule (A – Z), un caractère anglais minuscule (a – z), un chiffre de base 10 (0 – 9) et un non alphanumérique (par exemple : ! , $, # ou %)",
+    "Please enter correct current password": "Veuillez saisir le mot de passe actuel correct",
+    "Password changed successfully": "Le mot de passe a été changé avec succès",
+    "User created successfully": "Utilisateur créé avec succès",
+    "User updated successfully": "Utilisateur mis à jour avec succès",
+    "You no not have access to delete this record": "Vous n'avez pas accès pour supprimer cet enregistrement",
+    "The Admin can not be deleted": "L'administrateur ne peut pas être supprimé",
+    "User Deleted successfully": "Utilisateur supprimé avec succès",
+    "Employee not found": "Employé introuvable",
+    "Salary Record Updated successfully": "Salary Record Updated successfully",
+    "Salary added successfully": "Salaire ajouté avec succès",
+    "Created a new Crop data": "Création d'une nouvelle donnée de culture"
  
 }
 
