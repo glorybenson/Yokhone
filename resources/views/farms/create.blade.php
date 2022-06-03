@@ -149,7 +149,7 @@
                     <form method="POST" action="{{ route('create.farm') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="farm_name" class="col-md-2 col-form-label text-md-end">{{ __('Farm Name') }}</label>
+                            <label for="farm_name" class="col-md-2 col-form-label text-md-end">{{ __('Farm Name') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="farm_name" type="text" class="form-control @error('farm_name') is-invalid @enderror" name="farm_name" value="{{ old('farm_name') }}" autocomplete="name" required autofocus>
                                 @error('farm_name')
@@ -161,7 +161,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="farm_desc" class="col-md-2 col-form-label text-md-end">{{ __('Farm Description') }}</label>
+                            <label for="farm_desc" class="col-md-2 col-form-label text-md-end">{{ __('Farm Description') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <textarea id="farm_desc" class="form-control @error('farm_desc') is-invalid @enderror" required name="farm_desc">{{ old('farm_desc') }}</textarea>
                                 @error('farm_desc')
@@ -173,7 +173,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="acquisition_date" class="col-md-2 col-form-label text-md-end">{{ __('Acquisition Date') }}</label>
+                            <label for="acquisition_date" class="col-md-2 col-form-label text-md-end">{{ __('Acquisition Date') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="acquisition_date" type="date" class="form-control @error('acquisition_date') is-invalid @enderror" required name="acquisition_date" value="{{ old('acquisition_date') }}" autocomplete="date">
                                 @error('acquisition_date')
@@ -185,7 +185,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="surface" class="col-md-2 col-form-label text-md-end">{{ __('Surface') }}</label>
+                            <label for="surface" class="col-md-2 col-form-label text-md-end">{{ __('Surface') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="surface" title="" type="text" class="form-control @error('surface') is-invalid @enderror" name="surface" value="{{ old('surface') }}" required>
                                 @error('surface')
@@ -197,7 +197,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="amount" class="col-md-2 col-form-label text-md-end">{{ __('Amount') }}</label>
+                            <label for="amount" class="col-md-2 col-form-label text-md-end">{{ __('Amount') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required>
                                 @error('amount')
@@ -209,7 +209,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="latitude" class="col-md-2 col-form-label text-md-end">{{ __('Latitude') }}</label>
+                            <label for="latitude" class="col-md-2 col-form-label text-md-end">{{ __('Latitude') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="latitude" type="" onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' class="form-control @error('latitude') is-invalid @enderror" name="latitude" value="{{ old('latitude') }}" required>
                                 @error('latitude')
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="longitude" class="col-md-2 col-form-label text-md-end">{{ __('Longitude') }}</label>
+                            <label for="longitude" class="col-md-2 col-form-label text-md-end">{{ __('Longitude') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="longitude" type="" onkeypress='return event.charCode == 46 || (event.charCode >= 48 && event.charCode <= 57)' class="form-control @error('longitude') is-invalid @enderror" name="longitude" value="{{ old('longitude') }}" required>
                                 @error('longitude')
