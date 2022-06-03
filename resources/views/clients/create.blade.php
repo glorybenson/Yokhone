@@ -147,7 +147,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{__('Are you sure you want to submit this form?')}}')">
                                 {{ __('Submit') }}
                             </button>
                         </div>
@@ -302,7 +302,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{__('Are you sure you want to submit this form?')}}')">
                                 {{ __('Submit') }}
                             </button>
                         </div>
