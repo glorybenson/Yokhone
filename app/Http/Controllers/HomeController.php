@@ -596,7 +596,7 @@ class HomeController extends Controller
                     'contact_1_cell' => $request->contact_1_cell,
                     'contact_1_cell2' => $request->contact_1_cell2
                 ]);
-                send_notification(__('Created a new Employee '), $request->first_name, $request->last_name);
+                send_notification(__('Created a new Employee'), $request->first_name, $request->last_name);
 
                 Session::flash('success', "Employee created successfully");
                 return redirect()->route('employees');
