@@ -942,7 +942,12 @@
     "Invoice not found": "Facture introuvable",
     "Invoice data updated successfully": "Données de facturation mises à jour avec succès",
     "Select a Client": "Sélectionnez un client",
-    "Select a crop": "Sélectionnez une culture"
+    "Select a crop": "Sélectionnez une culture",
+    "Create Invoice": "Créer une facture",
+    "Back to Invoices": "Retour aux factures",
+    "Update Invoice Data": "Mettre à jour les données de facturation"
+
+
  
 }
 
