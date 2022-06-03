@@ -139,7 +139,7 @@
                             <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select onchange="loadFarm(this, '{{csrf_token()}}')" id="crop_id" class="form-control select @error('crop') is-invalid @enderror" name="crop" required>
-                                    <option value="">Select an crop</option>
+                                    <option value="">{{__('Select a crop')}} </option>
                                     @if(isset($crops))
                                     @foreach($crops as $crop)
                                     <option value="{{$crop->id}}" {{ $invoice->crop_id == $crop->id ? 'selected' : '' }}>{{$crop->date}} - {{$crop->type_of_crop}} - {{$crop->desc}}</option>
