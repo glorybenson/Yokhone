@@ -8,7 +8,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item">Finance</li>
+                        <li class="breadcrumb-item">{{__('Finance')}}</li>
                         <li class="breadcrumb-item"><a href="{{ route('expenses') }}">{{__('Expenses')}}</a></li>
                         <li class="breadcrumb-item active">{{__('Update Expense')}}</li>
                     </ul>
@@ -104,7 +104,7 @@
                         </div>
 
                         <div class="text-right">
-                                <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                                <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{__('Are you sure you want to submit this form?')}}')">
                                     {{ __('Submit') }}
                                 </button>
                         </div>
@@ -142,7 +142,7 @@
                     <form method="POST" action="{{ route('create.expense') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}</label>
+                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="name" required>
                                 @error('date')
@@ -154,7 +154,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}</label>
+                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <textarea id="desc" class="form-control @error('desc') is-invalid @enderror" required name="desc">{{ old('desc') }}</textarea>
                                 @error('desc')
@@ -167,7 +167,7 @@
 
 
                         <div class="row mb-3">
-                            <label for="amount" class="col-md-2 col-form-label text-md-end">{{ __('Amount') }}</label>
+                            <label for="amount" class="col-md-2 col-form-label text-md-end">{{ __('Amount') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required>
                                 @error('amount')
@@ -179,7 +179,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('farm') is-invalid @enderror" name="farm">
                                     <option value="">{{__('Select a Farm')}}</option>
@@ -198,7 +198,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="employee" class="col-md-2 col-form-label text-md-end">{{__('Employee')}}</label>
+                            <label for="employee" class="col-md-2 col-form-label text-md-end">{{__('Employee')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select class="select form-control @error('employee') is-invalid @enderror" name="employee">
                                     <option value="">{{__('Select an Employee')}}</option>
@@ -217,7 +217,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">
                                 {{ __('Submit') }}
                             </button>
                         </div>

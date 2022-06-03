@@ -30,7 +30,7 @@
                         @csrf
                         <input type="hidden" name="id" value="{{ $invoice->id }}">
                         <div class="row">
-                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')}}</label>
+                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select class="form-control select @error('client_name') is-invalid @enderror" name="client_name" required>
                                     <option value="">{{__('Select a Client')}}</option>
@@ -49,7 +49,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}</label>
+                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" required name="date" value="{{ $invoice->date }}">
                                 @error('date')
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}</label>
+                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <textarea id="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" required>{{ $invoice->desc }}</textarea>
                                 @error('desc')
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="quantity" class="col-md-2 col-form-label text-md-end">{{ __('Quantity') }}</label>
+                            <label for="quantity" class="col-md-2 col-form-label text-md-end">{{ __('Quantity') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="quantity" type="number" oninput="firstFunction()" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ $invoice->quantity }}" autocomplete="" required>
                                 @error('quantity')
@@ -85,7 +85,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="unit_price" class="col-md-2 col-form-label text-md-end">{{ __('Unit Price') }}</label>
+                            <label for="unit_price" class="col-md-2 col-form-label text-md-end">{{ __('Unit Price') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="unit_price" type="number" oninput="firstFunction()" class="form-control @error('unit_price') is-invalid @enderror" name="unit_price" value="{{ $invoice->unit_price }}" autocomplete="date" required>
                                 @error('unit_price')
@@ -109,7 +109,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="discount" class="col-md-2 col-form-label text-md-end">{{ __('Discount') }}</label>
+                            <label for="discount" class="col-md-2 col-form-label text-md-end">{{ __('Discount') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="discount" type="number" oninput="secondFunction()" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ $invoice->discount }}" autocomplete="date" required>
                                 @error('discount')
@@ -136,7 +136,7 @@
 
 
                         <div class="row">
-                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}</label>
+                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select onchange="loadFarm(this, '{{csrf_token()}}')" id="crop_id" class="form-control select @error('crop') is-invalid @enderror" name="crop" required>
                                     <option value="">Select an crop</option>
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <input readonly type="hidden" id="farm_id" name="farm" value="{{ $invoice->farm }}" class="form-control" placeholder="Farm ID" required>
                                 <input readonly type="text" id="farm_value" class="form-control" placeholder="Farm Name">
@@ -168,7 +168,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{__('Are you sure you want to submit this form?')}}')">
                                 {{ __('Submit') }}
                             </button>
                         </div>
@@ -206,10 +206,9 @@
                     <form method="POST" action="{{ route('create.invoice') }}">
                         @csrf
                         <div class="row">
-                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')
-                            }}</label>
+                            <label for="client_name" class="col-md-2 col-form-label text-md-end">{{__('Client Name')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
-                                <select class="form-control select @error('client_name') is-invalid @enderror" name="client_name">required
+                                <select class="form-control select @error('client_name') is-invalid @enderror" name="client_name" required>
                                     <option value="">{{__('Select a Client')}}</option>
                                     @if(isset($clients))
                                     @foreach($clients as $client)
@@ -226,7 +225,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}</label>
+                            <label for="date" class="col-md-2 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" required>
                                 @error('date')
@@ -238,7 +237,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}</label>
+                            <label for="desc" class="col-md-2 col-form-label text-md-end">{{ __('Description') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <textarea id="desc" class="form-control @error('desc') is-invalid @enderror" name="desc" required>{{ old('desc') }}</textarea>
                                 @error('desc')
@@ -250,7 +249,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="quantity" class="col-md-2 col-form-label text-md-end">{{ __('Quantity') }}</label>
+                            <label for="quantity" class="col-md-2 col-form-label text-md-end">{{ __('Quantity') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="quantity" type="number" oninput="firstFunction()" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" autocomplete="" required>
                                 @error('quantity')
@@ -262,7 +261,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="unit_price" class="col-md-2 col-form-label text-md-end">{{ __('Unit Price') }}</label>
+                            <label for="unit_price" class="col-md-2 col-form-label text-md-end">{{ __('Unit Price') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="unit_price" type="number" oninput="firstFunction()" class="form-control @error('unit_price') is-invalid @enderror" name="unit_price" value="{{ old('unit_price') }}" required>
                                 @error('unit_price')
@@ -286,7 +285,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="discount" class="col-md-2 col-form-label text-md-end">{{ __('Discount') }}</label>
+                            <label for="discount" class="col-md-2 col-form-label text-md-end">{{ __('Discount') }}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10">
                                 <input id="discount" type="number" oninput="secondFunction()" class="form-control @error('discount') is-invalid @enderror" name="discount" value="{{ old('discount') }}" required>
                                 @error('discount')
@@ -311,7 +310,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}</label>
+                            <label for="crop" class="col-md-2 col-form-label text-md-end">{{__('Crop')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <select onchange="loadFarm(this, '{{csrf_token()}}')" id="crop_id" class="form-control select @error('crop') is-invalid @enderror" name="crop" required>
                                     <option value="">{{__('Select an crop')}}</option>
@@ -330,7 +329,7 @@
                         </div>
 
                         <div class="row">
-                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}</label>
+                            <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <input readonly type="hidden" id="farm_id" name="farm" value="{{old('farm')}}" class="form-control" placeholder="Farm ID" required>
                                 <input readonly type="text" id="farm_value" class="form-control" placeholder="Farm Name">
@@ -343,7 +342,7 @@
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('Are you sure you want to submit this form?')">
+                            <button type="submit" class="btn btn-primary p-2" onclick="return confirm('{{__('Are you sure you want to submit this form?')}}')">
                                 {{ __('Submit') }}
                             </button>
                         </div>

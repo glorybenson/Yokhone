@@ -1026,7 +1026,7 @@ class HomeController extends Controller
             $data['client'] = $client = Client::find($id);
             $data['employees'] = Employee::orderBy('first_name', 'asc')->get(['id', 'first_name', 'last_name']);
             if (!isset($client)) {
-                Session::flash('warning', 'Client not found');
+                Session::flash('warning', __('Client not found'));
                 return redirect()->route('clients');
             }
             if ($_POST) {
@@ -1050,7 +1050,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules, $customMessages);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -1067,7 +1067,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated a client data', $request->client_name);
 
-                Session::flash('success', "Client data updated successfully");
+                Session::flash(__('success'), __('Client data updated successfully'));
                 return redirect()->route('clients');
             }
             $data['title'] = "Edit Client";
@@ -1112,7 +1112,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -1126,7 +1126,7 @@ class HomeController extends Controller
                 ]);
 
                 send_notification('Created a new expense data');
-                Session::flash('success', "Expense created successfully");
+                Session::flash(__('success'), __('Expense created successfully'));
                 return redirect()->route('expenses');
             }
 
@@ -1147,7 +1147,7 @@ class HomeController extends Controller
             $data['employees'] = Employee::orderBy('first_name', 'asc')->get(['id', 'first_name', 'last_name']);
             $data['farms'] = Farm::orderBy('farm_name', 'asc')->get(['id', 'farm_name']);
             if (!isset($expense)) {
-                Session::flash('warning', 'Expense not found');
+                Session::flash('warning', __('Expense not found'));
                 return redirect()->route('expenses');
             }
             if ($_POST) {
@@ -1162,7 +1162,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -1175,7 +1175,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated an expense data');
 
-                Session::flash('success', "Expense data updated successfully");
+                Session::flash(__('success'), __('Expense data updated successfully'));
                 return redirect()->route('expenses');
             }
             $data['title'] = "Edit Expense";
@@ -1225,7 +1225,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -1243,7 +1243,7 @@ class HomeController extends Controller
                 ]);
 
                 send_notification('Created a new invoice data');
-                Session::flash('success', "Invoice created successfully");
+                Session::flash(__('success'), __('Invoice created successfully'));
                 return redirect()->route('invoices');
             }
 
@@ -1265,7 +1265,7 @@ class HomeController extends Controller
             $data['farms'] = Farm::orderBy('farm_name', 'asc')->get(['id', 'farm_name']);
             $data['invoice'] = $invoice = Invoice::where('id', $id)->with(['farm:id,farm_name', 'client:id,client_name'])->first();
             if (!isset($invoice)) {
-                Session::flash('warning', 'Invoice not found');
+                Session::flash('warning', __('Invoice not found'));
                 return redirect()->route('clients');
             }
             if ($_POST) {
@@ -1283,7 +1283,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     dd($request->all());
                     return back()->withErrors($validator)->withInput();
                 }
@@ -1303,7 +1303,7 @@ class HomeController extends Controller
 
                 send_notification('Updated a invoice data', $invoice->client->client_name);
 
-                Session::flash('success', "Invoice data updated successfully");
+                Session::flash(__('success'), __('Invoice data updated successfully'));
                 return redirect()->route('invoices');
             }
             $data['title'] = "Edit Invoice";

@@ -859,7 +859,7 @@
     "Update Profile": "Mettre à jour le profil",
     "Change Password": "Changer le mot de passe",
     "Confirm New Password": "Confirmer le nouveau mot de passe",
-    "Farm": "Champs",
+    "Farm": "Cultiver",
     "Employee": "Employé",
     "Other": "Autre",
     "Select an Employee": "Sélectionnez un employé",
@@ -935,7 +935,12 @@
     "Crop created successfully": "Culture créée avec succès",
     "Crop data updated successfully": "Données de culture mises à jour avec succès",
     "Client created successfully": "Client créé avec succès",
-    ""
+    "Client not found": "Client introuvable",
+    "Expense created successfully": "Dépense créée avec succès",
+    "Expense not found": "Dépense introuvable",
+    "Invoice created successfully": "Facture créée avec succès",
+    "Invoice not found": "Facture introuvable",
+    "Invoice data updated successfully": "Données de facturation mises à jour avec succès"
  
 }
 
