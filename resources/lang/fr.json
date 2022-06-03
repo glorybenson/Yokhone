@@ -922,7 +922,12 @@
     "Employee not found": "Employé introuvable",
     "Salary Record Updated successfully": "Salary Record Updated successfully",
     "Salary added successfully": "Salaire ajouté avec succès",
-    "Created a new Crop data": "Création d'une nouvelle donnée de culture"
+    "Created a new Crop data": "Création d'une nouvelle donnée de culture",
+    "success": "Succès",
+    "warning": "Attention",
+    "Password Wrong": "Mot de passe incorrect",
+    "Payment added successfully": "Paiement ajouté avec succès",
+    "Employee data updated successfully": "Les données des employés ont été mises à jour avec succès"
  
 }
 

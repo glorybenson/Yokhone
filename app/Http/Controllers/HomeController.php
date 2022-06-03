@@ -81,7 +81,7 @@ class HomeController extends Controller
                 // $validator->setAttributeNames($fieldNames);
 
                 if ($validator->fails()) {
-                    Session::flash('warning',  __('All fields are required'));
+                    Session::flash(__('warning'),  __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -91,7 +91,7 @@ class HomeController extends Controller
                 $user->email = $request->email;
                 $user->save();
 
-                Session::flash('success', __('Profile updated successfully'));
+                Session::flash(__('success'), __('Profile updated successfully'));
                 return back();
             }
             return view('settings.profile', $data);
@@ -123,20 +123,20 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
                 $validator->setAttributeNames($fieldNames);
                 if ($validator->fails()) {
-                    $request->session()->flash('warning', __('Password must 8 character long, maximum of 16 character, One English uppercase characters (A – Z), One English lowercase characters (a – z), One Base 10 digits (0 – 9) and One Non-alphanumeric (For example: !, $, #, or %)'));
+                    $request->session()->flash(__('warning'), __('Password must 8 character long, maximum of 16 character, One English uppercase characters (A – Z), One English lowercase characters (a – z), One Base 10 digits (0 – 9) and One Non-alphanumeric (For example: !, $, #, or %)'));
                     return back()->withErrors($validator);
                 }
 
                 $current_password = Auth::user()->password;
                 if (!Hash::check($request->current_password, $current_password)) {
-                    $request->session()->flash('warning', 'Password Wrong');
+                    $request->session()->flash(__('warning'), __('Password Wrong'));
                     return back()->withErrors(['current_password' => __('Please enter correct current password')]);
                 }
 
                 $obj_user = User::find(Auth::user()->id);
                 $obj_user->password = Hash::make($request->new_password);
                 $obj_user->save();
-                $request->session()->flash('success', __('Password changed successfully'));
+                $request->session()->flash(__('success'), __('Password changed successfully'));
                 return \back();
             }
             return view('settings.profile', $data);
@@ -165,7 +165,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', __('All fields are required'));
+                    Session::flash(__('warning'), __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -179,7 +179,7 @@ class HomeController extends Controller
                 ]);
                 send_notification(__('Created a new user'), $request->first_name, $request->last_name);
 
-                Session::flash('success', __('User created successfully'));
+                Session::flash(__('success'), __('User created successfully'));
                 return redirect()->route('home');
             }
 
@@ -218,7 +218,7 @@ class HomeController extends Controller
                 $user->roles = $request->role;
                 $user->save();
                 send_notification('Updated a user data', $user->first_name, $user->last_name);
-                Session::flash('success', __('User updated successfully'));
+                Session::flash(__('success'), __('User updated successfully'));
                 return redirect()->route('home');
             }
             $data['mode'] = "edit";
@@ -247,7 +247,7 @@ class HomeController extends Controller
             }
             $user->delete();
             send_notification('Updated a user data', $user->first_name, $user->last_name);
-            Session::flash('success', __('User Deleted successfully'));
+            Session::flash(__('success'), __('User Deleted successfully'));
             return redirect()->route('home');
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -317,7 +317,7 @@ class HomeController extends Controller
                 ]);
                 send_notification(__('Updated salary for employee'), $employee->first_name, $employee->last_name);
 
-                Session::flash('success', __('Salary Record Updated successfully'));
+                Session::flash(__('success'), __('Salary Record Updated successfully'));
                 return back();
             }
 
@@ -329,7 +329,7 @@ class HomeController extends Controller
             ]);
             send_notification(__('Created a new salary for employee'), $employee->first_name, $employee->last_name);
 
-            Session::flash('success', __('Salary added successfully'));
+            Session::flash(__('success'), __('Salary added successfully'));
             return back();
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -364,7 +364,7 @@ class HomeController extends Controller
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                Session::flash('warning', 'All fields are required');
+                Session::flash('warning', __('All fields are required'));
                 if (isset($request->id)) {
                     # code...
                     return back()->withErrors($validator);
@@ -380,7 +380,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated record for employee', $employee->first_name, $employee->last_name);
 
-                Session::flash('success', "Record Updated successfully");
+                Session::flash(__('success'), __('Record Updated successfully'));
                 return back();
             }
 
@@ -392,7 +392,7 @@ class HomeController extends Controller
             ]);
             send_notification('Created a new record for employee', $employee->first_name, $employee->last_name);
 
-            Session::flash('success', "Record added successfully");
+            Session::flash(__('success'), __('Record added successfully'));
             return back();
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -405,7 +405,7 @@ class HomeController extends Controller
         $data['sn'] = 1;
         $data['employee'] = $employee = Employee::find($id);
         if (!isset($employee)) {
-            Session::flash('warning', 'Employee not found');
+            Session::flash('warning', __('Employee not found'));
             return redirect()->route('employees');
         }
         $data['payments'] = Payment::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
@@ -430,7 +430,7 @@ class HomeController extends Controller
             $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
-                Session::flash('warning', 'All fields are required');
+                Session::flash('warning', __('All fields are required'));
                 if (isset($request->id)) {
                     # code...
                     return back()->withErrors($validator);
@@ -451,7 +451,7 @@ class HomeController extends Controller
                 $get_payment->save();
                 send_notification('Updated payment for employee', $employee->first_name, $employee->last_name);
 
-                Session::flash('success', "Payment Updated successfully");
+                Session::flash('success', __("Payment Updated successfully"));
                 return back();
             }
 
@@ -469,7 +469,7 @@ class HomeController extends Controller
             ]);
             send_notification('Created a new payment for employee', $employee->first_name, $employee->last_name);
 
-            Session::flash('success', "Payment added successfully");
+            Session::flash('success', __('Payment added successfully'));
             return back();
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
@@ -483,7 +483,7 @@ class HomeController extends Controller
             $data['mode'] = "edit";
             $data['employee'] = $employee = Employee::find($id);
             if (!isset($employee)) {
-                Session::flash('warning', 'Employee not found');
+                Session::flash('warning', __('Employee not found'));
                 return redirect()->route('employees');
             }
             if ($_POST) {
@@ -507,7 +507,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -534,7 +534,7 @@ class HomeController extends Controller
                 ]);
 
                 send_notification('Updated an employee data', $employee->first_name, $employee->last_name);
-                Session::flash('success', "Employee data updated successfully");
+                Session::flash(__('success'), __('Employee data updated successfully'));
                 return redirect()->route('employees');
             }
             $data['title'] = "Edit Employee";
@@ -571,7 +571,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash(__('warning'), __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -598,7 +598,7 @@ class HomeController extends Controller
                 ]);
                 send_notification(__('Created a new Employee'), $request->first_name, $request->last_name);
 
-                Session::flash('success', "Employee created successfully");
+                Session::flash(__('success'), __('Employee created successfully'));
                 return redirect()->route('employees');
             }
 
