@@ -927,7 +927,15 @@
     "warning": "Attention",
     "Password Wrong": "Mot de passe incorrect",
     "Payment added successfully": "Paiement ajouté avec succès",
-    "Employee data updated successfully": "Les données des employés ont été mises à jour avec succès"
+    "Employee data updated successfully": "Les données des employés ont été mises à jour avec succès",
+    "Farm data updated successfully": "Les données de la ferme ont été mises à jour avec succès",
+    "Try again!": "Réessayer!",
+    "Tree created successfully": "Arbre créé avec succès",
+    "Tree not found": "Arbre introuvable",
+    "Crop created successfully": "Culture créée avec succès",
+    "Crop data updated successfully": "Données de culture mises à jour avec succès",
+    "Client created successfully": "Client créé avec succès",
+    ""
  
 }
 

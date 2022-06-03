@@ -571,7 +571,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash(__('warning'), __('All fields are required'));
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -639,7 +639,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -656,7 +656,7 @@ class HomeController extends Controller
                 send_notification(__('Created a new farm data'), $request->farm_name);
 
 
-                Session::flash('success', "Farm created successfully");
+                Session::flash(__('success'), __('Farm created successfully'));
                 return redirect()->route('farms');
             }
 
@@ -675,7 +675,7 @@ class HomeController extends Controller
             $data['mode'] = "edit";
             $data['farm'] = $farm = Farm::find($id);
             if (!isset($farm)) {
-                Session::flash('warning', 'Farm not found');
+                Session::flash('warning', __('Farm not found'));
                 return redirect()->route('farms');
             }
             if ($_POST) {
@@ -693,7 +693,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -709,7 +709,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated a farm data', $request->farm_name);
 
-                Session::flash('success', "Farm data updated successfully");
+                Session::flash(__('success'), __('Farm data updated successfully'));
                 return redirect()->route('farms');
             }
             $data['title'] = "Edit Farm";
@@ -729,7 +729,7 @@ class HomeController extends Controller
             $data['trees'] = Tree::with('farm:id,farm_name')->orderBy('id', 'desc')->get();
             return view('trees.index', $data);
         } catch (\Throwable $th) {
-            Session::flash('error', "Try again!");
+            Session::flash('error', __('Try again!'));
             return back();
         }
     }
@@ -752,7 +752,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -767,7 +767,7 @@ class HomeController extends Controller
 
                 send_notification('Created a new Tree data');
 
-                Session::flash('success', "Tree created successfully");
+                Session::flash(__('success'), __('Tree created successfully'));
                 return redirect()->route('trees');
             }
 
@@ -787,7 +787,7 @@ class HomeController extends Controller
             $data['tree'] = $tree = Tree::find($id);
             $data['farms'] = Farm::orderBy('id', 'desc')->get();
             if (!isset($tree)) {
-                Session::flash('warning', 'Tree not found');
+                Session::flash('warning', __('Tree not found'));
                 return redirect()->route('trees');
             }
             if ($_POST) {
@@ -803,7 +803,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -817,7 +817,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated Tree data');
 
-                Session::flash('success', "Tree data updated successfully");
+                Session::flash(__('success'), __('Tree data updated successfully'));
                 return redirect()->route('trees');
             }
             $data['title'] = "Edit Tree";
@@ -863,7 +863,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -879,7 +879,7 @@ class HomeController extends Controller
 
                 send_notification(__('Created a new Crop data'));
 
-                Session::flash('success', "Crop created successfully");
+                Session::flash(__('success'), __('Crop created successfully'));
                 return redirect()->route('crops');
             }
 
@@ -918,7 +918,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -933,7 +933,7 @@ class HomeController extends Controller
                 ]);
                 send_notification('Updated a Crop data');
 
-                Session::flash('success', "Crop data updated successfully");
+                Session::flash(__('success'), __('Crop data updated successfully'));
                 return redirect()->route('crops');
             }
             $data['title'] = "Update Crop Data";
@@ -986,7 +986,7 @@ class HomeController extends Controller
                 $validator = Validator::make($request->all(), $rules, $customMessages);
 
                 if ($validator->fails()) {
-                    Session::flash('warning', 'All fields are required');
+                    Session::flash('warning', __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
                 }
 
@@ -1006,7 +1006,7 @@ class HomeController extends Controller
 
                 send_notification('Created a new client data', $request->client_name);
 
-                Session::flash('success', "Client created successfully");
+                Session::flash(__('success'), __('Client created successfully'));
                 return redirect()->route('clients');
             }
 
