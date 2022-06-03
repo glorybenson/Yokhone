@@ -332,7 +332,7 @@
                             <label for="farm" class="col-md-2 col-form-label text-md-end">{{__('Farm')}}<span style="color:#ff0000">*</span></label>
                             <div class="col-md-10 mb-3">
                                 <input readonly type="hidden" id="farm_id" name="farm" value="{{old('farm')}}" class="form-control" placeholder="Farm ID" required>
-                                <input readonly type="text" id="farm_value" class="form-control" placeholder="Farm Name">
+                                <input readonly type="text" id="farm_value" class="form-control" placeholder={{__('Farm Name')}}>
                                 @error('farm')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
