@@ -477,6 +477,69 @@ class HomeController extends Controller
         }
     }
 
+    /*public function employee_absence($id)
+    {
+        $data['sn'] = 1;
+        $data['employee'] = $employee = Employee::find($id);
+        if (!isset($employee)) {
+            Session::flash('warning', 'Employee not found');
+            return redirect()->route('employees');
+        }
+        $data['absences'] = Record::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
+        $data['title'] = $employee->first_name . " " . $employee->last_name . " absences";
+        return view('employees.absence', $data);
+    }
+
+    public function add_absence(Request $request)
+    {
+        try {
+            $data['employee'] = $employee = Employee::find($request->employee_id);
+            //code...
+            $rules = array(
+                'date' => ['required'],
+                'reason' => ['required'],
+                'details' => ['required', 'string', 'max:255'],
+            );
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                Session::flash('warning', __('All fields are required'));
+                if (isset($request->id)) {
+                    # code...
+                    return back()->withErrors($validator);
+                }
+                return back()->withErrors($validator)->withInput();
+            }
+            if ($request->id) {
+                Record::where(['employee_id' => $request->employee_id, 'id' => $request->id])->update([
+                    'employee_id' => $request->employee_id,
+                    'date' => $request->date,
+                    'reason' => $request->reason,
+                    'details' => $request->details,
+                ]);
+                send_notification('Updated record for employee', $employee->first_name, $employee->last_name);
+
+                Session::flash(__('success'), __('Record Updated successfully'));
+                return back();
+            }
+
+            Record::create([
+                'employee_id' => $request->employee_id,
+                'date' => $request->date,
+                'reason' => $request->reason,
+                'details' => $request->details,
+            ]);
+            send_notification('Created a new record for employee', $employee->first_name, $employee->last_name);
+
+            Session::flash(__('success'), __('Record added successfully'));
+            return back();
+        } catch (\Throwable $th) {
+            Session::flash('error', $th->getMessage());
+            return back();
+        }
+    }*/
+
     public function edit_employee(Request $request, $id)
     {
         try {

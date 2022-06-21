@@ -7,7 +7,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Absence')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
                         <li class="breadcrumb-item active">{{__('Absence')}}</li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
                         <div class="col-md-3">
                             <div class="text-center">
                                 <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">
-                                    {{__('Absence')}}
+                                    {{__('Employee Record')}}
                                 </a>
                             </div>
                         </div>
@@ -54,43 +54,55 @@
                         </div>
                     </div>
                     <div class="text-right mb-3">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewRecord">
-                            {{__('Add New Record')}}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewAbsence">
+                            {{__('Add Absence')}}
                         </button>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="AddNewRecord" tabindex="-1" aria-labelledby="AddNewRecordLabel" aria-hidden="true">
+                    <div class="modal fade" id="AddNewAbsence" tabindex="-1" aria-labelledby="AddNewAbsenceLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Record')}}</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add Absence')}}</h5>
                                 </div>
-                                <form method="POST" action="{{ route('add.record') }}">
+                                <form method="POST" action="{{ route('add.absence') }}">
                                     <div class="modal-body">
                                         @csrf
                                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                         <div class="row mb-3">
-                                            <label for="date" class="col-md-3 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
-                                                <input id="date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="first name" autofocus>
-                                                @error('date')
+                                                <input id="start_date" type="date" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="first name" autofocus>
+                                                @error('start_date')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        <div class="row mb-3">
+                                            <label for="return_date" class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
+                                            <div class="col-md-8">
+                                                <input id="return_date" type="date" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ old('return_date') }}" autocomplete="first name" autofocus>
+                                                @error('return_date')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+
                                         <div class="row mb-3">
                                             <label for="reason" class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <select class="select @error('reason') is-invalid @enderror" name="reason" required>
                                                     <option value="">{{__('Select Reason')}}</option>
-                                                    <option value="Coaching" {{ old('reason') == 'Coaching' ? 'selected' : ''}}>
-                                                        {{__('Coaching')}}</option>
-                                                    <option value="Warning" {{ old('reason') == 'Warning' ? 'selected' : ''}}>
-                                                        {{__('Warning')}}</option>
-                                                    <option value="Sanction" {{ old('reason') == 'Sanction' ? 'selected' : ''}}>
-                                                        {{__('Sanction')}}</option>
+                                                    <option value="Conges" {{ old('reason') == 'Conges' ? 'selected' : ''}}>
+                                                        {{__('Conges')}}</option>
+                                                    <option value="Absence impayee" {{ old('reason') == 'Absence impayee' ? 'selected' : ''}}>
+                                                        {{__('Absence impayee')}}</option>
                                                 </select>
                                                 @error('reason')
                                                 <span class="invalid-feedback" role="alert">
@@ -99,11 +111,36 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                         <div class="row mb-3">
-                                            <label for="details" class="col-md-3 col-form-label text-md-end">{{__('Details') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="total_number_of_days" class="col-md-2 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                             <div class="col-md-8">
-                                                <textarea id="details" required class="form-control @error('details') is-invalid @enderror" name="details">{{ old('details') }}</textarea>
-                                                @error('details')
+                                                <input id="total_number_of_days" type="number" readonly class="form-control @error('total_number_of_days') is-invalid @enderror">
+                                                @error('total_number_of_days')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
+                                            <label for="total_to_be_cut" class="col-md-2 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
+                                            <div class="col-md-8">
+                                                <input id="total_to_be_cut" type="number" readonly class="form-control @error('total_to_be_cut') is-invalid @enderror">
+                                                @error('total_to_be_cut')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mb-3">
+                                            <label for="comment" class="col-md-3 col-form-label text-md-end">{{__('Comment') }}<span style="color:#ff0000">*</span></label>
+                                            <div class="col-md-8">
+                                                <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ old('comment') }}</textarea>
+                                                @error('comment')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -128,10 +165,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>{{__('Date')}}</th>
+                                    <th>{{__('Start Date')}}</th>
+                                    <th>{{__('Return Date')}}</th>
                                     <th>{{__('Reason')}}</th>
-                                    <th>{{__('Details')}}</th>
-                                    <th>{{__('Action')}}</th>
+                                    <th>{{__('Total number of days')}}</th>
+                                    <th>{{__('Total Price to be cut')}}</th>
+                                    <th>{{__('Comment')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -220,4 +259,32 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+function firstFunction() {
+    start_date = document.getElementById('start_date').value
+    return_date = document.getElementById('return_date').value
+        //if (start_date >= 0 && unit >= 0) 
+        {
+            document.getElementById('total_number_of_days').value = start_date - return_date
+        } else {
+            document.getElementById('total_number_of_days').value = 0
+        }
+    }
+
+    function secondFunction() {
+        Total = document.getElementById('total_number_of_days').value
+        {
+            document.getElementById('total_to_be_cut').value = Total * 5000
+        } else {
+            document.getElementById('total_to_be_cut').value = 0
+        }
+    }
+
+    document.onreadystatechange = function() {
+    firstFunction()
+    secondFunction()
+    }
+
+</script>
 @endsection
