@@ -7,7 +7,7 @@
                 <div class="d-flex align-items-center">
                     <h5 class="page-title">{{ __('Dashboard') }}</h5>
                     <ul class="breadcrumb ml-2">
-                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Absence')}}</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{__('Employees')}}</a></li>
                         <li class="breadcrumb-item active">{{__('Absence')}}</li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
                         <div class="col-md-3">
                             <div class="text-center">
                                 <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">
-                                    {{__('Absence')}}
+                                    {{__('Employee Record')}}
                                 </a>
                             </div>
                         </div>
@@ -54,25 +54,25 @@
                         </div>
                     </div>
                     <div class="text-right mb-3">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewRecord">
-                            {{__('Add New Record')}}
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewAbsence">
+                            {{__('Add Absence')}}
                         </button>
                     </div>
                     <!-- Modal -->
-                    <div class="modal fade" id="AddNewRecord" tabindex="-1" aria-labelledby="AddNewRecordLabel" aria-hidden="true">
+                    <div class="modal fade" id="AddNewAbsence" tabindex="-1" aria-labelledby="AddNewAbsenceLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add New Record')}}</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">{{__('Add Absence')}}</h5>
                                 </div>
-                                <form method="POST" action="{{ route('add.record') }}">
+                                <form method="POST" action="{{ route('add.absence') }}">
                                     <div class="modal-body">
                                         @csrf
                                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                         <div class="row mb-3">
-                                            <label for="date" class="col-md-3 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
-                                                <input id="date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="first name" autofocus>
+                                                <input id="start_date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="first name" autofocus>
                                                 @error('date')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
