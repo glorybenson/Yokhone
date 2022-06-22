@@ -101,7 +101,7 @@
                                                     <option value="">{{__('Select Reason')}}</option>
                                                     <option value="Conges" {{ old('reason') == 'Conges' ? 'selected' : ''}}>
                                                         {{__('Conges')}}</option>
-                                                    <option value="Absence impayee" {{ old('reason') == 'Absence impayee' ? 'selected' : ''}}>
+                                                    <option value="Absence" {{ old('reason') == 'Absence' ? 'selected' : ''}}>
                                                         {{__('Absence impayee')}}</option>
                                                 </select>
                                                 @error('reason')
@@ -192,33 +192,45 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Edit Salary') }}</h5>
                                             </div>
-                                            <form method="POST" action="{{ route('add.record') }}">
+                                            <form method="POST" action="{{ route('add.absence') }}">
                                                 <div class="modal-body">
                                                     @csrf
                                                     <input type="hidden" name="id" value="{{$record->id}}">
                                                     <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                                     <div class="row mb-3">
-                                                        <label for="date" class="col-md-3 col-form-label text-md-end">{{ __('Date') }}<span style="color:#ff0000">*</span></label>
+                                                        <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
-                                                            <input id="date" type="date" required class="form-control @error('date') is-invalid @enderror" name="date" value="{{ $record->date }}">
-                                                            @error('date')
+                                                            <input id="start_date" type="date" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $record->date }}">
+                                                            @error('start_date')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+                                                    <div class="row mb-3">
+                                                        <label for="return_date" class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
+                                                        <div class="col-md-8">
+                                                            <input id="return_date" type="date" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ $record->date }}">
+                                                            @error('return_date')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+
                                                     <div class="row mb-3">
                                                         <label for="reason" class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
                                                             <select class="select @error('reason') is-invalid @enderror" name="reason" required>
                                                                 <option value="">{{__('Select Reason')}}</option>
-                                                                <option value="Coaching" {{ $record->reason == 'Coaching' ? 'selected' : ''}}>
-                                                                    {{__('Coaching')}}</option>
-                                                                <option value="Warning" {{ $record->reason == 'Warning' ? 'selected' : ''}}>
-                                                                    {{__('Warning')}}</option>
-                                                                <option value="Sanction" {{ $record->reason == 'Sanction' ? 'selected' : ''}}>
-                                                                    {{__('Sanction')}}</option>
+                                                                <option value="Conges" {{ $record->reason == 'Conges' ? 'selected' : ''}}>
+                                                                    {{__('Conges')}}</option>
+                                                                <option value="Absence" {{ $record->reason == 'Absence' ? 'selected' : ''}}>
+                                                                    {{__('Absence impayee')}}</option>
                                                             </select>
                                                             @error('reason')
                                                             <span class="invalid-feedback" role="alert">
@@ -227,11 +239,36 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
                                                     <div class="row mb-3">
-                                                        <label for="details" class="col-md-3 col-form-label text-md-end">{{ __('Details') }}<span style="color:#ff0000">*</span></label>
+                                                        <label for="total_number_of_days" class="col-md-2 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                         <div class="col-md-8">
-                                                            <textarea id="details" required class="form-control @error('details') is-invalid @enderror" name="details">{{ $record->details }}</textarea>
-                                                            @error('details')
+                                                            <input id="total_number_of_days" type="number" readonly class="form-control @error('total_number_of_days') is-invalid @enderror">
+                                                            @error('total_number_of_days')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-3">
+                                                        <label for="total_to_be_cut" class="col-md-2 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
+                                                        <div class="col-md-8">
+                                                            <input id="total_to_be_cut" type="number" readonly class="form-control @error('total_to_be_cut') is-invalid @enderror">
+                                                            @error('total_to_be_cut')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="row mb-3">
+                                                        <label for="comment" class="col-md-3 col-form-label text-md-end">{{ __('Comment') }}<span style="color:#ff0000">*</span></label>
+                                                        <div class="col-md-8">
+                                                            <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ $record->details }}</textarea>
+                                                            @error('comment')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
