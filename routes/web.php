@@ -65,6 +65,11 @@ Route::group(['middleware' => ['auth']], function () {
         //Payment Route
         Route::match(['get', 'post'], '/view-employees-payment/{id}', [App\Http\Controllers\HomeController::class, 'employee_payment'])->name('payment.employee');
         Route::post('/add-payment', [App\Http\Controllers\HomeController::class, 'add_payment'])->name('add.payment');
+        
+        //Absence Route
+        Route::match(['get', 'post'], '/view-employees-absence/{id}', [App\Http\Controllers\HomeController::class, 'employee_absence'])->name('absence.employee');
+        Route::post('/add-absence', [App\Http\Controllers\HomeController::class, 'add_absence'])->name('add.absence');
+
     });
 
 
