@@ -31,6 +31,14 @@ Route::get('/language/{locale}', function ($locale) {
 Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['user']], function () {
+        //Dashboard Routes
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
+        
+        // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
+        // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
+        // Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
+
         //User Routes
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
