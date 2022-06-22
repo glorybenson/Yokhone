@@ -123,7 +123,7 @@
                                         <div class="row mb-3">
                                             <label for="total_number_of_days" class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                             <div class="col-md-8">
-                                                <input id="total_number_of_days" type="number" readonly class="form-control @error('total_number_of_days') is-invalid @enderror">
+                                                <input id="total_number_of_days" type="number" oninput="secondFunction()" readonly class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                 @error('total_number_of_days')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -335,8 +335,8 @@ function getAbsDate(start_date, return_date) {
     }
 
     document.onreadystatechange = function() {
-    firstFunction()
-    secondFunction()
+        data = firstFunction()
+        secondFunction()
     }
 
 </script>

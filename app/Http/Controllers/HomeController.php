@@ -519,7 +519,7 @@ class HomeController extends Controller
                     'start_date' => $request->start_date,
                     'return_date' => $request->return_date,
                     'reason' => $request->reason,
-                    'total_number_of_days' => $request->start_date - $request->return_date,
+                    'total_number_of_days' => $request->total_number_of_days,
                     'total_to_be_cut' => $request->total_number_of_days * 5000,
                     'comment' => $request->comment,
                 ]);
@@ -534,7 +534,7 @@ class HomeController extends Controller
                 'start_date' => $request->start_date,
                 'return_date' => $request->return_date,
                 'reason' => $request->reason,
-                'total_number_of_days' => $request->start_date - $request->return_date,
+                'total_number_of_days' => $request->total_number_of_days,
                 'total_to_be_cut' => $request->total_number_of_days * 5000,
                 'comment' => $request->comment,
             ]);
