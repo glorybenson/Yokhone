@@ -78,7 +78,7 @@
                                         @csrf
                                         <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                         <div class="row mb-3">
-                                            <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="start_date" class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input id="start_date" type="date" oninput="firstFunction()" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="first name" autofocus>
                                                 @error('start_date')
@@ -90,7 +90,7 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="return_date" class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="return_date" class="col-md-4 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <input id="return_date" type="date" oninput="firstFunction()" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ old('return_date') }}" autocomplete="first name" autofocus>
                                                 @error('return_date')
@@ -103,7 +103,7 @@
 
 
                                         <div class="row mb-3">
-                                            <label for="reason" class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="reason" class="col-md-4 col-form-label text-md-end">{{ __('Reason') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <select class="select @error('reason') is-invalid @enderror" name="reason" required>
                                                     <option value="">{{__('Select Reason')}}</option>
@@ -121,7 +121,7 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="total_number_of_days" class="col-md-2 col-form-label text-md-end">{{ __('Total number of days') }}</label>
+                                            <label for="total_number_of_days" class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                             <div class="col-md-8">
                                                 <input id="total_number_of_days" type="number" readonly class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                 @error('total_number_of_days')
@@ -133,7 +133,7 @@
                                         </div>
 
                                         <div class="row mb-3">
-                                            <label for="total_to_be_cut" class="col-md-2 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
+                                            <label for="total_to_be_cut" class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                             <div class="col-md-8">
                                                 <input id="total_to_be_cut" type="number" readonly class="form-control @error('total_to_be_cut') is-invalid @enderror">
                                                 @error('total_to_be_cut')
@@ -145,7 +145,7 @@
                                         </div>
                                         
                                         <div class="row mb-3">
-                                            <label for="comment" class="col-md-3 col-form-label text-md-end">{{__('Comment') }}<span style="color:#ff0000">*</span></label>
+                                            <label for="comment" class="col-md-4 col-form-label text-md-end">{{__('Comment') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
                                                 <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ old('comment') }}</textarea>
                                                 @error('comment')
