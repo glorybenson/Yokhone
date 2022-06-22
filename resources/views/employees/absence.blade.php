@@ -174,13 +174,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($records))
-                                @foreach($records as $record)
+                                @if(isset($absences))
+                                @foreach($absences as $absence)
                                 <tr>
                                     <td>{{$sn++}}</td>
-                                    <td>{{$record->date}}</td>
-                                    <td>{{$record->reason}}</td>
-                                    <td>{{$record->details}}</td>
+                                    <td>{{$absence->start_date}}</td>
+                                    <td>{{$absence->return_date}}</td>
+                                    <td>{{$absence->reason}}</td>
+                                    <td>{{$absence->total_number_of_days}}</td>
+                                    <td>{{$absence->total_to_be_cut}}</td>
+                                    <td>{{$absence->comment}}</td>
                                     <td>
                                         <a data-bs-toggle="modal" data-bs-target="#EditRecord{{$record->id}}" class="btn btn-sm p-2" title="Edit"><i class="fa fa-edit"></i></a>
                                     </td>
@@ -200,7 +203,7 @@
                                                     <div class="row mb-3">
                                                         <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
-                                                            <input id="start_date" type="date" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $record->date }}">
+                                                            <input id="start_date" type="date" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $absence->start_date }}">
                                                             @error('start_date')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -212,7 +215,7 @@
                                                     <div class="row mb-3">
                                                         <label for="return_date" class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
-                                                            <input id="return_date" type="date" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ $record->date }}">
+                                                            <input id="return_date" type="date" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ $absence->return_date }}">
                                                             @error('return_date')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -227,9 +230,9 @@
                                                         <div class="col-md-8">
                                                             <select class="select @error('reason') is-invalid @enderror" name="reason" required>
                                                                 <option value="">{{__('Select Reason')}}</option>
-                                                                <option value="Conges" {{ $record->reason == 'Conges' ? 'selected' : ''}}>
+                                                                <option value="Conges" {{ $absence->reason == 'Conges' ? 'selected' : ''}}>
                                                                     {{__('Conges')}}</option>
-                                                                <option value="Absence" {{ $record->reason == 'Absence' ? 'selected' : ''}}>
+                                                                <option value="Absence" {{ $absence->reason == 'Absence' ? 'selected' : ''}}>
                                                                     {{__('Absence impayee')}}</option>
                                                             </select>
                                                             @error('reason')
@@ -263,11 +266,11 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    
+
                                                     <div class="row mb-3">
                                                         <label for="comment" class="col-md-3 col-form-label text-md-end">{{ __('Comment') }}<span style="color:#ff0000">*</span></label>
                                                         <div class="col-md-8">
-                                                            <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ $record->details }}</textarea>
+                                                            <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ $absence->comment }}</textarea>
                                                             @error('comment')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>

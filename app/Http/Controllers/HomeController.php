@@ -496,9 +496,10 @@ class HomeController extends Controller
             $data['employee'] = $employee = Employee::find($request->employee_id);
             //code...
             $rules = array(
-                'date' => ['required'],
+                'start_date' => ['required'],
+                'return_date' => ['required'],
                 'reason' => ['required'],
-                'details' => ['required', 'string', 'max:255'],
+                'comment' => ['required', 'string', 'max:255'],
             );
 
             $validator = Validator::make($request->all(), $rules);
@@ -512,27 +513,29 @@ class HomeController extends Controller
                 return back()->withErrors($validator)->withInput();
             }
             if ($request->id) {
-                Record::where(['employee_id' => $request->employee_id, 'id' => $request->id])->update([
+                Absence::where(['employee_id' => $request->employee_id, 'id' => $request->id])->update([
                     'employee_id' => $request->employee_id,
-                    'date' => $request->date,
+                    'start_date' => $request->start_date,
+                    'return_date' => $request->return_date,
                     'reason' => $request->reason,
-                    'details' => $request->details,
+                    'comment' => $request->comment,
                 ]);
-                send_notification('Updated record for employee', $employee->first_name, $employee->last_name);
+                send_notification('Updated record for absence', $employee->first_name, $employee->last_name);
 
-                Session::flash(__('success'), __('Record Updated successfully'));
+                Session::flash(__('success'), __('Absence Updated successfully'));
                 return back();
             }
 
-            Record::create([
+            Absence::create([
                 'employee_id' => $request->employee_id,
-                'date' => $request->date,
+                'start_date' => $request->start_date,
+                'return_date' => $request->return_date,
                 'reason' => $request->reason,
-                'details' => $request->details,
+                'comment' => $request->comment,
             ]);
-            send_notification('Created a new record for employee', $employee->first_name, $employee->last_name);
+            send_notification('Created an absence record', $employee->first_name, $employee->last_name);
 
-            Session::flash(__('success'), __('Record added successfully'));
+            Session::flash(__('success'), __('Absence added successfully'));
             return back();
         } catch (\Throwable $th) {
             Session::flash('error', $th->getMessage());
