@@ -10,6 +10,7 @@ use App\Models\Farm;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\Record;
+use App\Models\Absence;
 use App\Models\Role;
 use App\Models\Salary;
 use App\Models\Tree;
@@ -477,7 +478,7 @@ class HomeController extends Controller
         }
     }
 
-    /*public function employee_absence($id)
+    public function employee_absence($id)
     {
         $data['sn'] = 1;
         $data['employee'] = $employee = Employee::find($id);
@@ -485,7 +486,7 @@ class HomeController extends Controller
             Session::flash('warning', 'Employee not found');
             return redirect()->route('employees');
         }
-        $data['absences'] = Record::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
+        $data['absences'] = Absence::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
         $data['title'] = $employee->first_name . " " . $employee->last_name . " absences";
         return view('employees.absence', $data);
     }
@@ -518,6 +519,8 @@ class HomeController extends Controller
                     'start_date' => $request->start_date,
                     'return_date' => $request->return_date,
                     'reason' => $request->reason,
+                    'total_number_of_days' => $request->start_date - $request->return_date,
+                    'total_to_be_cut' => $request->total_number_of_days * 5000,
                     'comment' => $request->comment,
                 ]);
                 send_notification('Updated record for absence', $employee->first_name, $employee->last_name);
@@ -531,6 +534,8 @@ class HomeController extends Controller
                 'start_date' => $request->start_date,
                 'return_date' => $request->return_date,
                 'reason' => $request->reason,
+                'total_number_of_days' => $request->start_date - $request->return_date,
+                'total_to_be_cut' => $request->total_number_of_days * 5000,
                 'comment' => $request->comment,
             ]);
             send_notification('Created an absence record', $employee->first_name, $employee->last_name);
@@ -541,7 +546,7 @@ class HomeController extends Controller
             Session::flash('error', $th->getMessage());
             return back();
         }
-    }*/
+    }
 
     public function edit_employee(Request $request, $id)
     {

@@ -26,26 +26,34 @@
                 </div>
                 <div class="card-body">
                     <div class="row mb-4">
-                        <div class="col-md-3">
+                        <div class="col-sm-2">
                             <div class="text-center">
                                 <a href="{{ route('view.employee', $employee->id) }}" class="btn btn-light active p-2" style="border-radius: 18px 18px 0px 0px;">{{$employee->first_name}} {{$employee->last_name }}</a>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-2">
                             <div class="text-center">
                                 <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">
-                                    {{__('Employee Record')}}
+                                    {{__('Absence')}}
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-3">
+
+                        <div class="col-sm-3">
+                            <div class="text-center">
+                                <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active"
+                                   style="border-radius: 18px 18px 0px 0px;">{{__('Employee Record')}}</a>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
                             <div class="text-center">
                                 <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
                                     {{__('Salary History')}}
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-2">
                             <div class="text-center">
                                 <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
                                     {{__('Payment')}}
@@ -72,7 +80,7 @@
                                         <div class="row mb-3">
                                             <label for="start_date" class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
-                                                <input id="start_date" type="date" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="first name" autofocus>
+                                                <input id="start_date" type="date" oninput="firstFunction()" required class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}" autocomplete="first name" autofocus>
                                                 @error('start_date')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -84,7 +92,7 @@
                                         <div class="row mb-3">
                                             <label for="return_date" class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span style="color:#ff0000">*</span></label>
                                             <div class="col-md-8">
-                                                <input id="return_date" type="date" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ old('return_date') }}" autocomplete="first name" autofocus>
+                                                <input id="return_date" type="date" oninput="firstFunction()" required class="form-control @error('return_date') is-invalid @enderror" name="return_date" value="{{ old('return_date') }}" autocomplete="first name" autofocus>
                                                 @error('return_date')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -301,14 +309,19 @@
 </div>
 
 <script type="text/javascript">
-function firstFunction() {
-    start_date = document.getElementById('start_date').value
-    return_date = document.getElementById('return_date').value
-        //if (start_date >= 0 && unit >= 0) 
-        {
-            document.getElementById('total_number_of_days').value = start_date - return_date
-        } else {
-            document.getElementById('total_number_of_days').value = 0
+function getAbsDate(start_date, return_date) {
+    const diffInMs = Math.abs(return_date - start_date);
+    return diffInMs / (1000 * 60 * 60 * 24);
+    }
+    function firstFunction() {
+        start_date = document.getElementById('start_date').value
+        return_date = document.getElementById('return_date').value
+        total_number_of_days = document.getElementById('total_number_of_days').value
+        //if the dates set
+        if(start_date & return_date){
+            total_number_of_days = getAbsDate(start_date, return_date)
+        }else{
+            total_number_of_days = 0
         }
     }
 
