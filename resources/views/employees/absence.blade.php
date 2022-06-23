@@ -249,10 +249,10 @@
                                                                     value="{{ $employee->id }}">
                                                                 <div class="row mb-3">
                                                                     <label for="start_date"
-                                                                        class="col-md-3 col-form-label text-md-end">{{ __('Start Date') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="start_date" type="date" required
+                                                                        <input id="start_date" type="date" oninput="firstFunction()" required
                                                                             class="form-control @error('start_date') is-invalid @enderror"
                                                                             name="start_date"
                                                                             value="{{ $absence->start_date }}">
@@ -266,10 +266,10 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="return_date"
-                                                                        class="col-md-3 col-form-label text-md-end">{{ __('Return Date') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Return Date') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="return_date" type="date" required
+                                                                        <input id="return_date" type="date" oninput="firstFunction()" required
                                                                             class="form-control @error('return_date') is-invalid @enderror"
                                                                             name="return_date"
                                                                             value="{{ $absence->return_date }}">
@@ -284,10 +284,10 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="reason"
-                                                                        class="col-md-3 col-form-label text-md-end">{{ __('Reason') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Reason') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <select
+                                                                        <select id="employer_reason" onchange="secondFunction()"
                                                                             class="select @error('reason') is-invalid @enderror"
                                                                             name="reason" required>
                                                                             <option value="">
@@ -309,7 +309,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="total_number_of_days"
-                                                                        class="col-md-2 col-form-label text-md-end">{{ __('Total number of days') }}</label>
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="total_number_of_days" type="number"
                                                                             readonly
@@ -324,7 +324,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="total_to_be_cut"
-                                                                        class="col-md-2 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="total_to_be_cut" type="number"
                                                                             readonly
@@ -339,7 +339,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="comment"
-                                                                        class="col-md-3 col-form-label text-md-end">{{ __('Comment') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Comment') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
                                                                         <textarea id="comment" required class="form-control @error('comment') is-invalid @enderror" name="comment">{{ $absence->comment }}</textarea>
