@@ -252,10 +252,14 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Start Date') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="start_date" type="date" oninput="firstFunction()" required
+                                                                        <input id="start_date{{ $absence->id }}"
+                                                                            type="date"
+                                                                            oninput="firstFunctionEdit({{ $absence->id }})"
+                                                                            required
                                                                             class="form-control @error('start_date') is-invalid @enderror"
                                                                             name="start_date"
-                                                                            value="{{ $absence->start_date }}" autocomplete="first name" autofocus>
+                                                                            value="{{ $absence->start_date }}"
+                                                                            autocomplete="first name" autofocus>
                                                                         @error('start_date')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -269,10 +273,14 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Return Date') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="return_date" type="date" oninput="firstFunction()" required
+                                                                        <input id="return_date{{ $absence->id }}"
+                                                                            type="date"
+                                                                            oninput="firstFunctionEdit({{ $absence->id }})"
+                                                                            required
                                                                             class="form-control @error('return_date') is-invalid @enderror"
                                                                             name="return_date"
-                                                                            value="{{ $absence->return_date }}" autocomplete="first name" autofocus >
+                                                                            value="{{ $absence->return_date }}"
+                                                                            autocomplete="first name" autofocus>
                                                                         @error('return_date')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -287,7 +295,8 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Reason') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <select id="employer_reason" onchange="secondFunction()"
+                                                                        <select id="employer_reason{{ $absence->id }}"
+                                                                            onchange="secondFunctionEdit({{ $absence->id }})"
                                                                             class="select @error('reason') is-invalid @enderror"
                                                                             name="reason" required>
                                                                             <option value="">
@@ -311,13 +320,16 @@
                                                                     <label for="total_number_of_days"
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                                     <div class="col-md-8">
-                                                                        <input id="total_number_of_days" type="number"
-                                                                        name="total_number_of_days" readonly value="{{$absence->total_number_of_days}}"
-                                                                        class="form-control @error('total_number_of_days') is-invalid @enderror">
+                                                                        <input
+                                                                            id="total_number_of_days{{ $absence->id }}"
+                                                                            type="number" name="total_number_of_days"
+                                                                            readonly
+                                                                            value="{{ $absence->total_number_of_days }}"
+                                                                            class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                                         @error('total_number_of_days')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
                                                                         @enderror
                                                                     </div>
                                                                 </div>
@@ -326,8 +338,9 @@
                                                                     <label for="total_to_be_cut"
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                                                     <div class="col-md-8">
-                                                                        <input id="total_to_be_cut" type="number"
-                                                                            readonly value="{{$absence->total_to_be_cut}}"
+                                                                        <input id="total_to_be_cut{{ $absence->id }}"
+                                                                            type="number" readonly
+                                                                            value="{{ $absence->total_to_be_cut }}"
                                                                             class="form-control @error('total_to_be_cut') is-invalid @enderror">
                                                                         @error('total_to_be_cut')
                                                                             <span class="invalid-feedback" role="alert">
@@ -384,7 +397,6 @@
 
 
         function firstFunction() {
-            secondFunction()
             start_date = document.getElementById('start_date').value
             return_date = document.getElementById('return_date').value
             let total_number_of_days = 0;
@@ -392,6 +404,7 @@
                 total_number_of_days = getAbsDate(start_date, return_date);
             }
             document.getElementById('total_number_of_days').value = total_number_of_days
+            secondFunction()
 
         }
 
@@ -403,6 +416,27 @@
                 price_cut = total_number * 5000
             }
             document.getElementById('total_to_be_cut').value = price_cut
+        }
+
+        function firstFunctionEdit(id) {
+            start_date = document.getElementById(`start_date${id}`).value
+            return_date = document.getElementById(`return_date${id}`).value
+            let total_number_of_days = 0;
+            if (start_date && return_date) {
+                total_number_of_days = getAbsDate(start_date, return_date);
+            }
+            document.getElementById(`total_number_of_days${id}`).value = total_number_of_days
+            secondFunctionEdit(id)
+        }
+
+        function secondFunctionEdit(id) {
+            var total_number = document.getElementById(`total_number_of_days${id}`).value
+            var reason = document.getElementById(`employer_reason${id}`).value;
+            let price_cut = 0
+            if (total_number && reason == "Absence") {
+                price_cut = total_number * 5000
+            }
+            document.getElementById(`total_to_be_cut${id}`).value = price_cut
         }
 
         document.onreadystatechange = function() {
