@@ -952,6 +952,10 @@
     "Update Expense": "Mettre à jour les dépenses",
     "Update Expense Data": "Mettre à jour les données de dépenses",
     "Invoice": "Facture d'achat",
-    "Update Invoice": "Mettre à jour la facture"
+    "Update Invoice": "Mettre à jour la facture",
+    "Start Date": "Debut Date",
+    "Return Date": "Date Retour",
+    "Total number of days": "Nombre total de jours",
+    "Total Price to be cut": "Total a couper"
 }
 
