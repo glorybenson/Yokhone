@@ -46,8 +46,8 @@ class DashboardController extends Controller
         );
 
         //Client
-        $last_year_client = Client::whereYear('created_at', now()->subYear()->year)->count();
-        $current_year_client = Client::whereYear('created_at', now()->year)->count();
+        $last_year_client = Client::whereYear('date_become_client', now()->subYear()->year)->count();
+        $current_year_client = Client::whereYear('date_become_client', now()->year)->count();
         $data['client'] = $c = (object) [
             "name" => "Client",
             "last_year" => $last_year_client,
@@ -55,13 +55,13 @@ class DashboardController extends Controller
         ];
 
         //Plantation
-        $last_year_client = Tree::where('reason', "Plantation")->get()->sum('quantity');
-        $current_year_client = Tree::where('reason', "Death")->get()->sum('quantity');
-        $data['client'] = $c = (object) [
-            "name" => "Client",
-            "last_year" => $last_year_client,
-            "current_year" => $current_year_client
-        ];
+        // $last_year_client = Tree::where('reason', "Plantation")->get()->sum('quantity');
+        // $current_year_client = Tree::where('reason', "Death")->get()->sum('quantity');
+        // $data['client'] = $c = (object) [
+        //     "name" => "Client",
+        //     "last_year" => $last_year_client,
+        //     "current_year" => $current_year_client
+        // ];
 
         $plantation = [];
         function group_by_me($array, $key)
