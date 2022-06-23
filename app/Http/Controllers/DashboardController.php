@@ -77,7 +77,7 @@ class DashboardController extends Controller
         }
 
         $plann = Tree::where('reason', "Plantation")->get();
-        dd($plann, "desc");
+        // dd($plann, "desc");
         // function group_by($key, $data)
         // {
         //     $result = array();
@@ -101,9 +101,9 @@ class DashboardController extends Controller
             $ggg = Tree::select('desc', DB::raw('GROUP_CONCAT(quantity) as quantity'))
                 ->groupBy('desc')
                 ->get();
-            dd($ggg, $get_tree);
+            // dd($ggg, $get_tree);
             if ($get && $get_tree) {
-                dd($get, $get_tree);
+                // dd($get, $get_tree);
                 $params =
                     (object)[
                         "name" => $farm->farm_name,

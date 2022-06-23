@@ -90,7 +90,7 @@
         google.charts.load('current', {
             'packages': ['bar', 'corechart']
         });
-        google.charts.setOnLoadCallback(drawChart);
+        // google.charts.setOnLoadCallback(drawChart);
         google.charts.setOnLoadCallback(salaryBar);
         google.charts.setOnLoadCallback(expenseBar);
         google.charts.setOnLoadCallback(clientPie);
@@ -100,30 +100,6 @@
         google.charts.setOnLoadCallback(drawStuff3);
         google.charts.setOnLoadCallback(drawChart4);
 
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Order Id', 'First Name', 'Last Name'],
-
-                @php
-                    foreach ($users as $user) {
-                        echo "['" . $user->id . "', " . $user->one . ', ' . $user->two . '],';
-                    }
-                @endphp
-            ]);
-
-            var options = {
-                chart: {
-                    title: 'Bar Graph | Price',
-                    subtitle: 'Price, and Product Name: @php echo $users[0]->created_at @endphp',
-                },
-                bars: 'vertical',
-                bar: {
-                    groupWidth: '50%'
-                },
-            };
-            var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
 
         function salaryBar() {
             var data = google.visualization.arrayToDataTable([
