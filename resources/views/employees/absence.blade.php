@@ -255,7 +255,7 @@
                                                                         <input id="start_date" type="date" oninput="firstFunction()" required
                                                                             class="form-control @error('start_date') is-invalid @enderror"
                                                                             name="start_date"
-                                                                            value="{{ $absence->start_date }}">
+                                                                            value="{{ old ('$absence->start_date') }}">
                                                                         @error('start_date')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -272,7 +272,7 @@
                                                                         <input id="return_date" type="date" oninput="firstFunction()" required
                                                                             class="form-control @error('return_date') is-invalid @enderror"
                                                                             name="return_date"
-                                                                            value="{{ $absence->return_date }}">
+                                                                            value="{{ old ('$absence->return_date') }}">
                                                                         @error('return_date')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
