@@ -520,7 +520,7 @@ class HomeController extends Controller
                     'return_date' => $request->return_date,
                     'reason' => $request->reason,
                     'total_number_of_days' => $request->total_number_of_days,
-                    'total_to_be_cut' => $request->total_number_of_days * 5000,
+                    'total_to_be_cut' => $request->total_to_be_cut,
                     'comment' => $request->comment,
                 ]);
                 send_notification('Updated record for absence', $employee->first_name, $employee->last_name);

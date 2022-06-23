@@ -147,7 +147,8 @@
                                                 <label for="total_number_of_days"
                                                     class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                 <div class="col-md-8">
-                                                    <input id="total_number_of_days" type="number" readonly
+                                                    <input id="total_number_of_days" type="number"
+                                                        name="total_number_of_days" readonly
                                                         class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                     @error('total_number_of_days')
                                                         <span class="invalid-feedback" role="alert">
@@ -162,6 +163,7 @@
                                                     class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                                 <div class="col-md-8">
                                                     <input id="total_to_be_cut" type="number" readonly
+                                                        name="total_to_be_cut"
                                                         class="form-control @error('total_to_be_cut') is-invalid @enderror">
                                                     @error('total_to_be_cut')
                                                         <span class="invalid-feedback" role="alert">
@@ -224,13 +226,13 @@
                                                 <td>{{ $absence->comment }}</td>
                                                 <td>
                                                     <a data-bs-toggle="modal"
-                                                        data-bs-target="#EditRecord{{ $record->id }}"
+                                                        data-bs-target="#EditRecord{{ $absence->id }}"
                                                         class="btn btn-sm p-2" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
                                                 </td>
                                             </tr>
 
-                                            <div class="modal fade" id="EditRecord{{ $record->id }}" tabindex="-1"
+                                            <div class="modal fade" id="EditRecord{{ $absence->id }}" tabindex="-1"
                                                 aria-labelledby="AddNewSalaryLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -242,7 +244,7 @@
                                                             <div class="modal-body">
                                                                 @csrf
                                                                 <input type="hidden" name="id"
-                                                                    value="{{ $record->id }}">
+                                                                    value="{{ $absence->id }}">
                                                                 <input type="hidden" name="employee_id"
                                                                     value="{{ $employee->id }}">
                                                                 <div class="row mb-3">
