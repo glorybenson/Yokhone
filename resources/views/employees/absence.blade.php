@@ -286,22 +286,23 @@
                                                                     <label for="reason"
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Reason') }}<span
                                                                             style="color:#ff0000">*</span></label>
-                                                                            <div class="col-md-8">
-                                                                                <select id="employer_reason" onchange="secondFunction()"
-                                                                                    class="select @error('reason') is-invalid @enderror"
-                                                                                    name="reason" required>
-                                                                                    <option value="">{{ __('Select Reason') }}</option>
-                                                                                    <option value="Conges"
-                                                                                        {{ old('reason') == 'Conges' ? 'selected' : '' }}>
-                                                                                        {{ __('Conges') }}</option>
-                                                                                    <option value="Absence"
-                                                                                        {{ old('reason') == 'Absence' ? 'selected' : '' }}>
-                                                                                        {{ __('Absence impayee') }}</option>
-                                                                                </select>
-                                                                                @error('reason')
-                                                                                    <span class="invalid-feedback" role="alert">
-                                                                                        <strong>{{ $message }}</strong>
-                                                                                    </span>
+                                                                    <div class="col-md-8">
+                                                                        <select id="employer_reason" onchange="secondFunction()"
+                                                                            class="select @error('reason') is-invalid @enderror"
+                                                                            name="reason" required>
+                                                                            <option value="">
+                                                                                {{ __('Select Reason') }}</option>
+                                                                            <option value="Conges"
+                                                                                {{ $absence->reason == 'Conges' ? 'selected' : '' }}>
+                                                                                {{ __('Conges') }}</option>
+                                                                            <option value="Absence"
+                                                                                {{ $absence->reason == 'Absence' ? 'selected' : '' }}>
+                                                                                {{ __('Absence impayee') }}</option>
+                                                                        </select>
+                                                                        @error('reason')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
                                                                         @enderror
                                                                     </div>
                                                                 </div>
@@ -323,15 +324,15 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="total_to_be_cut"
-                                                                    class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                                                     <div class="col-md-8">
-                                                                        <input id="total_to_be_cut" type="number" readonly
-                                                                        name="total_to_be_cut"
-                                                                        class="form-control @error('total_to_be_cut') is-invalid @enderror">
+                                                                        <input id="total_to_be_cut" type="number"
+                                                                            readonly
+                                                                            class="form-control @error('total_to_be_cut') is-invalid @enderror">
                                                                         @error('total_to_be_cut')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
                                                                         @enderror
                                                                     </div>
                                                                 </div>
