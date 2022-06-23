@@ -312,12 +312,12 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="total_number_of_days" type="number"
-                                                                            readonly
-                                                                            class="form-control @error('total_number_of_days') is-invalid @enderror">
+                                                                        name="total_number_of_days" readonly
+                                                                        class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                                         @error('total_number_of_days')
-                                                                            <span class="invalid-feedback" role="alert">
-                                                                                <strong>{{ $message }}</strong>
-                                                                            </span>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
                                                                         @enderror
                                                                     </div>
                                                                 </div>
