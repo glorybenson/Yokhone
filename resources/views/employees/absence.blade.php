@@ -312,7 +312,7 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Total number of days') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="total_number_of_days" type="number"
-                                                                        name="total_number_of_days" readonly
+                                                                        name="total_number_of_days" readonly value="{{$absence->total_number_of_days}}"
                                                                         class="form-control @error('total_number_of_days') is-invalid @enderror">
                                                                         @error('total_number_of_days')
                                                                         <span class="invalid-feedback" role="alert">
@@ -327,7 +327,7 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Total Price to be cut') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="total_to_be_cut" type="number"
-                                                                            readonly
+                                                                            readonly value="{{$absence->total_to_be_cut}}"
                                                                             class="form-control @error('total_to_be_cut') is-invalid @enderror">
                                                                         @error('total_to_be_cut')
                                                                             <span class="invalid-feedback" role="alert">
