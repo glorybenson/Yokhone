@@ -238,7 +238,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">
-                                                                {{ __('Edit Salary') }}</h5>
+                                                                {{ __('Edit Absence') }}</h5>
                                                         </div>
                                                         <form method="POST" action="{{ route('add.absence') }}">
                                                             <div class="modal-body">
