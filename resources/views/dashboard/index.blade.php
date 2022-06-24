@@ -35,7 +35,7 @@
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Income Per Farm') }}</h4>
                     </div>
-                    <div class="card-body" id="">
+                    <div class="card-body" id="income_div">
                     </div>
                 </div>
             </div>
@@ -97,8 +97,7 @@
         google.charts.setOnLoadCallback(employeeSalaryBar);
         google.charts.setOnLoadCallback(plantationBar);
         google.charts.setOnLoadCallback(deathReportBar);
-        google.charts.setOnLoadCallback(drawStuff3);
-        google.charts.setOnLoadCallback(drawChart4);
+        google.charts.setOnLoadCallback(invoiceBar);
 
 
         function salaryBar() {
@@ -190,6 +189,33 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
+        function invoiceBar() {
+            var data = google.visualization.arrayToDataTable([
+                ['', 'Last Year', 'Current Year'],
+
+                @php
+                    foreach ($incomes as $income) {
+                        echo "['" . $income->name . "', " . $income->last_year . ', ' . $income->current_year . '],';
+                    }
+                @endphp
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Income',
+                    subtitle: '',
+                },
+                bar: {
+                    groupWidth: '100%'
+                },
+                height: 500,
+                colors: ['#6590aa', '#1b435d'],
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('income_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
         function employeeSalaryBar() {
             var data = google.visualization.arrayToDataTable([
                 ['', 'Last Year', 'Current Year'],
@@ -270,69 +296,5 @@
             var chart = new google.charts.Bar(document.getElementById('death_report_div'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
-
-        function drawChart4() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Visitations', 'Mode', {
-                    role: 'style'
-                }],
-                ['2010', 10, 50, 'color: gray'],
-                // ['2020', 14, 30, 'color: #76A7FA'],
-                // ['2030', 16, 40, 'opacity: 0.2'],
-                // ['2040', 22, 40, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
-                // ['2050', 28,
-                //     'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2'
-                // ]
-            ]);
-            var options = {
-                chart: {
-                    title: 'Salary',
-                    subtitle: '',
-                },
-                bar: {
-                    groupWidth: '50%'
-                },
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('salaryDiv2'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
-
-        function drawStuff3() {
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Country');
-            data.addColumn('number', 'GDP');
-            data.addRows([
-                ['US', 16768100],
-                ['China', 9181204],
-                // ['Japan', 4898532],
-                // ['Germany', 3730261],
-                // ['France', 2678455]
-            ]);
-
-            var options = {
-                title: 'GDP of selected countries, in US $millions',
-                width: 500,
-                height: 300,
-                legend: 'none',
-                bar: {
-                    groupWidth: '50%'
-                },
-                vAxis: {
-                    gridlines: {
-                        count: 4
-                    }
-                }
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('new_chat'));
-            // chart.draw(data, options);
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-
-            // document.getElementById('new_chat').onchange = function() {
-            //     options['vAxis']['format'] = this.value;
-            //     chart.draw(data, options);
-            // };
-        };
     </script>
 @endsection
