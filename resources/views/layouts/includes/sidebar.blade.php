@@ -91,8 +91,8 @@
 
 
                 @if (in_array(1, Auth::user()->roles))
-                    <li class="{{ request()->is('report-salaries') ? 'active active-now' : '' }}">
-                        <a href="#"><i class="feather-user"></i>
+                    <li class="{{ request()->is('dashboard') ? 'active active-now' : '' }}">
+                        <a href=""{{ route('dashboard') }}><i class="feather-user"></i>
                             <span class="shape1"></span><span class="shape2"></span>
                             <span> {{ __('Reports') }}</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
