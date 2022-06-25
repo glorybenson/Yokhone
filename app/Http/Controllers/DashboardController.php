@@ -25,9 +25,49 @@ class DashboardController extends Controller
     {
         $data['title'] = "Dasboard";
         $employers = Employee::all();
-        $farms = Farm::all();
+        $death_trees = Tree::where("reason", "Death")->with("farm")->get();
 
-        //!income
+        $death_reports = [];
+        $death_result = $death_trees->groupBy(['desc', function ($item) {
+            return $item['desc'];
+        }], preserveKeys: true);
+        foreach ($death_result as $key => $value) {
+            # code...
+            $new_data = $value[$key];
+            $obj = (object)[
+                "name" => $key,
+            ];
+            foreach ($new_data as $data) {
+                $obj->{"farm_" . $data->farm->id} = $data->quantity;
+            }
+            array_push($death_reports, $obj);
+        }
+        $data['death_reports'] = $death_reports;
+
+        $plantation_trees = Tree::where("reason", "Plantation")->with("farm")->get();
+
+        $plantations = [];
+        $plantation_result = $plantation_trees->groupBy(['desc', function ($item) {
+            return $item['desc'];
+        }], preserveKeys: true);
+
+        foreach ($plantation_result as $plantation_key => $plantation_value) {
+            # code...
+            $plantation_data = $plantation_value[$plantation_key];
+            $plantation_obj = (object)[
+                "name" => $plantation_key,
+            ];
+            foreach ($plantation_data as $data_plantation) {
+                $plantation_obj->{"farm_" . $data_plantation->farm->id} = $data_plantation->quantity;
+            }
+            array_push($plantations, $plantation_obj);
+        }
+
+        $data['plantations'] = $plantations;
+
+        $data['farms'] = $farms = Farm::all();
+
+        //income
         $incomes = [];
         foreach ($farms as $farm) {
             # code...
@@ -43,15 +83,6 @@ class DashboardController extends Controller
             }
         }
         $data["incomes"] = $incomes;
-
-        //Employer
-        // $last_year_employee = Employee::whereYear('created_at', now()->subYear()->year)->count();
-        // $current_year_employee = Employee::whereYear('created_at', now()->year)->count();
-        // $data['employee'] = $c = (object) [
-        //     "name" => "Employee",
-        //     "last_year" => $last_year_employee,
-        //     "current_year" => $current_year_employee
-        // ];
 
         //Salary
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
@@ -72,10 +103,6 @@ class DashboardController extends Controller
             "last_year" => $last_year_client,
             "current_year" => $current_year_client
         ];
-
-        $data['plantations'] = Tree::where('reason', "Plantation")->get();
-
-        $data['death_reports']  = Tree::where(['reason' => "Death"])->get();
 
         //Employee Salary
         $employee_salaries = [];
@@ -99,15 +126,6 @@ class DashboardController extends Controller
         }
         $data['employee_salaries'] = $employee_salaries;
 
-
-        //Expenses per farm vs last yr/ current year
-        // $last_year_expense = Expense::groupBy('farm_id')
-        //     ->selectRaw('sum(amount) as sum')->whereYear('date', now()->subYear()->year)
-        //     ->get();
-        // $current_year_expense = Expense::groupBy('farm_id')
-        //     ->selectRaw('sum(amount) as sum')->whereYear('date', now()->year)
-        //     ->get();
-
         //Expenses per year
         $last_year_expense = Expense::whereYear('date', now()->subYear()->year)->get()->sum('amount');
         $current_year_expense = Expense::whereYear('date', now()->year)->get()->sum('amount');
@@ -118,7 +136,10 @@ class DashboardController extends Controller
                 "current_year" => $current_year_expense
             ],
         );
-
+        // dd($farms);
+        $data['farms_dums'] = $farms_dums = array('', '', '', '', '');
+        if ($farms->count() < 5) {
+        }
         return view('dashboard.index', $data);
     }
 
