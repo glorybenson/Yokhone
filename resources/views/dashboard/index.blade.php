@@ -95,14 +95,15 @@
         google.charts.setOnLoadCallback(expenseBar);
         google.charts.setOnLoadCallback(clientPie);
         google.charts.setOnLoadCallback(employeeSalaryBar);
-        google.charts.setOnLoadCallback(plantationBar);
+        // google.charts.setOnLoadCallback(plantationBar);
+        google.charts.setOnLoadCallback(plantationBar2);
         google.charts.setOnLoadCallback(deathReportBar);
         google.charts.setOnLoadCallback(invoiceBar);
 
 
         function salaryBar() {
             var data = google.visualization.arrayToDataTable([
-                ['', 'Last Year', 'Current Year'],
+                ['Name', 'Last Year', 'Current Year'],
 
                 @php
                     foreach ($salaries as $salary) {
@@ -243,12 +244,52 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        function plantationBar() {
+        function plantationBar3() {
             var data = google.visualization.arrayToDataTable([
-                ['Name', 'Quantity'],
+                [@php
+                    echo "'Name',";
+                    foreach ($farms as $farm) {
+                        echo '"' . $farm->farm_name . '",';
+                    }
+                @endphp],
+                // ['Name', 'Farm One', 'Farm Two', 'Farm Three'],
+
+                ['Mango', 50, 60],
+                ['Cashew', 50, 60]
+
+            ]);
+            var options = {
+                chart: {
+                    title: 'Plantantion',
+                    subtitle: '',
+                    is3D: false,
+
+                },
+                bar: {
+                    groupWidth: '50%'
+                },
+                height: 500,
+                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa'],
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('plantation_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        function plantationBar2() {
+            var data = google.visualization.arrayToDataTable([
                 @php
-                    foreach ($plantations as $plantation) {
-                        echo "['" . $plantation->desc . "', " . $plantation->quantity . '],';
+                    echo "['',";
+                    foreach ($farms_dums as $index => $data) {
+                        echo "'";
+    echo isset($farms[$index]->farm_name) && $farms[$index]->farm_name !== null ? $farms[$index]->farm_name : $data;
+    echo "',";
+                    }
+                    echo ']';
+                @endphp,
+                @php
+                    foreach ($plantations as $data) {
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : null) . ', ' . (isset($data->farm_3) ? $data->farm_3 : null) . ', ' . (isset($data->farm_4) ? $data->farm_4 : null) . ', ' . (isset($data->farm_5) ? $data->farm_5 : null) . ', ' . (isset($data->farm_6) ? $data->farm_6 : null) . '],';
                     }
                 @endphp
             ]);
@@ -260,7 +301,7 @@
 
                 },
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
                 height: 500,
                 colors: ['#6590aa', '#1b435d'],
@@ -270,12 +311,21 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
+
         function deathReportBar() {
             var data = google.visualization.arrayToDataTable([
-                ['Name', 'Quantity'],
                 @php
-                    foreach ($death_reports as $death_report) {
-                        echo "['" . $death_report->desc . "', " . $death_report->quantity . '],';
+                    echo "['',";
+                    foreach ($farms_dums as $index => $data) {
+                        echo "'";
+    echo isset($farms[$index]->farm_name) && $farms[$index]->farm_name !== null ? $farms[$index]->farm_name : $data;
+    echo "',";
+                    }
+                    echo ']';
+                @endphp,
+                @php
+                    foreach ($death_reports as $data) {
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : null) . ', ' . (isset($data->farm_3) ? $data->farm_3 : null) . ', ' . (isset($data->farm_4) ? $data->farm_4 : null) . ', ' . (isset($data->farm_5) ? $data->farm_5 : null) . ', ' . (isset($data->farm_6) ? $data->farm_6 : null) . '],';
                     }
                 @endphp
             ]);
@@ -287,10 +337,10 @@
 
                 },
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
                 height: 500,
-                colors: ['#6590aa', '#1b435d'],
+                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
             };
 
             var chart = new google.charts.Bar(document.getElementById('death_report_div'));
