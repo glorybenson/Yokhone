@@ -147,7 +147,7 @@ class DashboardController extends Controller
                 "current_year" => $current_year_expense
             ],
         );
-        $data['farms_dums'] = $farms_dums = array('', '', '', '', '', '');
+        $data['farms_dums'] = $farms_dums = array('', '', '');
 
         return view('dashboard.index', $data);
     }

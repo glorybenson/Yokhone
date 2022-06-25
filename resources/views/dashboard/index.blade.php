@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Salary') }}</h4>
@@ -30,43 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Gross Income Per Farm') }}</h4>
-                    </div>
-                    <div class="card-body" id="income_gross_div">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Net Income Per Farm') }}</h4>
-                    </div>
-                    <div class="card-body" id="income_net_div">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Plantantion Report') }}</h4>
-                    </div>
-                    <div class="card-body" id="plantation_div">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Fixed Expenses') }}</h4>
-                    </div>
-                    <div class="card-body" id="expense_div">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4">
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Employee View') }}</h4>
@@ -75,12 +39,48 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4">
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">{{ __('Gross Income Per Farm') }}</h4>
+                    </div>
+                    <div class="card-body" id="income_gross_div">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">{{ __('Net Income Per Farm') }}</h4>
+                    </div>
+                    <div class="card-body" id="income_net_div">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">{{ __('Plantantion Report') }}</h4>
+                    </div>
+                    <div class="card-body" id="plantation_div">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Death Report') }}</h4>
                     </div>
                     <div class="card-body" id="death_report_div">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">{{ __('Fixed Expenses') }}</h4>
+                    </div>
+                    <div class="card-body" id="expense_div">
                     </div>
                 </div>
             </div>
@@ -289,7 +289,7 @@
                 @endphp,
                 @php
                     foreach ($plantations as $data) {
-                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . ', ' . (isset($data->farm_4) ? $data->farm_4 : 0) . ', ' . (isset($data->farm_5) ? $data->farm_5 : 0) . ', ' . (isset($data->farm_6) ? $data->farm_6 : 0) . '],';
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . '],';
                     }
                 @endphp
             ]);
@@ -332,7 +332,7 @@
                 @endphp,
                 @php
                     foreach ($death_reports as $data) {
-                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . ', ' . (isset($data->farm_4) ? $data->farm_4 : 0) . ', ' . (isset($data->farm_5) ? $data->farm_5 : 0) . ', ' . (isset($data->farm_6) ? $data->farm_6 : 0) . '],';
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . '],';
                     }
                 @endphp
             ]);
@@ -345,7 +345,7 @@
                 bar: {
                     groupWidth: '100%'
                 },
-                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
+                colors: ['#6590aa', '#1b435d', '#6590aa'],
                 height: 600,
                 chartArea: {
                     height: 300,
