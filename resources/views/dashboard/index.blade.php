@@ -194,7 +194,7 @@
                 ['', 'Last Year Net', 'Current Year Net', 'Last Year Gross', 'Current Year Gross'],
                 @php
                     foreach ($incomes2 as $data) {
-                        echo "['" . $data->name . "', " . $data->last_year_net . ', ' . $data->current_year_net . ', ' . $data->last_year_gross . ', ' . $data->current_year_gross . '],';
+                        echo "['" . $data->name . "', " . $data->current_year_net . ', ' . $data->current_year_gross . ', ' . $data->last_year_gross . ', ' . $data->last_year_net . '],';
                     }
                 @endphp
             ]);
