@@ -33,9 +33,18 @@
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Income Per Farm') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Gross Income Per Farm') }}</h4>
                     </div>
-                    <div class="card-body" id="income_div">
+                    <div class="card-body" id="income_gross_div">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title float-left">{{ __('Net Income Per Farm') }}</h4>
+                    </div>
+                    <div class="card-body" id="income_net_div">
                     </div>
                 </div>
             </div>
@@ -48,8 +57,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
             <div class="col-xl-4">
                 <div class="card">
                     <div class="card-header">
@@ -97,7 +104,8 @@
         google.charts.setOnLoadCallback(employeeSalaryBar);
         google.charts.setOnLoadCallback(plantationBar);
         google.charts.setOnLoadCallback(deathReportBar);
-        google.charts.setOnLoadCallback(incomeBar);
+        google.charts.setOnLoadCallback(incomeNet);
+        google.charts.setOnLoadCallback(incomeGross);
 
 
         function salaryBar() {
@@ -189,29 +197,55 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        function incomeBar() {
+        function incomeGross() {
             var data = google.visualization.arrayToDataTable([
-                ['', 'Last Year Net', 'Current Year Net', 'Last Year Gross', 'Current Year Gross'],
+                ['', 'Current Year Gross', 'Last Year Gross'],
                 @php
-                    foreach ($incomes2 as $data) {
-                        echo "['" . $data->name . "', " . $data->current_year_net . ', ' . $data->current_year_gross . ', ' . $data->last_year_gross . ', ' . $data->last_year_net . '],';
+                    foreach ($incomes_gross as $data) {
+                        echo "['" . $data->name . "', " . $data->current_year_gross . ', ' . $data->last_year_gross . '],';
                     }
                 @endphp
             ]);
 
             var options = {
                 chart: {
-                    title: 'Income',
+                    title: 'Income Gross',
                     subtitle: '',
                 },
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
                 height: 500,
-                colors: ['#6590aa', '#1b435d', '#000', 'grey'],
+                colors: ['#6590aa', '#1b435d'],
             };
 
-            var chart = new google.charts.Bar(document.getElementById('income_div'));
+            var chart = new google.charts.Bar(document.getElementById('income_gross_div'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+
+        function incomeNet() {
+            var data = google.visualization.arrayToDataTable([
+                ['', 'Current Year Net', 'Last Year Net'],
+                @php
+                    foreach ($incomes_net as $data) {
+                        echo "['" . $data->name . "', " . $data->current_year_net . ', ' . $data->last_year_net . '],';
+                    }
+                @endphp
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Income Net',
+                    subtitle: '',
+                },
+                bar: {
+                    groupWidth: '50%'
+                },
+                height: 500,
+                colors: ['#6590aa', '#1b435d'],
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('income_net_div'));
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 

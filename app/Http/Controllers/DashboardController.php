@@ -70,35 +70,30 @@ class DashboardController extends Controller
         $data['farms'] = $farms = Farm::all();
 
         //income
-        $incomes = [];
-        $incomes2 = [];
+        $incomes_net = [];
+        $incomes_gross = [];
         foreach ($farms as $farm) {
             # code...
-            $last_year = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
-            $current_year = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
             $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
             $current_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_after_discount');
             $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
             $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
-            $income = (object) [
-                "name" => $farm->farm_name,
-                "last_year" => $last_year,
-                "current_year" => $current_year
-            ];
-            $income2 = (object) [
+
+            $income_net = (object) [
                 "name" => $farm->farm_name,
                 "last_year_net" => $last_year_net,
                 "current_year_net" => $current_year_net,
+            ];
+            $income_gross = (object) [
+                "name" => $farm->farm_name,
                 "last_year_gross" => $last_year_gross,
                 "current_year_gross" => $current_year_gross
             ];
-            if ($last_year > 0 || $current_year > 0) {
-                array_push($incomes, $income);
-            }
-            array_push($incomes2, $income2);
+            array_push($incomes_net, $income_net);
+            array_push($incomes_gross, $income_gross);
         }
-        $data["incomes"] = $incomes;
-        $data["incomes2"] = $incomes2;
+        $data["incomes_gross"] = $incomes_gross;
+        $data["incomes_net"] = $incomes_net;
 
         //Salary
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
