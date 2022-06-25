@@ -13,6 +13,7 @@ use App\Models\Tree;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
 
 class DashboardController extends Controller
 {
@@ -31,6 +32,7 @@ class DashboardController extends Controller
         $death_result = $death_trees->groupBy(['desc', function ($item) {
             return $item['desc'];
         }], preserveKeys: true);
+
         foreach ($death_result as $key => $value) {
             # code...
             $new_data = $value[$key];
@@ -69,20 +71,34 @@ class DashboardController extends Controller
 
         //income
         $incomes = [];
+        $incomes2 = [];
         foreach ($farms as $farm) {
             # code...
             $last_year = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
             $current_year = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
+            $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
+            $current_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_after_discount');
+            $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
+            $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
             $income = (object) [
                 "name" => $farm->farm_name,
                 "last_year" => $last_year,
                 "current_year" => $current_year
             ];
+            $income2 = (object) [
+                "name" => $farm->farm_name,
+                "last_year_net" => $last_year_net,
+                "current_year_net" => $current_year_net,
+                "last_year_gross" => $last_year_gross,
+                "current_year_gross" => $current_year_gross
+            ];
             if ($last_year > 0 || $current_year > 0) {
                 array_push($incomes, $income);
             }
+            array_push($incomes2, $income2);
         }
         $data["incomes"] = $incomes;
+        $data["incomes2"] = $incomes2;
 
         //Salary
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
@@ -136,10 +152,8 @@ class DashboardController extends Controller
                 "current_year" => $current_year_expense
             ],
         );
-        // dd($farms);
-        $data['farms_dums'] = $farms_dums = array('', '', '', '', '');
-        if ($farms->count() < 5) {
-        }
+        $data['farms_dums'] = $farms_dums = array('', '', '', '', '', '');
+
         return view('dashboard.index', $data);
     }
 

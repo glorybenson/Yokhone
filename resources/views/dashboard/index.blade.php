@@ -95,10 +95,9 @@
         google.charts.setOnLoadCallback(expenseBar);
         google.charts.setOnLoadCallback(clientPie);
         google.charts.setOnLoadCallback(employeeSalaryBar);
-        // google.charts.setOnLoadCallback(plantationBar);
-        google.charts.setOnLoadCallback(plantationBar2);
+        google.charts.setOnLoadCallback(plantationBar);
         google.charts.setOnLoadCallback(deathReportBar);
-        google.charts.setOnLoadCallback(invoiceBar);
+        google.charts.setOnLoadCallback(incomeBar);
 
 
         function salaryBar() {
@@ -190,13 +189,12 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        function invoiceBar() {
+        function incomeBar() {
             var data = google.visualization.arrayToDataTable([
-                ['', 'Last Year', 'Current Year'],
-
+                ['', 'Last Year Net', 'Current Year Net', 'Last Year Gross', 'Current Year Gross'],
                 @php
-                    foreach ($incomes as $income) {
-                        echo "['" . $income->name . "', " . $income->last_year . ', ' . $income->current_year . '],';
+                    foreach ($incomes2 as $data) {
+                        echo "['" . $data->name . "', " . $data->last_year_net . ', ' . $data->current_year_net . ', ' . $data->last_year_gross . ', ' . $data->current_year_gross . '],';
                     }
                 @endphp
             ]);
@@ -210,7 +208,7 @@
                     groupWidth: '100%'
                 },
                 height: 500,
-                colors: ['#6590aa', '#1b435d'],
+                colors: ['#6590aa', '#1b435d', '#000', 'grey'],
             };
 
             var chart = new google.charts.Bar(document.getElementById('income_div'));
@@ -244,39 +242,7 @@
             chart.draw(data, google.charts.Bar.convertOptions(options));
         }
 
-        function plantationBar3() {
-            var data = google.visualization.arrayToDataTable([
-                [@php
-                    echo "'Name',";
-                    foreach ($farms as $farm) {
-                        echo '"' . $farm->farm_name . '",';
-                    }
-                @endphp],
-                // ['Name', 'Farm One', 'Farm Two', 'Farm Three'],
-
-                ['Mango', 50, 60],
-                ['Cashew', 50, 60]
-
-            ]);
-            var options = {
-                chart: {
-                    title: 'Plantantion',
-                    subtitle: '',
-                    is3D: false,
-
-                },
-                bar: {
-                    groupWidth: '50%'
-                },
-                height: 500,
-                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa'],
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('plantation_div'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
-
-        function plantationBar2() {
+        function plantationBar() {
             var data = google.visualization.arrayToDataTable([
                 @php
                     echo "['',";
@@ -289,22 +255,29 @@
                 @endphp,
                 @php
                     foreach ($plantations as $data) {
-                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : null) . ', ' . (isset($data->farm_3) ? $data->farm_3 : null) . ', ' . (isset($data->farm_4) ? $data->farm_4 : null) . ', ' . (isset($data->farm_5) ? $data->farm_5 : null) . ', ' . (isset($data->farm_6) ? $data->farm_6 : null) . '],';
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . ', ' . (isset($data->farm_4) ? $data->farm_4 : 0) . ', ' . (isset($data->farm_5) ? $data->farm_5 : 0) . ', ' . (isset($data->farm_6) ? $data->farm_6 : 0) . '],';
                     }
                 @endphp
             ]);
             var options = {
                 chart: {
                     title: 'Plantantion',
-                    subtitle: '',
-                    is3D: false,
+                },
+                bars: 'vertical',
+                bar: {
+                    groupWidth: '100%'
+                },
+                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
+                height: 600,
+                chartArea: {
+                    height: 300,
+                    top: 100,
+                },
+                hAxis: {
+                    slantedText: true,
+                    slantedTextAngle: 45,
 
                 },
-                bar: {
-                    groupWidth: '50%'
-                },
-                height: 500,
-                colors: ['#6590aa', '#1b435d'],
             };
 
             var chart = new google.charts.Bar(document.getElementById('plantation_div'));
@@ -329,18 +302,26 @@
                     }
                 @endphp
             ]);
+
             var options = {
                 chart: {
                     title: 'Death',
-                    subtitle: '',
-                    is3D: false,
+                },
+                bars: 'vertical',
+                bar: {
+                    groupWidth: '100%'
+                },
+                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
+                height: 600,
+                chartArea: {
+                    height: 300,
+                    top: 100,
+                },
+                hAxis: {
+                    slantedText: true,
+                    slantedTextAngle: 45,
 
                 },
-                bar: {
-                    groupWidth: '50%'
-                },
-                height: 500,
-                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
             };
 
             var chart = new google.charts.Bar(document.getElementById('death_report_div'));
