@@ -300,9 +300,9 @@
                 },
                 bars: 'vertical',
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
-                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
+                colors: ['#6590aa', '#1b435d', '#2596be', '#1b435d', '#6590aa', '#1b435d'],
                 height: 600,
                 chartArea: {
                     height: 300,
@@ -344,9 +344,9 @@
                 },
                 bars: 'vertical',
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
-                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
+                colors: ['#6590aa', '#1b435d', '#2596be', '#1b435d', '#6590aa', '#1b435d'],
                 height: 600,
                 chartArea: {
                     height: 300,
