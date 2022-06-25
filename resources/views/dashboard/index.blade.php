@@ -110,7 +110,7 @@
 
         function salaryBar() {
             var data = google.visualization.arrayToDataTable([
-                ['Name', 'Last Year', 'Current Year'],
+                ['', 'Last Year', 'Current Year'],
 
                 @php
                     foreach ($salaries as $salary) {
