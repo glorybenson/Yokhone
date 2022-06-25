@@ -298,7 +298,7 @@
                 @endphp,
                 @php
                     foreach ($death_reports as $data) {
-                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : null) . ', ' . (isset($data->farm_3) ? $data->farm_3 : null) . ', ' . (isset($data->farm_4) ? $data->farm_4 : null) . ', ' . (isset($data->farm_5) ? $data->farm_5 : null) . ', ' . (isset($data->farm_6) ? $data->farm_6 : null) . '],';
+                        echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . ', ' . (isset($data->farm_4) ? $data->farm_4 : 0) . ', ' . (isset($data->farm_5) ? $data->farm_5 : 0) . ', ' . (isset($data->farm_6) ? $data->farm_6 : 0) . '],';
                     }
                 @endphp
             ]);
