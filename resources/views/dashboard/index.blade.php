@@ -289,6 +289,7 @@
                 @endphp,
                 @php
                     foreach ($plantations as $data) {
+                        // echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . ', ' . (isset($data->farm_4) ? $data->farm_4 : 0) . ', ' . (isset($data->farm_5) ? $data->farm_5 : 0) . ', ' . (isset($data->farm_6) ? $data->farm_6 : 0) . '],';
                         echo "['" . $data->name . "', " . (isset($data->farm_1) ? $data->farm_1 : 0) . ', ' . (isset($data->farm_2) ? $data->farm_2 : 0) . ', ' . (isset($data->farm_3) ? $data->farm_3 : 0) . '],';
                     }
                 @endphp
@@ -345,7 +346,7 @@
                 bar: {
                     groupWidth: '100%'
                 },
-                colors: ['#6590aa', '#1b435d', '#6590aa'],
+                colors: ['#6590aa', '#1b435d', '#6590aa', '#1b435d', '#6590aa', '#1b435d'],
                 height: 600,
                 chartArea: {
                     height: 300,
