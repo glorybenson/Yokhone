@@ -149,7 +149,7 @@ class DashboardController extends Controller
         );
         $data['farms_dums'] = $farms_dums = array('', '', '');
 
-        dd($data['plantations'], $data['death_reports']);
+        //dd($data['plantations'], $data['death_reports']);
 
         return view('dashboard.index', $data);
     }
