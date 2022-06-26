@@ -340,7 +340,7 @@
 
             var options = {
                 chart: {
-                    title: trans('Death'),
+                    title: 'Death',
                 },
                 bars: 'vertical',
                 bar: {
