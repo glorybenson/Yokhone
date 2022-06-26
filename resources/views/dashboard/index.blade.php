@@ -260,7 +260,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'Employee Salary',
+                    title: 'Salaire des employés',
                     subtitle: '',
                     is3D: false,
 
@@ -296,7 +296,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'Plantantion',
+                    title: 'Plantation',
                 },
                 bars: 'vertical',
                 bar: {
@@ -340,7 +340,7 @@
 
             var options = {
                 chart: {
-                    title: 'Death',
+                    title: 'Décès',
                 },
                 bars: 'vertical',
                 bar: {
