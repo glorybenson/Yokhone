@@ -121,7 +121,7 @@
 
             var options = {
                 chart: {
-                    title: 'Salary',
+                    title: 'Salaire',
                     subtitle: '',
                 },
                 bar: {
@@ -183,7 +183,7 @@
 
             var options = {
                 chart: {
-                    title: 'Expenses',
+                    title: 'Dépenses',
                     subtitle: '',
                 },
                 bar: {
@@ -209,7 +209,7 @@
 
             var options = {
                 chart: {
-                    title: 'Income Gross',
+                    title: 'Revenu brut',
                     subtitle: '',
                 },
                 bar: {
@@ -235,7 +235,7 @@
 
             var options = {
                 chart: {
-                    title: 'Income Net',
+                    title: 'Revenu net',
                     subtitle: '',
                 },
                 bar: {
