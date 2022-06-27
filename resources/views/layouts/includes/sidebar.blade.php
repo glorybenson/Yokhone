@@ -103,7 +103,6 @@
                             <li><a href="">{{ __('Farms') }}</a></li>
                             <li><a href="">{{ __('Trees') }}</a></li>
                             <li><a href="">{{ __('Clients') }}</a></li>
-                            <li><a href="">{{ __('Login history') }}</a></li>
                         </ul>
                     </li>
                 @endif
