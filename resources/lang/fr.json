@@ -958,6 +958,15 @@
     "Total number of days": "Nombre total de jours",
     "Total Price to be cut": "Total a couper",
     "Add Absence": "Ajouter absence",
-    "Edit Absence": "Modifier l'absence"
+    "Edit Absence": "Modifier l'absence",
+    "Employee View": "Sommaire des salaires",
+    "Salary": "Salaires",
+    "Number of Clients": "Nombre de clients",
+    "Gross Income Per Farm": "Revenu brut par Champ",
+    "Net Income Per Farm": "Revenu net par Champ",
+    "Plantation Report": "Rapport de plantation",
+    "Death Report": "Rapport de décès",
+    "Fixed Expenses": "Dépenses Fixes"
+    
 }
 
