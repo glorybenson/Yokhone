@@ -296,7 +296,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'Plantantion',
+                    title: "{{ __('Plantantion') }}",
                 },
                 bars: 'vertical',
                 bar: {
