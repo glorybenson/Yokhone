@@ -21,7 +21,8 @@ class User
         if (in_array(1, Auth::user()->roles) || in_array(2, Auth::user()->roles)) {
             return $next($request);
         } else {
-            foreach(Auth::user()->roles as $role){
+            foreach (Auth::user()->roles as $role) {
+                return redirect('/home');
                 switch ($role) {
                     case 3:
                         Session::flash('permission_warning', 'You no not have access to this page');

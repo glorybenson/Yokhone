@@ -32,9 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['user']], function () {
         //Dashboard Routes
-        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
         Route::get('/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
-        
+
         // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
         // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
         // Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
@@ -65,11 +64,10 @@ Route::group(['middleware' => ['auth']], function () {
         //Payment Route
         Route::match(['get', 'post'], '/view-employees-payment/{id}', [App\Http\Controllers\HomeController::class, 'employee_payment'])->name('payment.employee');
         Route::post('/add-payment', [App\Http\Controllers\HomeController::class, 'add_payment'])->name('add.payment');
-        
+
         //Absence Route
         Route::match(['get', 'post'], '/view-employees-absence/{id}', [App\Http\Controllers\HomeController::class, 'employee_absence'])->name('absence.employee');
         Route::post('/add-absence', [App\Http\Controllers\HomeController::class, 'add_absence'])->name('add.absence');
-
     });
 
 
@@ -110,6 +108,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], '/edit-invoice/{id}', [App\Http\Controllers\HomeController::class, 'edit_invoice'])->name('edit.invoice');
         Route::match(['post'], '/get_farm_crop', [App\Http\Controllers\HomeController::class, 'get_farm_crop'])->name('get.crop.farm');
     });
+
+    //Dashboard
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     //Settings
     Route::match(['get', 'post'], '/my-profile', [App\Http\Controllers\HomeController::class, 'my_profile'])->name('my.profile');

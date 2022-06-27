@@ -41,29 +41,30 @@ class LoginController extends Controller
     public function redirectTo()
     {
         foreach (Auth::user()->roles as $role) {
-            switch ($role) {
-                case '1':
-                    return '/home';
-                    break;
-                case '2':
-                    return '/home';
-                    break;
-                case '3':
-                    return '/clients';
-                    break;
-                case '4':
-                    return '/farms';
-                    break;
-                case '5':
-                    return '/employees';
-                    break;
-                case '6':
-                    return '/expenses';
-                    break;
-                default:
-                    return '/home';
-                    break;
-            }
+            return '/dashboard';
+            // switch ($role) {
+            //     case '1':
+            //         return '/home';
+            //         break;
+            //     case '2':
+            //         return '/home';
+            //         break;
+            //     case '3':
+            //         return '/clients';
+            //         break;
+            //     case '4':
+            //         return '/farms';
+            //         break;
+            //     case '5':
+            //         return '/employees';
+            //         break;
+            //     case '6':
+            //         return '/expenses';
+            //         break;
+            //     default:
+            //         return '/home';
+            //         break;
+            // }
         }
     }
 }
