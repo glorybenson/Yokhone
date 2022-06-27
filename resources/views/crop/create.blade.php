@@ -208,7 +208,7 @@
                                     <option value="">{{__('Select Description')}}</option>
                                     @if(isset($trees))
                                     @foreach($trees as $tree)
-                                    <option value="{{$tree->desc}}" {{ old('desc') == $tree->desc ? 'selected' : '' }}>{{$tree->desc}}</option>
+                                    <option value="{{$tree->name}}" {{ old('desc') == $tree->name ? 'selected' : '' }}>{{$tree->name}}</option>
                                     @endforeach
                                     @endif
                                 </select>
