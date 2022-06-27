@@ -15,7 +15,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Client') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Number of Clients') }}</h4>
                     </div>
                     <div class="card-body" id="client_div">
                     </div>
@@ -60,7 +60,7 @@
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Plantantion Report') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Plantation Report') }}</h4>
                     </div>
                     <div class="card-body" id="plantation_div">
                     </div>
@@ -121,7 +121,7 @@
 
             var options = {
                 chart: {
-                    title: 'Salary',
+                    title: 'Salaire',
                     subtitle: '',
                 },
                 bar: {
@@ -183,7 +183,7 @@
 
             var options = {
                 chart: {
-                    title: 'Expenses',
+                    title: 'Dépenses',
                     subtitle: '',
                 },
                 bar: {
@@ -209,7 +209,7 @@
 
             var options = {
                 chart: {
-                    title: 'Income Gross',
+                    title: 'Revenu brut',
                     subtitle: '',
                 },
                 bar: {
@@ -235,7 +235,7 @@
 
             var options = {
                 chart: {
-                    title: 'Income Net',
+                    title: 'Revenu net',
                     subtitle: '',
                 },
                 bar: {
@@ -260,7 +260,7 @@
             ]);
             var options = {
                 chart: {
-                    title: 'Employee Salary',
+                    title: 'Salaire des employés',
                     subtitle: '',
                     is3D: false,
 
@@ -340,7 +340,7 @@
 
             var options = {
                 chart: {
-                    title: 'Death',
+                    title: 'Décès',
                 },
                 bars: 'vertical',
                 bar: {
