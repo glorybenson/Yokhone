@@ -26,5 +26,43 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        google.charts.load('current', {
+            'packages': ['bar', 'corechart']
+        });
+        
+        google.charts.setOnLoadCallback(clientPie);
+
+        function clientPie() {
+            var data = google.visualization.arrayToDataTable([
+                ['Last Year', 'Current Year'],
+                ["Last Year", @php echo $client->last_year @endphp],
+                ["Current Year", @php echo $client->current_year @endphp],
+            ]);
+            var options = {
+                chart: {
+                    title: 'Client',
+                    subtitle: '',
+                    is3D: false,
+
+                },
+                bar: {
+                    groupWidth: '50%'
+                },
+                height: 500,
+                colors: ['#6590aa', '#1b435d'],
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('client_div'));
+            chart.draw(data, options);
+        }
+    </script>
 
 @endsection

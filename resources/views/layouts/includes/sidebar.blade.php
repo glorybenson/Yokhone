@@ -96,13 +96,13 @@
                             <span class="shape1"></span><span class="shape2"></span>
                             <span> {{ __('Reports') }}</span> <span class="menu-arrow"></span></a>
                         <ul style="display: none;">
-                            <li><a href="">{{ __('Expenses') }}</a></li>
-                            <li><a href="">{{ __('Incomes') }}</a></li>
-                            <li><a href="">{{ __('Employees') }}</a></li>
+                            <li><a href="{{ route('expense') }}">{{ __('Expenses') }}</a></li>
+                            <li><a href="{{ route('income') }}">{{ __('Incomes') }}</a></li>
+                            <li><a href="{{ route('employee') }}">{{ __('Employees') }}</a></li>
                             <li><a href="{{ route('salary') }}">{{ __('Salaries') }}</a></li>
                             <li><a href="">{{ __('Farms') }}</a></li>
-                            <li><a href="">{{ __('Trees') }}</a></li>
-                            <li><a href="">{{ __('Clients') }}</a></li>
+                            <li><a href="{{ route('tree') }}">{{ __('Trees') }}</a></li>
+                            <li><a href="{{ route('client') }}">{{ __('Clients') }}</a></li>
                         </ul>
                     </li>
                 @endif
