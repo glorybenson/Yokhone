@@ -33,6 +33,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['user']], function () {
         //Dashboard Routes
         Route::get('/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
+        //Route::get('/report-expenses', [App\Http\Controllers\ReportController::class, 'expenses'])->name('expenses');
+        //Route::get('/report-client', [App\Http\Controllers\ReportController::class, 'client'])->name('client');
+        //Route::get('/report-employee', [App\Http\Controllers\ReportController::class, 'employee'])->name('employee');
+        //Route::get('/report-farm', [App\Http\Controllers\ReportController::class, 'farm'])->name('farm');
+        //Route::get('/report-income', [App\Http\Controllers\ReportController::class, 'income'])->name('income');
+        //Route::get('/report-trees', [App\Http\Controllers\ReportController::class, 'trees'])->name('trees');
 
         // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
         // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
