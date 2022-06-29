@@ -42,25 +42,36 @@
 
         function salaryBar() {
             var data = google.visualization.arrayToDataTable([
-                ['Employee Name', 'Last Year', 'Current Year'],
+                ['', 'Last Year', 'Current Year'],
+
                 @php
                     foreach ($salaries as $salary) {
                         echo "['" . $salary->name . "', " . $salary->last_year . ', ' . $salary->current_year . '],';
                     }
                 @endphp
             ]);
+
             var options = {
                 chart: {
-                    title: 'Salary',
+                    title: 'Salaire',
                     subtitle: '',
-                    is3D: false,
-
                 },
                 bar: {
-                    groupWidth: '100%'
+                    groupWidth: '50%'
                 },
-                height: 550,
+                height: 500,
                 colors: ['#6590aa', '#1b435d'],
+                axes: {
+                    y: {
+                        distance: {
+                            label: 'parsecs'
+                        }, // Left y-axis.
+                        brightness: {
+                            side: 'right',
+                            label: 'apparent magnitude'
+                        } // Right y-axis.
+                    }
+                }
             };
 
             var chart = new google.charts.Bar(document.getElementById('salary_div'));

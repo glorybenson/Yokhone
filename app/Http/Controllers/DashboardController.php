@@ -188,25 +188,15 @@ class DashboardController extends Controller
     public function salary()
     {
         $data['title'] = "Salaries Report";
-        $employers = Employee::all();
-        $expenses = [];
-        foreach ($employers as $employee) {
-            # code...
-            $current_year_expense = Salary::where("employee_id", $employee->id)
-                ->selectRaw('sum(amount) as sum')->whereYear('created_at', now()->year)
-                ->get();
-            $last_year_expense = Salary::where("employee_id", $employee->id)
-                ->selectRaw('sum(amount) as sum')->whereYear('created_at', now()->subYear()->year)
-                ->get();
-            $params =
-                (object)[
-                    "name" => $employee->first_name . " " . $employee->last_name,
-                    "last_year" => $last_year_expense[0]->sum,
-                    "current_year" => $current_year_expense[0]->sum
-                ];
-            array_push($expenses, $params);
-        }
-        $data['salaries'] = $expenses;
+        $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
+        $current_year_salary = Payment::whereYear('date', now()->year)->get()->sum('amount');
+        $data['salaries'] = array(
+            (object)[
+                "name" => "Salary",
+                "last_year" => $last_year_salary,
+                "current_year" => $current_year_salary
+            ],
+        );
         return view('report.salary', $data);
     }
 
