@@ -66,45 +66,46 @@ class DashboardController extends Controller
         }
 
         $data['plantations'] = $plantations;
+        // $farms = Farm::all();
+        // $plantation_data = [];
+        // $death_data = [];
+        // $tree_grouped = $plantation_trees->groupBy(['desc', function ($item) {
+        //     return $item['desc'];
+        // }], preserveKeys: true);
+        // foreach ($farms as $farm) {
+        //     $plantations = Tree::where(["reason" => "Plantation", "farm_id" => $farm->id])->with("farm")->get();
+        //     $deaths = Tree::where(["reason" => "Death", "farm_id" => $farm->id])->with("farm")->get();
+        //     $farm_data_plantation = [];
+        //     $farm_data_death = [];
+        //     foreach ($plantations as $plantation) {
+        //         $obj = (object) [
+        //             "id" => $plantation->id,
+        //             "data" => $plantation->quantity
+        //         ];
+        //         array_push($farm_data_plantation, $obj);
+        //     }
+        //     foreach ($deaths as $death) {
+        //         array_push($farm_data_death, $death->quantity);
+        //     }
 
-        $data['farms'] = $farms = Farm::all();
+        //     $farm_obj = (object) [
+        //         "name" => $farm->farm_name,
+        //         "data" => $farm_data_plantation
+        //     ];
+        //     $farm_obj2 = (object) [
+        //         "name" => $farm->farm_name,
+        //         "data" => $farm_data_death
+        //     ];
 
-        //income
-        $incomes_net = [];
-        $incomes_gross = [];
-        foreach ($farms as $farm) {
-            # code...
-            $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
-            $current_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_after_discount');
-            $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
-            $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
+        //     array_push($plantation_data, $farm_obj);
+        //     array_push($death_data, $farm_obj2);
+        // }
 
-            $income_net = (object) [
-                "name" => $farm->farm_name,
-                "last_year_net" => $last_year_net,
-                "current_year_net" => $current_year_net,
-            ];
-            $income_gross = (object) [
-                "name" => $farm->farm_name,
-                "last_year_gross" => $last_year_gross,
-                "current_year_gross" => $current_year_gross
-            ];
-            array_push($incomes_net, $income_net);
-            array_push($incomes_gross, $income_gross);
-        }
-        $data["incomes_gross"] = $incomes_gross;
-        $data["incomes_net"] = $incomes_net;
+        //dd($plantation_data, $death_data, $tree_grouped);
+        dd($plantation_result, $death_reports);
 
-        //Salary
-        $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
-        $current_year_salary = Payment::whereYear('date', now()->year)->get()->sum('amount');
-        $data['salaries'] = array(
-            (object)[
-                "name" => "Salary",
-                "last_year" => $last_year_salary,
-                "current_year" => $current_year_salary
-            ],
-        );
+
+
 
         //Client
         $last_year_client = Client::whereYear('date_become_client', now()->subYear()->year)->count();
@@ -115,8 +116,26 @@ class DashboardController extends Controller
             "current_year" => $current_year_client
         ];
 
+
+
+
+        $data['farms_dums'] = $farms_dums = array('', '', '');
+
+
+        //Salary
+        $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
+        $current_year_salary = Payment::whereYear('date', now()->year)->get()->sum('amount');
+        $data['salary'] =
+            (object)[
+                "last_year" => $last_year_salary,
+                "current_year" => $current_year_salary
+            ];
+
+
         //Employee Salary
-        $employee_salaries = [];
+        $employee_last_year_salary = [];
+        $employee_current_year_salary = [];
+        $employee_names = [];
         foreach ($employers as $employee) {
             # code...
             $current_year_salary = Payment::where("employee_id", $employee->id)
@@ -125,31 +144,58 @@ class DashboardController extends Controller
             $last_year_salary = Payment::where("employee_id", $employee->id)
                 ->whereYear('date', now()->subYear()->year)
                 ->get()->sum('amount');
-            $params =
-                (object)[
-                    "name" => $employee->first_name . " " . $employee->last_name,
-                    "last_year" => $last_year_salary,
-                    "current_year" => $current_year_salary
-                ];
             if ($last_year_salary > 0 || $current_year_salary > 0) {
-                array_push($employee_salaries, $params);
+                $name_obj = $employee->first_name . " " . $employee->last_name;
+                array_push($employee_last_year_salary, $last_year_salary);
+                array_push($employee_current_year_salary, $current_year_salary);
+                array_push($employee_names, $name_obj);
             }
         }
-        $data['employee_salaries'] = $employee_salaries;
+        $data['employee_last_year_salary'] = $employee_last_year_salary;
+        $data['employee_current_year_salary'] = $employee_current_year_salary;
+        $data['employee_names'] = $employee_names;
 
-        //Expenses per year
+
+        //Gross Income Per Farm && Net Income Per Farm
+        $data['farms'] = $farms = Farm::all();
+        $farm_names = [];
+        $last_year_net_income = [];
+        $current_year_net_income = [];
+        $last_year_gross_income = [];
+        $current_year_gross_income = [];
+        foreach ($farms as $farm) {
+            # code...
+            $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
+            $current_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_after_discount');
+            $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
+            $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
+
+            if (($last_year_net + $current_year_net) > 0) {
+                array_push($farm_names, $farm->farm_name);
+                array_push($last_year_net_income, $last_year_net);
+                array_push($current_year_net_income, $current_year_net);
+            }
+            if (($last_year_gross + $current_year_gross) > 0) {
+                array_push($last_year_gross_income, $last_year_gross);
+                array_push($current_year_gross_income, $current_year_gross);
+            }
+        }
+        $data['income_data'] = (object) [
+            "farm_names" => $farm_names,
+            "last_year_net_income" => $last_year_net_income,
+            "current_year_net_income" => $current_year_net_income,
+            "last_year_gross_income" => $last_year_gross_income,
+            "current_year_gross_income" => $current_year_gross_income
+        ];
+
+        //Expenses
         $last_year_expense = Expense::whereYear('date', now()->subYear()->year)->get()->sum('amount');
         $current_year_expense = Expense::whereYear('date', now()->year)->get()->sum('amount');
-        $data['expenses'] =  array(
+        $data['expenses'] =
             (object)[
-                "name" => "Expense",
                 "last_year" => $last_year_expense,
                 "current_year" => $current_year_expense
-            ],
-        );
-        $data['farms_dums'] = $farms_dums = array('', '', '');
-
-        //dd($data['plantations'], $data['death_reports']);
+            ];
 
         return view('dashboard.index', $data);
     }
@@ -234,7 +280,7 @@ class DashboardController extends Controller
     {
         $data['title'] = "Salaries Report";
         $employers = Employee::all();
-        
+
         $employee_salaries = [];
         foreach ($employers as $employee) {
             # code...
@@ -257,7 +303,6 @@ class DashboardController extends Controller
         $data['employee_salaries'] = $employee_salaries;
 
         return view('report.employee', $data);
-
     }
 
     public function trees()
