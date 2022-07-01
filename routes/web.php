@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['user']], function () {
         //Dashboard Routes
         Route::get('/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
-        Route::get('/report-expense', [App\Http\Controllers\DashboardController::class, 'expenses'])->name('expense');
+        Route::match(['get', 'post'], '/report-expense', [App\Http\Controllers\DashboardController::class, 'expenses'])->name('expense');
         Route::get('/report-client', [App\Http\Controllers\DashboardController::class, 'client'])->name('client');
         Route::get('/report-employee', [App\Http\Controllers\DashboardController::class, 'employee'])->name('employee');
         Route::get('/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');

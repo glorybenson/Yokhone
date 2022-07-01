@@ -104,7 +104,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         //Plantation
-        //Gross Income Per Farm
         var plantationDiv = document.getElementById("plantation_div").getContext("2d");
         const treeData = @json($tree_data_plan ?? '');
         const newPlantationData = @json($plantation_data ?? '');
@@ -142,6 +141,7 @@
             }
         });
 
+        //Death 
         var deathDiv = document.getElementById("death_report_div").getContext("2d");
         const treeDataDeath = @json($tree_data_death ?? '');
         const newDeathData = @json($death_data ?? '');
@@ -180,7 +180,7 @@
 
 
 
-        //Salary
+        //Expenses
         var expensesDiv = document.getElementById("expenses_div").getContext("2d");
         const expenses = @json($expenses ?? '');
         const expensesData = {
