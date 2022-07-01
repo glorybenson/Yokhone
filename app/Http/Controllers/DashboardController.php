@@ -26,85 +26,64 @@ class DashboardController extends Controller
     {
         $data['title'] = "Dasboard";
         $employers = Employee::all();
+
         $death_trees = Tree::where("reason", "Death")->with("farm")->get();
-
-        $death_reports = [];
-        $death_result = $death_trees->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
-
-        foreach ($death_result as $key => $value) {
-            # code...
-            $new_data = $value[$key];
-            $obj = (object)[
-                "name" => $key,
-            ];
-            foreach ($new_data as $data) {
-                $obj->{"farm_" . $data->farm->id} = $data->quantity;
-            }
-            array_push($death_reports, $obj);
-        }
-        $data['death_reports'] = $death_reports;
-
         $plantation_trees = Tree::where("reason", "Plantation")->with("farm")->get();
 
-        $plantations = [];
         $plantation_result = $plantation_trees->groupBy(['desc', function ($item) {
             return $item['desc'];
         }], preserveKeys: true);
 
+        $plantation_result2 = $death_trees->groupBy(['desc', function ($item) {
+            return $item['desc'];
+        }], preserveKeys: true);
+
+
+        $plan_name_plan = [];
+        $plan_name_death = [];
+        $plan_data = [];
+        $plan_data2 = [];
+
         foreach ($plantation_result as $plantation_key => $plantation_value) {
             # code...
-            $plantation_data = $plantation_value[$plantation_key];
-            $plantation_obj = (object)[
-                "name" => $plantation_key,
-            ];
-            foreach ($plantation_data as $data_plantation) {
-                $plantation_obj->{"farm_" . $data_plantation->farm->id} = $data_plantation->quantity;
-            }
-            array_push($plantations, $plantation_obj);
+            array_push($plan_data, $plantation_value[$plantation_key]);
         }
 
-        $data['plantations'] = $plantations;
-        // $farms = Farm::all();
-        // $plantation_data = [];
-        // $death_data = [];
-        // $tree_grouped = $plantation_trees->groupBy(['desc', function ($item) {
-        //     return $item['desc'];
-        // }], preserveKeys: true);
-        // foreach ($farms as $farm) {
-        //     $plantations = Tree::where(["reason" => "Plantation", "farm_id" => $farm->id])->with("farm")->get();
-        //     $deaths = Tree::where(["reason" => "Death", "farm_id" => $farm->id])->with("farm")->get();
-        //     $farm_data_plantation = [];
-        //     $farm_data_death = [];
-        //     foreach ($plantations as $plantation) {
-        //         $obj = (object) [
-        //             "id" => $plantation->id,
-        //             "data" => $plantation->quantity
-        //         ];
-        //         array_push($farm_data_plantation, $obj);
-        //     }
-        //     foreach ($deaths as $death) {
-        //         array_push($farm_data_death, $death->quantity);
-        //     }
+        foreach ($plantation_result2 as $plantation_key => $plantation_value) {
+            # code...
+            array_push($plan_data2, $plantation_value[$plantation_key]);
+        }
 
-        //     $farm_obj = (object) [
-        //         "name" => $farm->farm_name,
-        //         "data" => $farm_data_plantation
-        //     ];
-        //     $farm_obj2 = (object) [
-        //         "name" => $farm->farm_name,
-        //         "data" => $farm_data_death
-        //     ];
+        $arr = [];
+        foreach ($plan_data as $key => $data) {
+            $plan_obj = (object)[];
+            foreach ($data as $d) {
+                $farm = Farm::find($d->farm_id);
+                $farm_name = "farm$farm->id";
+                $plan_obj->x = $d->desc;
+                $plan_obj->$farm_name = $d->quantity;
+            }
+            array_push($arr, $plan_obj);
+        }
 
-        //     array_push($plantation_data, $farm_obj);
-        //     array_push($death_data, $farm_obj2);
-        // }
+        $arr2 = [];
+        foreach ($plan_data2 as $key => $data) {
+            $plan_obj = (object)[];
+            foreach ($data as $d) {
+                $farm = Farm::find($d->farm_id);
+                $farm_name = "farm$farm->id";
+                $plan_obj->x = $d->desc;
+                $plan_obj->$farm_name = $d->quantity;
+            }
+            array_push($arr2, $plan_obj);
+        }
 
-        //dd($plantation_data, $death_data, $tree_grouped);
-        dd($plantation_result, $death_reports);
-
-
+        // dd($arr2);
+        $data["tree_data_plan"] = $plan_name_plan;
+        $data["tree_data_death"] = $plan_name_death;
+        $data["plantation_data"] = $arr;
+        $data["death_data"] = $arr2;
+        $data["farms"] = Farm::all();
 
 
         //Client
