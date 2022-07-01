@@ -116,9 +116,9 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newPlantationData,
-                maxBarThickness: 100,
-                borderRadius: 5,
-                skipNull: true,
+                // maxBarThickness: 100,
+                // borderRadius: 5,
+                // skipNull: true,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
@@ -155,9 +155,9 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newDeathData,
-                skipNull: true,
-                maxBarThickness: 100,
-                borderRadius: 5,
+                // skipNull: true,
+                // maxBarThickness: 100,
+                // borderRadius: 5,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
@@ -195,19 +195,19 @@
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
                     data: [expenses.last_year],
-                    barPercentage: 1,
-                    categoryPercentage: 0.4,
-                    maxBarThickness: 100,
-                    borderRadius: 10,
+                    // barPercentage: 1,
+                    // categoryPercentage: 0.4,
+                    // maxBarThickness: 100,
+                    // borderRadius: 10,
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
                     data: [expenses.current_year],
-                    barPercentage: 1,
-                    categoryPercentage: 0.4,
-                    maxBarThickness: 100,
-                    borderRadius: 10,
+                    // barPercentage: 1,
+                    // categoryPercentage: 0.4,
+                    // maxBarThickness: 100,
+                    // borderRadius: 10,
                 }
             ]
         };
@@ -228,17 +228,17 @@
                     label: "Last Year",
                     backgroundColor: "#6590aa",
                     data: incomeData.last_year_gross_income,
-                    maxBarThickness: 100,
-                    borderRadius: 5,
-                    skipNull: true,
+                    // maxBarThickness: 100,
+                    // borderRadius: 5,
+                    // skipNull: true,
                 },
                 {
                     label: "Current Year",
                     backgroundColor: "#1b435d",
                     data: incomeData.current_year_gross_income,
-                    maxBarThickness: 100,
-                    borderRadius: 5,
-                    skipNull: true,
+                    // maxBarThickness: 100,
+                    // borderRadius: 5,
+                    // skipNull: true,
                 }
             ]
         };
@@ -257,17 +257,17 @@
                     label: "Last Year",
                     backgroundColor: "#6590aa",
                     data: incomeData.last_year_net_income,
-                    skipNull: true,
-                    maxBarThickness: 100,
-                    borderRadius: 5,
+                    // skipNull: true,
+                    // maxBarThickness: 100,
+                    // borderRadius: 5,
                 },
                 {
                     label: "Current Year",
                     backgroundColor: "#1b435d",
                     data: incomeData.current_year_net_income,
-                    skipNull: true,
-                    maxBarThickness: 100,
-                    borderRadius: 5,
+                    // skipNull: true,
+                    // maxBarThickness: 100,
+                    // borderRadius: 5,
                 }
             ]
         };
@@ -288,21 +288,21 @@
         var employeeData = {
             labels: employeeNames,
             datasets: [{
-                    barPercentage: 0.4,
-                    categoryPercentage: 1,
                     label: "Last Year",
                     backgroundColor: "#6590aa",
                     data: employeeLastYearSalary,
-                    borderRadius: 10,
-                    skipNull: false
+                    // borderRadius: 10,
+                    // skipNull: false,
+                    // barPercentage: 0.4,
+                    // categoryPercentage: 1,
                 },
                 {
-                    barPercentage: 0.5,
                     label: "Current Year",
                     backgroundColor: "#1b435d",
                     data: employeeCurrentYearSalary,
-                    borderRadius: 10,
-                    skipNull: true
+                    // barPercentage: 0.5,
+                    // borderRadius: 10,
+                    // skipNull: true
                 }
             ]
         };
@@ -336,19 +336,19 @@
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
                     data: [salary.last_year],
-                    barPercentage: 1,
-                    categoryPercentage: 0.4,
-                    maxBarThickness: 100,
-                    borderRadius: 10,
+                    // barPercentage: 1,
+                    // categoryPercentage: 0.4,
+                    // maxBarThickness: 100,
+                    // borderRadius: 10,
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
                     data: [salary.current_year],
-                    barPercentage: 1,
-                    categoryPercentage: 0.4,
-                    maxBarThickness: 100,
-                    borderRadius: 10,
+                    // barPercentage: 1,
+                    // categoryPercentage: 0.4,
+                    // maxBarThickness: 100,
+                    // borderRadius: 10,
                 }
             ]
         };
