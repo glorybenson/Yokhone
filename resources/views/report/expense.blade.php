@@ -55,20 +55,60 @@
     <script>
         var expensesDiv = document.getElementById("expenses_div").getContext("2d");
         const expenses = @json($expenses_data ?? '');
-        console.log(expenses)
+        console.log(expenses.all_expenses_data)
         const expensesData = {
             labels: expenses.farms,
             datasets: [{
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
-                    data: expenses.last_year_expense
+                    skipNull: true,
+                    maxBarThickness: 60,
+                    data: expenses.all_expenses_data,
+                    parsing: {
+                        yAxisKey: 'last_year'
+                    },
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
-                    data: expenses.current_year_expense
+                    skipNull: true,
+                    maxBarThickness: 60,
+                    data: expenses.all_expenses_data,
+                    parsing: {
+                        yAxisKey: 'current_year'
+                    },
                 }
             ]
+        };
+        const data = [{
+            x: 'Jan',
+            net: 100,
+            cogs: 50,
+            gm: 50
+        }, {
+            x: 'Feb',
+            net: 120,
+            cogs: 55,
+            gm: 75
+        }];
+        const cfg = {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb'],
+                datasets: [{
+                    label: 'Net sales',
+                    data: data,
+                    parsing: {
+                        yAxisKey: 'net'
+                    }
+                }, {
+                    label: 'Cost of goods sold',
+                    data: data,
+                    parsing: {
+                        yAxisKey: 'cogs'
+                    }
+                }]
+            },
         };
 
         new Chart(expensesDiv, {

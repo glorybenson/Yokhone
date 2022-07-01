@@ -253,8 +253,7 @@ class DashboardController extends Controller
         $data['title'] = "Expense Report";
         $data['farms'] = $farms = Farm::all();
         $farm__array = [];
-        $last_year_expense_array = [];
-        $current_year_expense_array = [];
+        $arr2 = [];
 
         if ($_POST) {
             $from = $request->from;
@@ -264,29 +263,40 @@ class DashboardController extends Controller
                 $data['from'] = $from;
                 $data['to'] = $to;
                 foreach ($farms as $farm) {
-                    # code...
                     $last_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->subYear()->year)->get()->sum('amount');
                     $current_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->year)->get()->sum('amount');
-                    array_push($last_year_expense_array, $last_year_expense);
-                    array_push($current_year_expense_array, $current_year_expense);
-                    array_push($farm__array, $farm->farm_name);
+                    $plan_obj = (object)[];
+                    $plan_obj->x = $farm->farm_name;
+                    if ($last_year_expense > 0) {
+                        $plan_obj->last_year = $last_year_expense;
+                    }
+                    if ($current_year_expense > 0) {
+                        $plan_obj->current_year = $current_year_expense;
+                    }
+                    array_push($arr2, $plan_obj);
                 }
             }
         } else {
             foreach ($farms as $farm) {
-                # code...
                 $last_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('amount');
                 $current_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('amount');
-                array_push($last_year_expense_array, $last_year_expense);
-                array_push($current_year_expense_array, $current_year_expense);
-                array_push($farm__array, $farm->farm_name);
+                $plan_obj = (object)[];
+                $plan_obj->x = $farm->farm_name;
+                if ($last_year_expense > 0) {
+                    $plan_obj->last_year = $last_year_expense;
+                }
+                if ($current_year_expense > 0) {
+                    $plan_obj->current_year = $current_year_expense;
+                }
+
+                array_push($arr2, $plan_obj);
             }
         }
 
+        // dd($arr2);
         $data['expenses_data'] = (object) [
             "farms" => $farm__array,
-            "last_year_expense" => $last_year_expense_array,
-            "current_year_expense" => $current_year_expense_array,
+            "all_expenses_data" => $arr2
         ];
 
         return view('report.expense', $data);
