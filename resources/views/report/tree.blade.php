@@ -77,9 +77,6 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newPlantationData,
-                // maxBarThickness: 100,
-                // borderRadius: 5,
-                // skipNull: true,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
