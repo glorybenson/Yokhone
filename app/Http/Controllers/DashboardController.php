@@ -180,15 +180,20 @@ class DashboardController extends Controller
 
     public function farm()
     {
-        return view('report.farm'); 
+        return view('report.farm');
     }
 
     public function income()
     {
         $data['title'] = "Income Report";
         $data['farms'] = $farms = Farm::all();
-        $incomes_net = [];
-        $incomes_gross = [];
+
+        $data['farms'] = $farms = Farm::all();
+        $farm_names = [];
+        $last_year_net_income = [];
+        $current_year_net_income = [];
+        $last_year_gross_income = [];
+        $current_year_gross_income = [];
         foreach ($farms as $farm) {
             # code...
             $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
@@ -196,21 +201,23 @@ class DashboardController extends Controller
             $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
             $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
 
-            $income_net = (object) [
-                "name" => $farm->farm_name,
-                "last_year_net" => $last_year_net,
-                "current_year_net" => $current_year_net,
-            ];
-            $income_gross = (object) [
-                "name" => $farm->farm_name,
-                "last_year_gross" => $last_year_gross,
-                "current_year_gross" => $current_year_gross
-            ];
-            array_push($incomes_net, $income_net);
-            array_push($incomes_gross, $income_gross);
+            if (($last_year_net + $current_year_net) > 0) {
+                array_push($farm_names, $farm->farm_name);
+                array_push($last_year_net_income, $last_year_net);
+                array_push($current_year_net_income, $current_year_net);
+            }
+            if (($last_year_gross + $current_year_gross) > 0) {
+                array_push($last_year_gross_income, $last_year_gross);
+                array_push($current_year_gross_income, $current_year_gross);
+            }
         }
-        $data["incomes_gross"] = $incomes_gross;
-        $data["incomes_net"] = $incomes_net;
+        $data['income_data'] = (object) [
+            "farm_names" => $farm_names,
+            "last_year_net_income" => $last_year_net_income,
+            "current_year_net_income" => $current_year_net_income,
+            "last_year_gross_income" => $last_year_gross_income,
+            "current_year_gross_income" => $current_year_gross_income
+        ];
         return view('report.income', $data);
     }
 
@@ -224,7 +231,7 @@ class DashboardController extends Controller
                 "last_year" => $last_year_salary,
                 "current_year" => $current_year_salary
             ];
-        
+
         return view('report.salary', $data);
     }
 
@@ -241,19 +248,46 @@ class DashboardController extends Controller
         return view('report.client', $data);
     }
 
-    public function expenses()
+    public function expenses(Request $request)
     {
         $data['title'] = "Expense Report";
-        $last_year_expense = Expense::whereYear('date', now()->subYear()->year)->get()->sum('amount');
-        $current_year_expense = Expense::whereYear('date', now()->year)->get()->sum('amount');
-        $data['expenses'] =  array(
-            (object)[
-                "name" => "Expense",
-                "last_year" => $last_year_expense,
-                "current_year" => $current_year_expense
-            ],
-        );
-        $data['farms_dums'] = $farms_dums = array('', '', '');
+        $data['farms'] = $farms = Farm::all();
+        $farm__array = [];
+        $last_year_expense_array = [];
+        $current_year_expense_array = [];
+
+        if ($_POST) {
+            $from = $request->from;
+            $to = $request->to;
+            if (isset($from) && isset($to)) {
+                $data['mode'] = "search";
+                $data['from'] = $from;
+                $data['to'] = $to;
+                foreach ($farms as $farm) {
+                    # code...
+                    $last_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->subYear()->year)->get()->sum('amount');
+                    $current_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->year)->get()->sum('amount');
+                    array_push($last_year_expense_array, $last_year_expense);
+                    array_push($current_year_expense_array, $current_year_expense);
+                    array_push($farm__array, $farm->farm_name);
+                }
+            }
+        } else {
+            foreach ($farms as $farm) {
+                # code...
+                $last_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('amount');
+                $current_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('amount');
+                array_push($last_year_expense_array, $last_year_expense);
+                array_push($current_year_expense_array, $current_year_expense);
+                array_push($farm__array, $farm->farm_name);
+            }
+        }
+
+        $data['expenses_data'] = (object) [
+            "farms" => $farm__array,
+            "last_year_expense" => $last_year_expense_array,
+            "current_year_expense" => $current_year_expense_array,
+        ];
 
         return view('report.expense', $data);
     }
@@ -294,11 +328,13 @@ class DashboardController extends Controller
         if ($_POST) {
             $from = $request->from;
             $to = $request->to;
-            $data['mode'] = "search";
-            $data['from'] = $from;
-            $data['to'] = $to;
-            $death_trees = Tree::whereBetween('date_planted', [$from, $to])->where("reason", "Death")->with("farm")->get();
-            $plantation_trees = Tree::whereBetween('date_planted', [$from, $to])->where("reason", "Plantation")->with("farm")->get();
+            if (isset($from) && isset($to)) {
+                $data['mode'] = "search";
+                $data['from'] = $from;
+                $data['to'] = $to;
+                $death_trees = Tree::whereBetween('date_planted', [$from, $to])->where("reason", "Death")->with("farm")->get();
+                $plantation_trees = Tree::whereBetween('date_planted', [$from, $to])->where("reason", "Plantation")->with("farm")->get();
+            }
         }
 
 
