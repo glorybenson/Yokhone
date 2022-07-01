@@ -20,62 +20,39 @@
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Salaries') }}</h4>
                     </div>
-                    <div class="card-body" id="salary_div">
+                    <div class="card-body">
+                        <canvas id="salary_div" width="300" height="300"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        google.charts.load('current', {
-            'packages': ['bar', 'corechart']
-        });
-        google.charts.setOnLoadCallback(salaryBar);
-
-
-        function salaryBar() {
-            var data = google.visualization.arrayToDataTable([
-                ['', 'Last Year', 'Current Year'],
-
-                @php
-                    foreach ($salaries as $salary) {
-                        echo "['" . $salary->name . "', " . $salary->last_year . ', ' . $salary->current_year . '],';
-                    }
-                @endphp
-            ]);
-
-            var options = {
-                chart: {
-                    title: 'Salaire',
-                    subtitle: '',
+        var salaryDiv = document.getElementById("salary_div").getContext("2d");
+        const salary = @json($salary ?? '');
+        const salaryData = {
+            labels: ["Salary"],
+            datasets: [{
+                    label: ['Last Year'],
+                    backgroundColor: "#6590aa",
+                    data: [salary.last_year],
+                    barPercentage: 1
                 },
-                bar: {
-                    groupWidth: '50%'
-                },
-                height: 500,
-                colors: ['#6590aa', '#1b435d'],
-                axes: {
-                    y: {
-                        distance: {
-                            label: 'parsecs'
-                        }, // Left y-axis.
-                        brightness: {
-                            side: 'right',
-                            label: 'apparent magnitude'
-                        } // Right y-axis.
-                    }
+                {
+                    label: ['Current Year'],
+                    backgroundColor: "#1b435f",
+                    data: [salary.current_year],
+                    barPercentage: 0.95,
                 }
-            };
+            ]
+        };
 
-            var chart = new google.charts.Bar(document.getElementById('salary_div'));
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
+        new Chart(salaryDiv, {
+            type: 'bar',
+            data: salaryData,
+            options: {}
+        });
+
     </script>
 @endsection

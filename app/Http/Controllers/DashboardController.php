@@ -178,6 +178,11 @@ class DashboardController extends Controller
         return view('dashboard.index', $data);
     }
 
+    public function farm()
+    {
+        return view('report.farm'); 
+    }
+
     public function income()
     {
         $data['title'] = "Income Report";
@@ -214,13 +219,12 @@ class DashboardController extends Controller
         $data['title'] = "Salaries Report";
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
         $current_year_salary = Payment::whereYear('date', now()->year)->get()->sum('amount');
-        $data['salaries'] = array(
+        $data['salary'] =
             (object)[
-                "name" => "Salary",
                 "last_year" => $last_year_salary,
                 "current_year" => $current_year_salary
-            ],
-        );
+            ];
+        
         return view('report.salary', $data);
     }
 

@@ -100,7 +100,7 @@
                             <li><a href="{{ route('income') }}">{{ __('Incomes') }}</a></li>
                             <li><a href="{{ route('employee') }}">{{ __('Employees') }}</a></li>
                             <li><a href="{{ route('salary') }}">{{ __('Salaries') }}</a></li>
-                            <li><a href="">{{ __('Farms') }}</a></li>
+                            <li><a href="{{ route('farm') }}">{{ __('Farms') }}</a></li>
                             <li><a href="{{ route('tree') }}">{{ __('Trees') }}</a></li>
                             <li><a href="{{ route('client') }}">{{ __('Clients') }}</a></li>
                         </ul>

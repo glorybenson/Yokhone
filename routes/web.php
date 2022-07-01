@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/report-expense', [App\Http\Controllers\DashboardController::class, 'expenses'])->name('expense');
         Route::get('/report-client', [App\Http\Controllers\DashboardController::class, 'client'])->name('client');
         Route::get('/report-employee', [App\Http\Controllers\DashboardController::class, 'employee'])->name('employee');
-        //Route::get('/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');
+        Route::get('/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');
         Route::get('/report-income', [App\Http\Controllers\DashboardController::class, 'income'])->name('income');
         Route::match(['get', 'post'], '/report-tree', [App\Http\Controllers\DashboardController::class, 'trees'])->name('tree');
 
