@@ -103,9 +103,6 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        //var dataArray = document.querySelector('#dataArray').getAttribute("data-plan");
-        //console.log(JSON.parse(dataArray), dataArray)
-
         //Plantation
         //Gross Income Per Farm
         var plantationDiv = document.getElementById("plantation_div").getContext("2d");
@@ -119,6 +116,9 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newPlantationData,
+                maxBarThickness: 100,
+                borderRadius: 5,
+                skipNull: true,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
@@ -155,22 +155,23 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newDeathData,
+                skipNull: true,
+                maxBarThickness: 100,
+                borderRadius: 5,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
             }
         })
 
-        console.log(arr2)
-
-        var plantationData = {
+        var deathData = {
             labels: treeDataDeath,
             datasets: arr2,
         };
 
         new Chart(deathDiv, {
             type: 'bar',
-            data: plantationData,
+            data: deathData,
             options: {
                 barValueSpacing: 20,
                 scales: {
@@ -193,12 +194,20 @@
             datasets: [{
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
-                    data: [expenses.last_year]
+                    data: [expenses.last_year],
+                    barPercentage: 1,
+                    categoryPercentage: 0.4,
+                    maxBarThickness: 100,
+                    borderRadius: 10,
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
-                    data: [expenses.current_year]
+                    data: [expenses.current_year],
+                    barPercentage: 1,
+                    categoryPercentage: 0.4,
+                    maxBarThickness: 100,
+                    borderRadius: 10,
                 }
             ]
         };
@@ -206,16 +215,7 @@
         new Chart(expensesDiv, {
             type: 'bar',
             data: expensesData,
-            options: {
-                barValueSpacing: 10,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 1,
-                        }
-                    }]
-                }
-            }
+            options: {}
         });
 
 
@@ -227,12 +227,18 @@
             datasets: [{
                     label: "Last Year",
                     backgroundColor: "#6590aa",
-                    data: incomeData.last_year_gross_income
+                    data: incomeData.last_year_gross_income,
+                    maxBarThickness: 100,
+                    borderRadius: 5,
+                    skipNull: true,
                 },
                 {
                     label: "Current Year",
                     backgroundColor: "#1b435d",
-                    data: incomeData.current_year_gross_income
+                    data: incomeData.current_year_gross_income,
+                    maxBarThickness: 100,
+                    borderRadius: 5,
+                    skipNull: true,
                 }
             ]
         };
@@ -240,16 +246,7 @@
         new Chart(grossIncomeDiv, {
             type: 'bar',
             data: grossIncomeData,
-            options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                        }
-                    }]
-                }
-            }
+            options: {}
         });
 
         //Net Income Per Farm
@@ -259,12 +256,18 @@
             datasets: [{
                     label: "Last Year",
                     backgroundColor: "#6590aa",
-                    data: incomeData.last_year_net_income
+                    data: incomeData.last_year_net_income,
+                    skipNull: true,
+                    maxBarThickness: 100,
+                    borderRadius: 5,
                 },
                 {
                     label: "Current Year",
                     backgroundColor: "#1b435d",
-                    data: incomeData.current_year_net_income
+                    data: incomeData.current_year_net_income,
+                    skipNull: true,
+                    maxBarThickness: 100,
+                    borderRadius: 5,
                 }
             ]
         };
@@ -272,16 +275,7 @@
         new Chart(netIncomeDiv, {
             type: 'bar',
             data: netIncomeData,
-            options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                        }
-                    }]
-                }
-            }
+            options: {}
         });
 
 
@@ -294,14 +288,21 @@
         var employeeData = {
             labels: employeeNames,
             datasets: [{
+                    barPercentage: 0.4,
+                    categoryPercentage: 1,
                     label: "Last Year",
                     backgroundColor: "#6590aa",
-                    data: employeeLastYearSalary
+                    data: employeeLastYearSalary,
+                    borderRadius: 10,
+                    skipNull: false
                 },
                 {
+                    barPercentage: 0.5,
                     label: "Current Year",
                     backgroundColor: "#1b435d",
-                    data: employeeCurrentYearSalary
+                    data: employeeCurrentYearSalary,
+                    borderRadius: 10,
+                    skipNull: true
                 }
             ]
         };
@@ -312,6 +313,11 @@
             options: {
                 barValueSpacing: 20,
                 scales: {
+                    x: {
+                        grid: {
+                            offset: true
+                        }
+                    },
                     yAxes: [{
                         ticks: {
                             min: 0,
@@ -329,12 +335,20 @@
             datasets: [{
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
-                    data: [salary.last_year]
+                    data: [salary.last_year],
+                    barPercentage: 1,
+                    categoryPercentage: 0.4,
+                    maxBarThickness: 100,
+                    borderRadius: 10,
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
-                    data: [salary.current_year]
+                    data: [salary.current_year],
+                    barPercentage: 1,
+                    categoryPercentage: 0.4,
+                    maxBarThickness: 100,
+                    borderRadius: 10,
                 }
             ]
         };
@@ -342,16 +356,7 @@
         new Chart(salaryDiv, {
             type: 'bar',
             data: salaryData,
-            options: {
-                barValueSpacing: 10,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 1,
-                        }
-                    }]
-                }
-            }
+            options: {}
         });
 
 

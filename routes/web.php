@@ -38,7 +38,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/report-employee', [App\Http\Controllers\DashboardController::class, 'employee'])->name('employee');
         //Route::get('/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');
         Route::get('/report-income', [App\Http\Controllers\DashboardController::class, 'income'])->name('income');
-        Route::get('/report-tree', [App\Http\Controllers\DashboardController::class, 'trees'])->name('tree');
+        Route::match(['get', 'post'], '/report-tree', [App\Http\Controllers\DashboardController::class, 'trees'])->name('tree');
 
         // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
         // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
