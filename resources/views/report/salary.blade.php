@@ -21,7 +21,7 @@
                         <h4 class="card-title float-left">{{ __('Salaries') }}</h4>
                     </div>
                     <div class="card-body">
-                        <canvas id="salary_div" width="300" height="150"></canvas>
+                        <canvas id="salary_div" width="150" height="150"></canvas>
                     </div>
                 </div>
             </div>
