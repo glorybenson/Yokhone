@@ -343,54 +343,45 @@ class DashboardController extends Controller
 
     public function employee(Request $request)
     {
-        $data['title'] = "Salaries Report";
+        $data['title'] = "Employees Report";
         $data["employers"] = $employers = Employee::all();
-        $array = [];
+        $salaries_array = [];
+        $emplyees_array = [];
 
         if ($_POST) {
-            foreach ($employers as $employee) {
-                $from = $request->from;
-                $to = $request->to;
-                if (isset($from) && isset($to)) {
-                    $current_year_salary = Payment::where("employee_id", $employee->id)
-                        ->whereYear('date', now()->year)->whereBetween('date', [$from, $to])
+            $from = $request->from;
+            $to = $request->to;
+            if (isset($from) && isset($to)) {
+                foreach ($employers as $employee) {
+                    $salary = Expense::where("employee_id", $employee->id)
+                        ->whereBetween('date', [$from, $to])
                         ->get()->sum('amount');
-                    $last_year_salary = Payment::where("employee_id", $employee->id)
-                        ->whereYear('date', now()->subYear()->year)->whereBetween('date', [$from, $to])
-                        ->get()->sum('amount');
-                    $plan_obj = (object)[];
-                    $plan_obj->x = $employee->first_name . " " . $employee->last_name;
-                    if ($last_year_salary > 0) {
-                        $plan_obj->last_year = $last_year_salary;
+                    if ($salary > 0) {
+                        $name = $employee->first_name . " " . $employee->last_name;
+                        array_push($salaries_array, $salary);
+                        array_push($emplyees_array, $name);
                     }
-                    if ($current_year_salary > 0) {
-                        $plan_obj->current_year = $current_year_salary;
-                    }
-                    array_push($array, $plan_obj);
                 }
             }
         } else {
             foreach ($employers as $employee) {
-                $current_year_salary = Payment::where("employee_id", $employee->id)
-                    ->whereYear('date', now()->year)
+                $salary = Expense::where("employee_id", $employee->id)
                     ->get()->sum('amount');
-                $last_year_salary = Payment::where("employee_id", $employee->id)
-                    ->whereYear('date', now()->subYear()->year)
-                    ->get()->sum('amount');
-                $plan_obj = (object)[];
-                $plan_obj->x = $employee->first_name . " " . $employee->last_name;
-                if ($last_year_salary > 0) {
-                    $plan_obj->last_year = $last_year_salary;
+                if ($salary > 0) {
+                    $name = $employee->first_name . " " . $employee->last_name;
+                    array_push($salaries_array, $salary);
+                    array_push($emplyees_array, $name);
                 }
-                if ($current_year_salary > 0) {
-                    $plan_obj->current_year = $current_year_salary;
-                }
-                array_push($array, $plan_obj);
             }
-            $data['emplyee_data'] = $b = $array;
         }
 
-        // dd($b);
+
+        $data['employees_data'] = $d = (object) [
+            "employee" => $emplyees_array,
+            "all_employees_salaries" => $salaries_array
+        ];
+
+        dd($d);
         return view('report.employee', $data);
     }
 

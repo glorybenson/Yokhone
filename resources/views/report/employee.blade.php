@@ -42,7 +42,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Total Expenses') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Total employees') }}</h4>
                     </div>
                     <div class="card-body">
                         <canvas id="employee_div" width="300" height="150"></canvas>
@@ -51,45 +51,24 @@
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        //Employee's Salaries
-        var employeeDiv = document.getElementById("employee_div").getContext("2d");
-        const employeeSalaries = @json($emplyee_data ?? '');
-        var employeeData = {
+        var employeesDiv = document.getElementById("employee_div").getContext("2d");
+        const employees = @json($employees_data ?? '');
+        console.log(employees.employee)
+        const employeesData = {
+            labels: employees.employee,
             datasets: [{
-                    label: ['Last Year'],
-                    backgroundColor: "#6590aa",
-                    skipNull: true,
-                    maxBarThickness: 50,
-                    barPercentage: 0.9,
-                    categoryPercentage: 0.3,
-                    // barPercentage: 0.9,
-                    data: employeeSalaries,
-                    parsing: {
-                        yAxisKey: 'last_year'
-                    },
-                },
-                {
-                    label: ['Current Year'],
-                    backgroundColor: "#1b435f",
-                    skipNull: true,
-                    maxBarThickness: 50,
-                    barPercentage: 0.9,
-                    categoryPercentage: 0.3,
-                    // barThickness: 6,
-                    data: employeeSalaries,
-                    parsing: {
-                        yAxisKey: 'current_year'
-                    },
-                }
-            ]
+                label: 'Expense',
+                backgroundColor: "#6590aa",
+                maxBarThickness: 60,
+                data: employees.all_employees_salaries,
+            }]
         };
 
-        new Chart(employeeDiv, {
+        new Chart(employeesDiv, {
             type: 'bar',
-            data: employeeData,
+            data: employeesData,
             options: {
                 plugins: {
                     legend: {

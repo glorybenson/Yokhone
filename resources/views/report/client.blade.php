@@ -38,7 +38,7 @@
         google.charts.load('current', {
             'packages': ['bar', 'corechart']
         });
-        
+
         google.charts.setOnLoadCallback(clientPie);
 
         function clientPie() {
@@ -65,5 +65,4 @@
             chart.draw(data, options);
         }
     </script>
-
 @endsection
