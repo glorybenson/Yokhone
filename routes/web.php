@@ -32,12 +32,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['user']], function () {
         //Dashboard Routes
-        Route::get('/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
+        Route::match(['get', 'post'], '/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
         Route::match(['get', 'post'], '/report-expense', [App\Http\Controllers\DashboardController::class, 'expenses'])->name('expense');
-        Route::get('/report-client', [App\Http\Controllers\DashboardController::class, 'client'])->name('client');
+        Route::match(['get', 'post'], '/report-client', [App\Http\Controllers\DashboardController::class, 'client'])->name('client');
         Route::match(['get', 'post'], '/report-employee', [App\Http\Controllers\DashboardController::class, 'employee'])->name('employee');
         Route::match(['get', 'post'], '/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');
-        Route::get('/report-income', [App\Http\Controllers\DashboardController::class, 'income'])->name('income');
+        Route::match(['get', 'post'], '/report-income', [App\Http\Controllers\DashboardController::class, 'income'])->name('income');
         Route::match(['get', 'post'], '/report-tree', [App\Http\Controllers\DashboardController::class, 'trees'])->name('tree');
 
         // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');

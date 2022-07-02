@@ -39,16 +39,42 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Fixed Expenses') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Farm Income') }}</h4>
                     </div>
                     <div class="card-body">
-                        <canvas id="expenses_div" width="300" height="300"></canvas>
+                        <canvas id="income_div" width="300" height="150"></canvas>
                     </div>
                 </div>
             </div>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var incomesDiv = document.getElementById("income_div").getContext("2d");
+            const incomes = @json($incomes_data ?? '');
+            console.log(incomes.farms)
+            const incomesData = {
+                labels: incomes.farms,
+                datasets: [{
+                    label: 'Farm Income',
+                    backgroundColor: "#6590aa",
+                    maxBarThickness: 60,
+                    data: incomes.all_incomes_data,
+                }]
+            };
 
-        <script></script>
+            new Chart(incomesDiv, {
+                type: 'bar',
+                data: incomesData,
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                boxWidth: 10
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
     @endsection

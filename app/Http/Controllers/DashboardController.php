@@ -234,41 +234,43 @@ class DashboardController extends Controller
         return view('report.farm', $data);
     }
 
-    public function income()
+    public function income(Request $request)
     {
         $data['title'] = "Income Report";
         $data['farms'] = $farms = Farm::all();
+        $farm__array = [];
+        $income_array = [];
 
-        $data['farms'] = $farms = Farm::all();
-        $farm_names = [];
-        $last_year_net_income = [];
-        $current_year_net_income = [];
-        $last_year_gross_income = [];
-        $current_year_gross_income = [];
-        foreach ($farms as $farm) {
-            # code...
-            $last_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_after_discount');
-            $current_year_net = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_after_discount');
-            $last_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('total_price_before_discount');
-            $current_year_gross = Invoice::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('total_price_before_discount');
-
-            if (($last_year_net + $current_year_net) > 0) {
-                array_push($farm_names, $farm->farm_name);
-                array_push($last_year_net_income, $last_year_net);
-                array_push($current_year_net_income, $current_year_net);
+        if ($_POST) {
+            $from = $request->from;
+            $to = $request->to;
+            if (isset($from) && isset($to)) {
+                $data['mode'] = "search";
+                $data['from'] = $from;
+                $data['to'] = $to;
+                foreach ($farms as $farm) {
+                    $income = Invoice::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->get()->sum('total_price_after_discount');
+                    if ($income > 0) {
+                        array_push($farm__array, $farm->farm_name);
+                        array_push($income_array, $income);
+                    }
+                }
             }
-            if (($last_year_gross + $current_year_gross) > 0) {
-                array_push($last_year_gross_income, $last_year_gross);
-                array_push($current_year_gross_income, $current_year_gross);
+        } else {
+            foreach ($farms as $farm) {
+                $income = Invoice::where("farm_id", $farm->id)->get()->sum('total_price_after_discount');
+                if ($income > 0) {
+                    array_push($farm__array, $farm->farm_name);
+                    array_push($income_array, $income);
+                }
             }
         }
-        $data['income_data'] = (object) [
-            "farm_names" => $farm_names,
-            "last_year_net_income" => $last_year_net_income,
-            "current_year_net_income" => $current_year_net_income,
-            "last_year_gross_income" => $last_year_gross_income,
-            "current_year_gross_income" => $current_year_gross_income
+
+        $data['incomes_data'] = $d = (object) [
+            "farms" => $farm__array,
+            "all_incomes_data" => $income_array
         ];
+
         return view('report.income', $data);
     }
 
