@@ -6,7 +6,7 @@
             <div class="row align-items-center">
                 <div class="col-md-12">
                     <div class="d-flex align-items-center">
-                        <h5 class="page-title">{{ __('Expense Report') }}</h5>
+                        <h5 class="page-title">{{ __('Depense Report') }}</h5>
                     </div>
                 </div>
             </div>
@@ -17,14 +17,14 @@
                     <form class="form-inline" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="inputPassword6">From</label>
+                            <label for="inputPassword6">{{ __('From') }}</label>
                             <input type="date" name="from" class="form-control mx-sm-3">
                             <div class="form-group">
-                                <label for="inputPassword6">To</label>
+                                <label for="inputPassword6">{{ __('To') }}</label>
                                 <input type="date" name="to" class="form-control mx-sm-3">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mb-2">{{ __('Submit') }}</button>
                             </div>
                     </form>
                 </div>

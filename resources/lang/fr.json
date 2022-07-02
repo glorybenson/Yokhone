@@ -966,7 +966,18 @@
     "Net Income Per Farm": "Revenu net par Champ",
     "Plantation Report": "Rapport de plantation",
     "Death Report": "Rapport de décès",
-    "Fixed Expenses": "Dépenses Fixes"
+    "Fixed Expenses": "Dépenses Fixes",
+    "Trees Report": "Rapport Arbres",
+    "From": "De",
+    "To": "A",
+    "Farm Report": "Rapport de ferme",
+    "Expenses Vs. Income": "Depenses Vs. Revenus",
+    "Salary Report": "Rapport de salaire",
+    "Employee Report": "Rapport de l'employé",
+    "Total Expenses": "Total des Depenses",
+    "Income Report": "Rapport sur les revenus",
+    "Total Income": "Total Revenus",
+    "Expense Report": "Depense Report"
     
 }
 

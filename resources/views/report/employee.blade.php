@@ -20,14 +20,14 @@
                     <form class="form-inline" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="inputPassword6">From</label>
+                            <label for="inputPassword6">{{ __('From') }}</label>
                             <input type="date" name="from" class="form-control mx-sm-3">
                             <div class="form-group">
-                                <label for="inputPassword6">To</label>
+                                <label for="inputPassword6">{{ __('To') }}</label>
                                 <input type="date" name="to" class="form-control mx-sm-3">
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                <button type="submit" class="btn btn-primary mb-2">{{ __('Submit') }}</button>
                             </div>
                     </form>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Total employees') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Total Expenses') }}</h4>
                     </div>
                     <div class="card-body">
                         <canvas id="employee_div" width="300" height="150"></canvas>
