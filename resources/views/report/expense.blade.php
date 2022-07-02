@@ -54,28 +54,13 @@
         const expenses = @json($expenses_data ?? '');
         console.log(expenses.farms)
         const expensesData = {
-            // labels: expenses.farms,
+            labels: expenses.farms,
             datasets: [{
-                    label: ['Last Year'],
-                    backgroundColor: "#6590aa",
-                    skipNull: true,
-                    maxBarThickness: 60,
-                    data: expenses.all_expenses_data,
-                    parsing: {
-                        yAxisKey: 'last_year'
-                    },
-                },
-                {
-                    label: ['Current Year'],
-                    backgroundColor: "#1b435f",
-                    skipNull: true,
-                    maxBarThickness: 60,
-                    data: expenses.all_expenses_data,
-                    parsing: {
-                        yAxisKey: 'current_year'
-                    },
-                }
-            ]
+                label: 'Farm Expense',
+                backgroundColor: "#6590aa",
+                maxBarThickness: 60,
+                data: expenses.all_expenses_data,
+            }]
         };
 
         new Chart(expensesDiv, {

@@ -14,22 +14,86 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-inline" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="inputPassword6">From</label>
+                            <input type="date" name="from" class="form-control mx-sm-3">
+                            <div class="form-group">
+                                <label for="inputPassword6">To</label>
+                                <input type="date" name="to" class="form-control mx-sm-3">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                    </form>
+                </div>
+                @if ($mode ?? '' == 'search')
+                    <h4 class="mt-3">Search Result From: {{ date('D, M j, Y', strtotime($from)) ?? '' }} To:
+                        {{ date('D, M j, Y', strtotime($to)) ?? '' }}
+                    </h4>
+                @endif
+            </div>
+        </div>
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title float-left">{{ __('Depenses Vs. Revenus') }}</h4>
                     </div>
-                    <div class="card-body" id="">
+                    <div class="card-body">
+                        <canvas id="farm_div" width="300" height="150"></canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
     <script>
+        var farmDataDiv = document.getElementById("farm_div").getContext("2d");
+        const farmsData = @json($farm_data ?? '');
+        console.log(farmsData)
+        const farmData = {
+            datasets: [{
+                    label: ["{{ 'Expense' }}"],
+                    backgroundColor: "#6590aa",
+                    skipNull: true,
+                    maxBarThickness: 40,
+                    categoryPercentage: 0.4,
+                    data: farmsData.all_farm_data,
+                    parsing: {
+                        yAxisKey: 'expense'
+                    },
+                },
+                {
+                    label: ["{{ 'Income' }}"],
+                    backgroundColor: "#1b435f",
+                    skipNull: true,
+                    maxBarThickness: 40,
+                    categoryPercentage: 0.5,
+                    data: farmsData.all_farm_data,
+                    parsing: {
+                        yAxisKey: 'income'
+                    },
+                }
+            ]
+        };
 
+        new Chart(farmDataDiv, {
+            type: 'bar',
+            data: farmData,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
+        });
     </script>
-
 @endsection

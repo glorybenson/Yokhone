@@ -178,9 +178,60 @@ class DashboardController extends Controller
         return view('dashboard.index', $data);
     }
 
-    public function farm()
+    public function farm(Request $request)
     {
-        return view('report.farm');
+        $data['title'] = "Farm Report";
+        $data['farms'] = $farms = Farm::all();
+        $farm__array = [];
+        $array = [];
+        if ($_POST) {
+            $from = $request->from;
+            $to = $request->to;
+            if (isset($from) && isset($to)) {
+                $data['mode'] = "search";
+                $data['from'] = $from;
+                $data['to'] = $to;
+                foreach ($farms as $farm) {
+                    $expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->get()->sum('amount');
+                    $income = Invoice::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->get()->sum('total_price_after_discount');
+                    $plan_obj = (object)[];
+                    if ($expense > 0 || $income > 0) {
+                        $plan_obj->x = $farm->farm_name;
+                    }
+                    if ($expense > 0) {
+                        $plan_obj->expense = $expense;
+                    }
+                    if ($income > 0) {
+                        $plan_obj->income = $income;
+                    }
+
+                    array_push($array, $plan_obj);
+                }
+            }
+        } else {
+            foreach ($farms as $farm) {
+                $expense = Expense::where("farm_id", $farm->id)->get()->sum('amount');
+                $income = Invoice::where("farm_id", $farm->id)->get()->sum('total_price_after_discount');
+                $plan_obj = (object)[];
+                if ($expense > 0 || $income > 0) {
+                    $plan_obj->x = $farm->farm_name;
+                }
+                if ($expense > 0) {
+                    $plan_obj->expense = $expense;
+                }
+                if ($income > 0) {
+                    $plan_obj->income = $income;
+                }
+
+                array_push($array, $plan_obj);
+            }
+        }
+        $data['farm_data'] = (object) [
+            "farms" => $farm__array,
+            "all_farm_data" => $array
+        ];
+
+        return view('report.farm', $data);
     }
 
     public function income()
@@ -253,7 +304,7 @@ class DashboardController extends Controller
         $data['title'] = "Expense Report";
         $data['farms'] = $farms = Farm::all();
         $farm__array = [];
-        $array = [];
+        $expense_array = [];
 
         if ($_POST) {
             $from = $request->from;
@@ -263,39 +314,26 @@ class DashboardController extends Controller
                 $data['from'] = $from;
                 $data['to'] = $to;
                 foreach ($farms as $farm) {
-                    $last_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->subYear()->year)->get()->sum('amount');
-                    $current_year_expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->whereYear('date', now()->year)->get()->sum('amount');
-                    $plan_obj = (object)[];
-                    $plan_obj->x = $farm->farm_name;
-                    if ($last_year_expense > 0) {
-                        $plan_obj->last_year = $last_year_expense;
+                    $expense = Expense::where("farm_id", $farm->id)->whereBetween('date', [$from, $to])->get()->sum('amount');
+                    if ($expense > 0) {
+                        array_push($farm__array, $farm->farm_name);
+                        array_push($expense_array, $expense);
                     }
-                    if ($current_year_expense > 0) {
-                        $plan_obj->current_year = $current_year_expense;
-                    }
-                    array_push($array, $plan_obj);
                 }
             }
         } else {
             foreach ($farms as $farm) {
-                $last_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->subYear()->year)->get()->sum('amount');
-                $current_year_expense = Expense::where("farm_id", $farm->id)->whereYear('date', now()->year)->get()->sum('amount');
-                $plan_obj = (object)[];
-                $plan_obj->x = $farm->farm_name;
-                if ($last_year_expense > 0) {
-                    $plan_obj->last_year = $last_year_expense;
+                $expense = Expense::where("farm_id", $farm->id)->get()->sum('amount');
+                if ($expense > 0) {
+                    array_push($farm__array, $farm->farm_name);
+                    array_push($expense_array, $expense);
                 }
-                if ($current_year_expense > 0) {
-                    $plan_obj->current_year = $current_year_expense;
-                }
-
-                array_push($array, $plan_obj);
             }
         }
 
-        $data['expenses_data'] = (object) [
+        $data['expenses_data'] = $d = (object) [
             "farms" => $farm__array,
-            "all_expenses_data" => $array
+            "all_expenses_data" => $expense_array
         ];
 
         return view('report.expense', $data);
