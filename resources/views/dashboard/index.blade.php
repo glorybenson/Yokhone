@@ -282,21 +282,6 @@
         new Chart(employeeDiv, {
             type: 'bar',
             data: employeeData,
-            options: {
-                barValueSpacing: 20,
-                scales: {
-                    x: {
-                        grid: {
-                            offset: true
-                        }
-                    },
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                        }
-                    }]
-                }
-            }
         });
 
         //Salary

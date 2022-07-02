@@ -67,7 +67,7 @@
         //Plantation
         //Gross Income Per Farm
         var plantationDiv = document.getElementById("plantation_div").getContext("2d");
-        const treeData = @json($tree_data_plan ?? '');
+        // const treeData = @json($tree_data_plan ?? '');
         const newPlantationData = @json($plantation_data ?? '');
         const colors = ["#6590aa", "#1b435f", "#6590aa", "#1b435f", "#6590aa", "#1b435f", "#6590aa", "#1b435f"];
         const farms = @json($farms ?? '');
@@ -77,6 +77,12 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newPlantationData,
+                // maxBarThickness: 50,
+                // barPercentage: 0.9,
+                // categoryPercentage: 0.4,
+                // skipNull: true,
+                // barPercentage: 0.9,
+                barThickness: 'flex',
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
@@ -84,7 +90,6 @@
         })
 
         var plantationData = {
-            labels: treeData,
             datasets: arr,
         };
 
@@ -92,19 +97,18 @@
             type: 'bar',
             data: plantationData,
             options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
                         }
-                    }]
+                    }
                 }
             }
         });
 
         var deathDiv = document.getElementById("death_report_div").getContext("2d");
-        const treeDataDeath = @json($tree_data_death ?? '');
+        // const treeDataDeath = @json($tree_data_death ?? '');
         const newDeathData = @json($death_data ?? '');
         console.log(newDeathData)
 
@@ -113,9 +117,10 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newDeathData,
+                // maxBarThickness: 50,
+                // barPercentage: 0.9,
+                // categoryPercentage: 0.4,
                 // skipNull: true,
-                // maxBarThickness: 100,
-                // borderRadius: 5,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
@@ -123,7 +128,6 @@
         })
 
         var deathData = {
-            labels: treeDataDeath,
             datasets: arr2,
         };
 
@@ -131,13 +135,12 @@
             type: 'bar',
             data: deathData,
             options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
                         }
-                    }]
+                    }
                 }
             }
         });

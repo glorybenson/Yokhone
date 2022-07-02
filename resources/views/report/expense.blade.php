@@ -7,9 +7,6 @@
                 <div class="col-md-12">
                     <div class="d-flex align-items-center">
                         <h5 class="page-title">{{ __('Expense Report') }}</h5>
-                        {{-- <ul class="breadcrumb ml-2"> --}}
-                        {{-- <li class="breadcrumb-item active">{{__('Farms')}}</li> --}}
-                        {{-- </ul> --}}
                     </div>
                 </div>
             </div>
@@ -45,7 +42,7 @@
                         <h4 class="card-title float-left">{{ __('Fixed Expenses') }}</h4>
                     </div>
                     <div class="card-body">
-                        <canvas id="expenses_div" width="300" height="300"></canvas>
+                        <canvas id="expenses_div" width="300" height="150"></canvas>
                     </div>
                 </div>
             </div>
@@ -55,9 +52,9 @@
     <script>
         var expensesDiv = document.getElementById("expenses_div").getContext("2d");
         const expenses = @json($expenses_data ?? '');
-        console.log(expenses.all_expenses_data)
+        console.log(expenses.farms)
         const expensesData = {
-            labels: expenses.farms,
+            // labels: expenses.farms,
             datasets: [{
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
@@ -80,41 +77,19 @@
                 }
             ]
         };
-        const data = [{
-            x: 'Jan',
-            net: 100,
-            cogs: 50,
-            gm: 50
-        }, {
-            x: 'Feb',
-            net: 120,
-            cogs: 55,
-            gm: 75
-        }];
-        const cfg = {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb'],
-                datasets: [{
-                    label: 'Net sales',
-                    data: data,
-                    parsing: {
-                        yAxisKey: 'net'
-                    }
-                }, {
-                    label: 'Cost of goods sold',
-                    data: data,
-                    parsing: {
-                        yAxisKey: 'cogs'
-                    }
-                }]
-            },
-        };
 
         new Chart(expensesDiv, {
             type: 'bar',
             data: expensesData,
-            options: {}
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
     </script>
 @endsection

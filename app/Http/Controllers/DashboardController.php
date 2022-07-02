@@ -253,7 +253,7 @@ class DashboardController extends Controller
         $data['title'] = "Expense Report";
         $data['farms'] = $farms = Farm::all();
         $farm__array = [];
-        $arr2 = [];
+        $array = [];
 
         if ($_POST) {
             $from = $request->from;
@@ -273,7 +273,7 @@ class DashboardController extends Controller
                     if ($current_year_expense > 0) {
                         $plan_obj->current_year = $current_year_expense;
                     }
-                    array_push($arr2, $plan_obj);
+                    array_push($array, $plan_obj);
                 }
             }
         } else {
@@ -289,45 +289,68 @@ class DashboardController extends Controller
                     $plan_obj->current_year = $current_year_expense;
                 }
 
-                array_push($arr2, $plan_obj);
+                array_push($array, $plan_obj);
             }
         }
 
-        // dd($arr2);
         $data['expenses_data'] = (object) [
             "farms" => $farm__array,
-            "all_expenses_data" => $arr2
+            "all_expenses_data" => $array
         ];
 
         return view('report.expense', $data);
     }
 
-    public function employee()
+    public function employee(Request $request)
     {
         $data['title'] = "Salaries Report";
-        $employers = Employee::all();
+        $data["employers"] = $employers = Employee::all();
+        $array = [];
 
-        $employee_salaries = [];
-        foreach ($employers as $employee) {
-            # code...
-            $current_year_salary = Payment::where("employee_id", $employee->id)
-                ->whereYear('date', now()->year)
-                ->get()->sum('amount');
-            $last_year_salary = Payment::where("employee_id", $employee->id)
-                ->whereYear('date', now()->subYear()->year)
-                ->get()->sum('amount');
-            $params =
-                (object)[
-                    "name" => $employee->first_name . " " . $employee->last_name,
-                    "last_year" => $last_year_salary,
-                    "current_year" => $current_year_salary
-                ];
-            if ($last_year_salary > 0 || $current_year_salary > 0) {
-                array_push($employee_salaries, $params);
+        if ($_POST) {
+            foreach ($employers as $employee) {
+                $from = $request->from;
+                $to = $request->to;
+                if (isset($from) && isset($to)) {
+                    $current_year_salary = Payment::where("employee_id", $employee->id)
+                        ->whereYear('date', now()->year)->whereBetween('date', [$from, $to])
+                        ->get()->sum('amount');
+                    $last_year_salary = Payment::where("employee_id", $employee->id)
+                        ->whereYear('date', now()->subYear()->year)->whereBetween('date', [$from, $to])
+                        ->get()->sum('amount');
+                    $plan_obj = (object)[];
+                    $plan_obj->x = $employee->first_name . " " . $employee->last_name;
+                    if ($last_year_salary > 0) {
+                        $plan_obj->last_year = $last_year_salary;
+                    }
+                    if ($current_year_salary > 0) {
+                        $plan_obj->current_year = $current_year_salary;
+                    }
+                    array_push($array, $plan_obj);
+                }
             }
+        } else {
+            foreach ($employers as $employee) {
+                $current_year_salary = Payment::where("employee_id", $employee->id)
+                    ->whereYear('date', now()->year)
+                    ->get()->sum('amount');
+                $last_year_salary = Payment::where("employee_id", $employee->id)
+                    ->whereYear('date', now()->subYear()->year)
+                    ->get()->sum('amount');
+                $plan_obj = (object)[];
+                $plan_obj->x = $employee->first_name . " " . $employee->last_name;
+                if ($last_year_salary > 0) {
+                    $plan_obj->last_year = $last_year_salary;
+                }
+                if ($current_year_salary > 0) {
+                    $plan_obj->current_year = $current_year_salary;
+                }
+                array_push($array, $plan_obj);
+            }
+            $data['emplyee_data'] = $b = $array;
         }
-        $data['employee_salaries'] = $employee_salaries;
 
+        // dd($b);
         return view('report.employee', $data);
     }
 
