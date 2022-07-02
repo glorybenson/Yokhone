@@ -122,8 +122,6 @@
             }
         })
 
-        console.log(arr);
-
         var plantationData = {
             labels: treeData,
             datasets: arr,
@@ -133,13 +131,12 @@
             type: 'bar',
             data: plantationData,
             options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
                         }
-                    }]
+                    }
                 }
             }
         });
@@ -170,13 +167,12 @@
             type: 'bar',
             data: deathData,
             options: {
-                barValueSpacing: 20,
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
                         }
-                    }]
+                    }
                 }
             }
         });
@@ -192,13 +188,15 @@
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
                     data: [expenses.last_year],
-                    barPercentage: 1
+                    categoryPercentage: 0.2,
+                    barThickness: 'flex'
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
                     data: [expenses.current_year],
-                    barPercentage: 0.95,
+                    categoryPercentage: 0.2,
+                    barThickness: 'flex'
                 }
             ]
         };
@@ -206,7 +204,15 @@
         new Chart(expensesDiv, {
             type: 'bar',
             data: expensesData,
-            options: {}
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
 
 
@@ -231,7 +237,15 @@
         new Chart(grossIncomeDiv, {
             type: 'bar',
             data: grossIncomeData,
-            options: {}
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
 
         //Net Income Per Farm
@@ -254,7 +268,15 @@
         new Chart(netIncomeDiv, {
             type: 'bar',
             data: netIncomeData,
-            options: {}
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
 
 
@@ -282,6 +304,15 @@
         new Chart(employeeDiv, {
             type: 'bar',
             data: employeeData,
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
 
         //Salary
@@ -293,13 +324,15 @@
                     label: ['Last Year'],
                     backgroundColor: "#6590aa",
                     data: [salary.last_year],
-                    barPercentage: 1
+                    categoryPercentage: 0.2,
+                    barThickness: 'flex'
                 },
                 {
                     label: ['Current Year'],
                     backgroundColor: "#1b435f",
                     data: [salary.current_year],
-                    barPercentage: 0.95,
+                    categoryPercentage: 0.2,
+                    barThickness: 'flex'
                 }
             ]
         };
@@ -307,7 +340,15 @@
         new Chart(salaryDiv, {
             type: 'bar',
             data: salaryData,
-            options: {}
+            options: {
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10
+                        }
+                    }
+                }
+            }
         });
 
 
