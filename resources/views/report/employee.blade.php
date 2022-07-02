@@ -42,7 +42,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Employee View') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Total Expenses') }}</h4>
                     </div>
                     <div class="card-body">
                         <canvas id="employee_div" width="300" height="150"></canvas>
