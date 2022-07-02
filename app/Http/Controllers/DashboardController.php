@@ -381,7 +381,7 @@ class DashboardController extends Controller
             "all_employees_salaries" => $salaries_array
         ];
 
-        dd($d);
+        // dd($d);
         return view('report.employee', $data);
     }
 
