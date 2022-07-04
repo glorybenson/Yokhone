@@ -27,13 +27,13 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-xm-2" style="display: flex; justify-content: space-between; max-width:320px; margin: 0 auto; padding: 10px 0;">
+                                <div class="col-xm-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="#" class="btn btn-primary p-2" style="border-radius: 18px 18px 0px 0px;">{{$employee->first_name}} {{$employee->last_name }}</a>
                                     </div>
                                 </div>
 
-                                <div class="col-xm-2" style="display: flex; justify-content: space-between; max-width:320px; margin: 0 auto; padding: 10px 0;">
+                                <div class="col-xm-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="{{ route('absence.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
                                             {{__('Absence')}}
@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xm-2" style="display: flex; justify-content: space-between; max-width:320px; margin: 0 auto; padding: 10px 0;">
+                                <div class="col-xm-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
                                             {{__('Employee Record')}}
@@ -49,14 +49,14 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xm-2" style="display: flex; justify-content: space-between; max-width:320px; margin: 0 auto; padding: 10px 0;">
+                                <div class="col-xm-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
                                             {{__('Salary History')}}
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-xm-2" style="display: flex; justify-content: space-between; max-width:320px; margin: 0 auto; padding: 10px 0;">
+                                <div class="col-xm-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light
                                          active" style="border-radius: 18px 18px 0px 0px;">{{__('Payment')}}</a>
