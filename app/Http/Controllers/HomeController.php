@@ -528,6 +528,12 @@ class HomeController extends Controller
                 Session::flash(__('success'), __('Absence Updated successfully'));
                 return back();
             }
+            $total_to_be_cut = 0;
+
+            // dd($request->all());
+            if ($request->reason == "Absence") {
+                $total_to_be_cut = $request->total_number_of_days * 5000;
+            }
 
             Absence::create([
                 'employee_id' => $request->employee_id,
@@ -920,22 +926,22 @@ class HomeController extends Controller
             //code...
             $data['mode'] = "create";
             $data['farms'] = $f = Farm::orderBy('id', 'desc')->get();
-            $data['trees'] = Tree::orderBy('id','desc')->get();
+            $data['trees'] = Tree::orderBy('id', 'desc')->get();
             $new_array = [];
             $data['trees'] = $data['trees']->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
+                return $item['desc'];
+            }], preserveKeys: true);
 
-        foreach ($data['trees'] as $key => $value) {
-            # code...
-            $data['trees'] = $value[$key];
-            $obj = (object)[
-                "name" => $key,
-            ];
-            array_push($new_array, $obj);
-        }
-        $data['trees'] = $new_array;
-        //dd($new_array);
+            foreach ($data['trees'] as $key => $value) {
+                # code...
+                $data['trees'] = $value[$key];
+                $obj = (object)[
+                    "name" => $key,
+                ];
+                array_push($new_array, $obj);
+            }
+            $data['trees'] = $new_array;
+            //dd($new_array);
 
             if ($_POST) {
                 $rules = array(

@@ -115,7 +115,6 @@
                 label: el.farm_name,
                 backgroundColor: colors[index],
                 data: newPlantationData,
-                // skipNull: true,
                 parsing: {
                     yAxisKey: `farm${el.id}`
                 }
