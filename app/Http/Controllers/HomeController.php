@@ -507,6 +507,12 @@ class HomeController extends Controller
 
             if ($validator->fails()) {
                 Session::flash('warning', __('All fields are required'));
+                $total_to_be_cut = 0;
+                if ($request->reason == "Absence") {
+                $total_to_be_cut = $request->total_to_be_cut;
+                }
+                $total_to_be_cut;
+
                 if (isset($request->id)) {
                     # code...
                     return back()->withErrors($validator);
