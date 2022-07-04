@@ -14,6 +14,20 @@
             </div>
         </div>
     </div>
+    <style>
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        }
+
+        @media only screen and (max-width: 320px) {
+            /* For mobile phones: */
+            [class*="col-"] {
+                width: 100%;
+            }
+            }
+            </style>
+
     <div class="row">
         <div class="col-md-12">
             <div class="card">
