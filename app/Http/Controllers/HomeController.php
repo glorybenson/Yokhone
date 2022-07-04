@@ -507,18 +507,18 @@ class HomeController extends Controller
 
             if ($validator->fails()) {
                 Session::flash('warning', __('All fields are required'));
-                $total_to_be_cut = 0;
-                if ($request->reason == "Absence") {
-                $total_to_be_cut = $request->total_to_be_cut;
-                }
-                $total_to_be_cut;
-
                 if (isset($request->id)) {
                     # code...
                     return back()->withErrors($validator);
                 }
                 return back()->withErrors($validator)->withInput();
             }
+
+            $total_to_be_cut = 0;
+            if ($request->reason == "Absence") {
+                $total_to_be_cut = $request->total_number_of_days * 5000;
+            }
+
             if ($request->id) {
                 Absence::where(['employee_id' => $request->employee_id, 'id' => $request->id])->update([
                     'employee_id' => $request->employee_id,
@@ -526,19 +526,13 @@ class HomeController extends Controller
                     'return_date' => $request->return_date,
                     'reason' => $request->reason,
                     'total_number_of_days' => $request->total_number_of_days,
-                    'total_to_be_cut' => $request->total_to_be_cut,
+                    'total_to_be_cut' => $total_to_be_cut,
                     'comment' => $request->comment,
                 ]);
                 send_notification('Updated record for absence', $employee->first_name, $employee->last_name);
 
                 Session::flash(__('success'), __('Absence Updated successfully'));
                 return back();
-            }
-            $total_to_be_cut = 0;
-
-            // dd($request->all());
-            if ($request->reason == "Absence") {
-                $total_to_be_cut = $request->total_number_of_days * 5000;
             }
 
             Absence::create([
@@ -547,7 +541,7 @@ class HomeController extends Controller
                 'return_date' => $request->return_date,
                 'reason' => $request->reason,
                 'total_number_of_days' => $request->total_number_of_days,
-                'total_to_be_cut' => $request->total_to_be_cut,
+                'total_to_be_cut' => $total_to_be_cut,
                 'comment' => $request->comment,
             ]);
             send_notification('Created an absence record', $employee->first_name, $employee->last_name);
