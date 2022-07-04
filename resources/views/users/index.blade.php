@@ -24,9 +24,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table mb-0 table-striped border-0 data-table" id="datatable">
-                            <thead class="thead-light">
+                    <div class="col-lg-12">
+                        <table class="table table-bordered table-striped table-responsive" id="datatable">
+                            <thead>
                                 <th>#</th>
                                 <th>{{ __('First Name') }}</th>
                                 <th>{{ __('Last Name') }}</th>
