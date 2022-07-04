@@ -507,6 +507,12 @@ class HomeController extends Controller
 
             if ($validator->fails()) {
                 Session::flash('warning', __('All fields are required'));
+                $total_to_be_cut = 0;
+                if ($request->reason == "Absence") {
+                $total_to_be_cut = $request->total_to_be_cut;
+                }
+                $total_to_be_cut;
+
                 if (isset($request->id)) {
                     # code...
                     return back()->withErrors($validator);
@@ -541,7 +547,7 @@ class HomeController extends Controller
                 'return_date' => $request->return_date,
                 'reason' => $request->reason,
                 'total_number_of_days' => $request->total_number_of_days,
-                'total_to_be_cut' => $request->total_number_of_days * 5000,
+                'total_to_be_cut' => $request->total_to_be_cut,
                 'comment' => $request->comment,
             ]);
             send_notification('Created an absence record', $employee->first_name, $employee->last_name);
