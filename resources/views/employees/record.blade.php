@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row mobile-tab">
+                    <div class="row mb-4 mobile-tab">
                         <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                             <div class="text-center">
                                 <a href="{{ route('view.employee', $employee->id) }}" class="btn btn-light active p-2 mobile-tab-text" style="border-radius: 18px 18px 0px 0px;">{{$employee->first_name}} {{$employee->last_name }}</a>
