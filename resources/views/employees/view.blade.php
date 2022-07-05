@@ -123,7 +123,7 @@
                                                             </div>
                                                         </div>
                                                         <!-- <a class="btn-sm btn-primary p-2" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">View C.I.N Proof</a>
-                                                                                                            <a class="btn-sm btn-primary p-2" download="" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">Download C.I.N Proof</a> -->
+                                                                                                                <a class="btn-sm btn-primary p-2" download="" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">Download C.I.N Proof</a> -->
                                                     </td>
                                                 </tr>
                                                 <tr>
