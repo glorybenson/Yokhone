@@ -17,10 +17,10 @@
         <style>
             @media (max-width:520px) {
                 .mobile-tab .mobile-tab-text {
-                    font-size: 8px;
+                    font-size: 12px;
                 }
 
-                .mobile-tab .col-sm-2 {
+                .mobile-tab .col-xm-2 {
                     display: flex;
                     width: inherit;
                     margin: 3px;
@@ -69,13 +69,13 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                                    <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
                                         <div class="text-center">
                                             <a href="#" class="btn btn-light active mobile-tab-text"
                                                 style="border-radius: 18px 18px 0px 0px;">{{ __('Salary History') }}</a>
                                         </div>
                                     </div>
-                                    <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                                    <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
                                         <div class="text-center">
                                             <a href="{{ route('payment.employee', $employee->id) }}"
                                                 class="btn btn-light active mobile-tab-text"
