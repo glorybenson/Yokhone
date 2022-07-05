@@ -17,7 +17,7 @@
         <style>
             @media (max-width:520px) {
                 .mobile-tab .mobile-tab-text {
-                    font-size: 14px;
+                    font-size: 12px;
                 }
 
                 .mobile-tab .col-xm-2 {
