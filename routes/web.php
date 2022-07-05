@@ -30,7 +30,9 @@ Route::get('/language/{locale}', function ($locale) {
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::group(['middleware' => ['user']], function () {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::group(['middleware' => ['report']], function () {
+
         //Dashboard Routes
         Route::match(['get', 'post'], '/report-salaries', [App\Http\Controllers\DashboardController::class, 'salary'])->name('salary');
         Route::match(['get', 'post'], '/report-expense', [App\Http\Controllers\DashboardController::class, 'expenses'])->name('expense');
@@ -39,6 +41,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], '/report-farm', [App\Http\Controllers\DashboardController::class, 'farm'])->name('farm');
         Route::match(['get', 'post'], '/report-income', [App\Http\Controllers\DashboardController::class, 'income'])->name('income');
         Route::match(['get', 'post'], '/report-tree', [App\Http\Controllers\DashboardController::class, 'trees'])->name('tree');
+    });
+
+    Route::group(['middleware' => ['user']], function () {
+        //Dashboard
 
         // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
         // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
@@ -115,8 +121,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['post'], '/get_farm_crop', [App\Http\Controllers\HomeController::class, 'get_farm_crop'])->name('get.crop.farm');
     });
 
-    //Dashboard
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
     //Settings
     Route::match(['get', 'post'], '/my-profile', [App\Http\Controllers\HomeController::class, 'my_profile'])->name('my.profile');

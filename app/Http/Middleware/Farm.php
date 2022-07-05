@@ -22,7 +22,7 @@ class Farm
             return $next($request);
         } else {
             foreach (Auth::user()->roles as $role) {
-                return redirect('/home');
+                return redirect('/dashboard');
                 switch ($role) {
                     case 2:
                         Session::flash('permission_warning', 'You no not have access to this page');

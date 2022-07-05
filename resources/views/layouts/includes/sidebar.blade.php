@@ -4,13 +4,13 @@
             <ul>
                 <li class="menu-title"> <span></span>
                 </li>
-                @if (in_array(1, Auth::user()->roles) || in_array(2, Auth::user()->roles))
-                    <li class="{{ request()->is('dashboard') ? 'active active-now' : '' }}">
-                        <a href="{{ route('dashboard') }}"><i class="feather-home"></i>
-                            <span class="shape1"></span><span class="shape2"></span>
-                            <span>{{ __('Dashboard') }}</span></a>
-                    </li>
-                @endif
+                {{-- @if (in_array(1, Auth::user()->roles) || in_array(7, Auth::user()->roles)) --}}
+                <li class="{{ request()->is('dashboard') ? 'active active-now' : '' }}">
+                    <a href="{{ route('dashboard') }}"><i class="feather-home"></i>
+                        <span class="shape1"></span><span class="shape2"></span>
+                        <span>{{ __('Dashboard') }}</span></a>
+                </li>
+                {{-- @endif --}}
                 @if (in_array(1, Auth::user()->roles) || in_array(2, Auth::user()->roles))
                     <li
                         class="{{ request()->is('home') || request()->is('edit-user/*') || request()->is('create-user') ? 'active active-now' : '' }}">
