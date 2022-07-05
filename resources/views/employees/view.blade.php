@@ -30,10 +30,11 @@
                         }
                         }
                         </style>
+                <div class="media" style="display: flex;">
                 <div class="card-body">
                     <div class="card">
                         <div class="card-header">
-                            <div class="row media">
+                            <div class="row">
                                 <div class="col-xs-2" style="display: flex; justify-content: space-between; margin: 0 auto; padding: 10px 0;">
                                     <div class="text-center">
                                         <a href="#" class="btn btn-primary p-2" style="border-radius: 18px 18px 0px 0px;">{{$employee->first_name}} {{$employee->last_name }}</a>
@@ -151,5 +152,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     @endsection
