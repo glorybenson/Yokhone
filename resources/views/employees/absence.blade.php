@@ -14,6 +14,23 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            @media (max-width:520px) {
+                .mobile-tab .mobile-tab-text {
+                    font-size: 8px;
+                }
+
+                .mobile-tab .col-sm-2 {
+                    display: flex;
+                    width: inherit;
+                    margin: 3px;
+                    padding-right: 0px;
+                    padding-left: 0px;
+                }
+            }
+        </style>
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -25,40 +42,40 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="row mb-4">
-                            <div class="col-sm-2">
+                        <div class="row mb-4 mobile-tab">
+                            <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                                 <div class="text-center">
-                                    <a href="{{ route('view.employee', $employee->id) }}" class="btn btn-light active p-2"
+                                    <a href="{{ route('view.employee', $employee->id) }}" class="btn btn-light active p-2 mobile-tab-text"
                                         style="border-radius: 18px 18px 0px 0px;">{{ $employee->first_name }}
                                         {{ $employee->last_name }}</a>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                                 <div class="text-center">
-                                    <a href="#" class="btn btn-primary" style="border-radius: 18px 18px 0px 0px;">
+                                    <a href="#" class="btn btn-primary mobile-tab-text" style="border-radius: 18px 18px 0px 0px;">
                                         {{ __('Absence') }}
                                     </a>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                                 <div class="text-center">
-                                    <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active"
+                                    <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text"
                                         style="border-radius: 18px 18px 0px 0px;">{{ __('Employee Record') }}</a>
                                 </div>
                             </div>
 
-                            <div class="col-sm-3">
+                            <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                                 <div class="text-center">
-                                    <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active"
+                                    <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text"
                                         style="border-radius: 18px 18px 0px 0px;">
                                         {{ __('Salary History') }}
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
                                 <div class="text-center">
-                                    <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active"
+                                    <a href="{{ route('payment.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text"
                                         style="border-radius: 18px 18px 0px 0px;">
                                         {{ __('Payment') }}
                                     </a>
