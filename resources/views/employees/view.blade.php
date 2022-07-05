@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <style>
-                    @media (min-width:320px)  {
-                         .className{media
+                    @media (min-width: 320px)  {
+                         .media{
                         }
                         }
                         </style>
