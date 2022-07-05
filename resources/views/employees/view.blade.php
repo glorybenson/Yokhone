@@ -15,9 +15,17 @@
             </div>
         </div>
         <style>
-            @media (min-width:320px) {
-                .className {
-                    media
+            @media (max-width:520px) {
+                .mobile-tab .mobile-tab-text {
+                    font-size: 8px;
+                }
+
+                .mobile-tab .col-sm-2 {
+                    display: flex;
+                    width: inherit;
+                    margin: 3px;
+                    padding-right: 0px;
+                    padding-left: 0px;
                 }
             }
         </style>
@@ -35,10 +43,10 @@
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header">
-                                <div class="row mb-4">
+                                <div class="row mb-4 mobile-tab">
                                     <div class="col-sm-2">
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-primary p-2"
+                                            <a href="#" class="btn btn-primary p-2 mobile-tab-text"
                                                 style="border-radius: 18px 18px 0px 0px;">{{ $employee->first_name }}
                                                 {{ $employee->last_name }}</a>
                                         </div>
@@ -46,29 +54,32 @@
                                     <div class="col-sm-2">
                                         <div class="text-center">
                                             <a href="{{ route('absence.employee', $employee->id) }}"
-                                                class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                                class="btn btn-light active mobile-tab-text"
+                                                style="border-radius: 18px 18px 0px 0px;">
                                                 {{ __('Absence') }}
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="text-center">
                                             <a href="{{ route('record.employee', $employee->id) }}"
-                                                class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                                class="btn btn-light active mobile-tab-text"
+                                                style="border-radius: 18px 18px 0px 0px;">
                                                 {{ __('Employee Record') }}
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="text-center">
-                                            <a href="#" class="btn btn-light active"
+                                            <a href="#" class="btn btn-light active mobile-tab-text"
                                                 style="border-radius: 18px 18px 0px 0px;">{{ __('Salary History') }}</a>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="text-center">
                                             <a href="{{ route('payment.employee', $employee->id) }}"
-                                                class="btn btn-light active" style="border-radius: 18px 18px 0px 0px;">
+                                                class="btn btn-light active mobile-tab-text"
+                                                style="border-radius: 18px 18px 0px 0px;">
                                                 {{ __('Payment') }}
                                             </a>
                                         </div>
@@ -123,7 +134,7 @@
                                                             </div>
                                                         </div>
                                                         <!-- <a class="btn-sm btn-primary p-2" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">View C.I.N Proof</a>
-                                                                                                                <a class="btn-sm btn-primary p-2" download="" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">Download C.I.N Proof</a> -->
+                                                                                                                                                                                                                                        <a class="btn-sm btn-primary p-2" download="" target="blank" href="{{ asset('CIN_PROOF/' . $employee->CIN_proof) }}">Download C.I.N Proof</a> -->
                                                     </td>
                                                 </tr>
                                                 <tr>
