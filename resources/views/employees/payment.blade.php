@@ -18,10 +18,10 @@
     <style>
         @media (max-width:520px) {
             .mobile-tab .mobile-tab-text {
-                font-size: 8px;
+                font-size: 12px;
             }
 
-            .mobile-tab .col-sm-2 {
+            .mobile-tab .col-xm-2 {
                 display: flex;
                 width: inherit;
                 margin: 3px;
@@ -43,13 +43,13 @@
                 </div>
                 <div class="card-body">
                     <div class="row mb-4 mobile-tab">
-                        <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                        <div class="col-xm-2" style="justify-content: space-between;">
                             <div class="text-center">
                                 <a href="{{ route('view.employee', $employee->id) }}" class="btn btn-light active p-2 mobile-tab-text" style="border-radius: 18px 18px 0px 0px;">{{$employee->first_name}} {{$employee->last_name }}</a>
                             </div>
                         </div>
 
-                        <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                        <div class="col-xm-2" style="justify-content: space-between;">
                             <div class="text-center">
                                 <a href="{{ route('absence.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text" style="border-radius: 18px 18px 0px 0px;">
                                     {{__('Absence')}}
@@ -57,19 +57,19 @@
                             </div>
                         </div>
 
-                        <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                        <div class="col-xm-2" style="justify-content: space-between;">
                             <div class="text-center">
                                 <a href="{{ route('record.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text"
                                    style="border-radius: 18px 18px 0px 0px;">{{__('Employee Record')}}</a>
                             </div>
                         </div>
-                        <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                        <div class="col-xm-2" style="justify-content: space-between; padding: 8px 0;">
                             <div class="text-center">
                                 <a href="{{ route('salary.employee', $employee->id) }}" class="btn btn-light active mobile-tab-text"
                                    style="border-radius: 18px 18px 0px 0px;">{{__('Salary History')}}</a>
                             </div>
                         </div>
-                        <div class="col-xm-2" style="justify-content: space-between; margin: 0 auto;">
+                        <div class="col-xm-2" style="justify-content: space-between; padding: 8px 0;">
                             <div class="text-center">
                                 <a href="#" class="btn btn-primary mobile-tab-text" style="border-radius: 18px 18px 0px 0px;">{{__('Payment')}}</a>
                             </div>
