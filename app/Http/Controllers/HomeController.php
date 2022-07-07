@@ -928,9 +928,13 @@ class HomeController extends Controller
             $data['farms'] = $f = Farm::orderBy('id', 'desc')->get();
             $data['trees'] = Tree::orderBy('id', 'desc')->get();
             $new_array = [];
-            $data['trees'] = $data['trees']->groupBy(['desc', function ($item) {
+            // $data['trees2'] = $t = Tree::all();
+            // $tre = $t->groupBy('desc')->all();
+            $data['trees'] = $y = $data['trees']->groupBy(['desc', function ($item) {
                 return $item['desc'];
             }], preserveKeys: true);
+
+            // dd($t, $y);
 
             foreach ($data['trees'] as $key => $value) {
                 # code...
