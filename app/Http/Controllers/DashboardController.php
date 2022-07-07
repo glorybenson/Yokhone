@@ -387,13 +387,14 @@ class DashboardController extends Controller
 
     public function trees(Request $request)
     {
-
+        $data['title'] = "Tree Report";
         $plan_name_plan = [];
         $plan_name_death = [];
         $death_trees = Tree::where("reason", "Death")->with("farm")->get();
         $plantation_trees = Tree::where("reason", "Plantation")->with("farm")->get();
         $plantation_trees_array = $plantation_trees->groupBy('desc')->all();
         $death_trees_array = $death_trees->groupBy('desc')->all();
+
         if ($_POST) {
             $from = $request->from;
             $to = $request->to;
@@ -405,11 +406,6 @@ class DashboardController extends Controller
                 $plantation_trees = Tree::whereBetween('date_planted', [$from, $to])->where("reason", "Plantation")->with("farm")->get();
             }
         }
-
-
-        // dd($death_trees);
-        $data['title'] = "Tree Report";
-        $employers = Employee::all();
 
         $arr = [];
         foreach ($plantation_trees_array as $key => $data) {

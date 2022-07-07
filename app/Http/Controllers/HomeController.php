@@ -925,28 +925,12 @@ class HomeController extends Controller
         try {
             //code...
             $data['mode'] = "create";
-            $data['farms'] = $f = Farm::orderBy('id', 'desc')->get();
+            $data['farms'] = Farm::orderBy('id', 'desc')->get();
             $data['trees'] = Tree::orderBy('id', 'desc')->get();
-            $new_array = [];
-            // $data['trees2'] = $t = Tree::all();
-            // $tre = $t->groupBy('desc')->all();
-            // $data['trees'] = $y = $data['trees']->groupBy(['desc', function ($item) {
-            //     return $item['desc'];
-            // }], preserveKeys: true);
-            $data['trees'] = [];
-
-            // dd($t, $y);
-
-            foreach ($data['trees'] as $key => $value) {
-                # code...
-                $data['trees'] = $value[$key];
-                $obj = (object)[
-                    "name" => $key,
-                ];
-                array_push($new_array, $obj);
-            }
-            $data['trees'] = $new_array;
-            //dd($new_array);
+            $data['trees'] = Tree::select('id', 'desc')
+                ->orderBy('id', 'DESC')
+                ->get()
+                ->unique('desc');
 
             if ($_POST) {
                 $rules = array(
@@ -996,14 +980,17 @@ class HomeController extends Controller
             $data['mode'] = "edit";
             $data['crop'] = $crop = Crop::find($id);
             $data['farms'] = Farm::orderBy('id', 'desc')->get();
-            $data['trees'] = Tree::orderBy('id', 'desc')->get();
+            $data['trees'] = Tree::select('id', 'desc')
+                ->orderBy('id', 'DESC')
+                ->get()
+                ->unique('desc');
+
             if (!isset($crop)) {
                 Session::flash('warning', 'Crop not found');
                 return redirect()->route('crops');
             }
+
             if ($_POST) {
-
-
                 $rules = array(
                     'farm_id' => ['required', 'string', 'max:255'],
                     'desc' => ['required', 'string', 'max:255'],
@@ -1020,7 +1007,6 @@ class HomeController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
 
-
                 Crop::where('id', $request->id)->update([
                     'farm_id' => $request->farm_id,
                     'desc' => $request->desc,
@@ -1029,11 +1015,13 @@ class HomeController extends Controller
                     'weight' => $request->weight,
                     'date' => $request->date
                 ]);
+
                 send_notification('Updated a Crop data');
 
                 Session::flash(__('success'), __('Crop data updated successfully'));
                 return redirect()->route('crops');
             }
+
             $data['title'] = "Update Crop Data";
             return view('crop.create', $data);
         } catch (\Throwable $th) {
