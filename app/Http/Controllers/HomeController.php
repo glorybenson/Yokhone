@@ -930,9 +930,10 @@ class HomeController extends Controller
             $new_array = [];
             // $data['trees2'] = $t = Tree::all();
             // $tre = $t->groupBy('desc')->all();
-            $data['trees'] = $y = $data['trees']->groupBy(['desc', function ($item) {
-                return $item['desc'];
-            }], preserveKeys: true);
+            // $data['trees'] = $y = $data['trees']->groupBy(['desc', function ($item) {
+            //     return $item['desc'];
+            // }], preserveKeys: true);
+            $data['trees'] = [];
 
             // dd($t, $y);
 
