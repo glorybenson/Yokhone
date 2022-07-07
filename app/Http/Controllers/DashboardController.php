@@ -30,32 +30,36 @@ class DashboardController extends Controller
         $death_trees = Tree::where("reason", "Death")->with("farm")->get();
         $plantation_trees = Tree::where("reason", "Plantation")->with("farm")->get();
 
-        $plantation_result = $plantation_trees->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
-
-        $plantation_result2 = $death_trees->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
-
 
         $plan_name_plan = [];
         $plan_name_death = [];
-        $plan_data = [];
-        $plan_data2 = [];
+        $plantation_trees_array = $plantation_trees->groupBy('desc')->all();
+        $death_trees_array = $death_trees->groupBy('desc')->all();
+        // $plantation_result3 = $plantation_trees->groupBy(['desc', function ($item) {
+        //     return $item['desc'];
+        // }], preserveKeys: true);
 
-        foreach ($plantation_result as $plantation_key => $plantation_value) {
-            # code...
-            array_push($plan_data, $plantation_value[$plantation_key]);
-        }
+        // $plantation_result2 = $death_trees->groupBy(['desc', function ($item) {
+        //     return $item['desc'];
+        // }], preserveKeys: true);
 
-        foreach ($plantation_result2 as $plantation_key => $plantation_value) {
-            # code...
-            array_push($plan_data2, $plantation_value[$plantation_key]);
-        }
+        // dd($plantation_result, $plantation_result3);
+        // $plan_data = [];
+        // $plan_data2 = [];
+
+        // foreach ($plantation_result as $plantation_key => $plantation_value) {
+        //     # code...
+        //     array_push($plan_data, $plantation_value[$plantation_key]);
+        // }
+
+        // foreach ($plantation_result2 as $plantation_key => $plantation_value) {
+        //     # code...
+        //     // dd($plantation_value);
+        //     array_push($plan_data2, $plantation_value[$plantation_key]);
+        // }
 
         $arr = [];
-        foreach ($plan_data as $key => $data) {
+        foreach ($plantation_trees_array as $key => $data) {
             $plan_obj = (object)[];
             foreach ($data as $d) {
                 $farm = Farm::find($d->farm_id);
@@ -67,7 +71,7 @@ class DashboardController extends Controller
         }
 
         $arr2 = [];
-        foreach ($plan_data2 as $key => $data) {
+        foreach ($death_trees_array as $key => $data) {
             $plan_obj = (object)[];
             foreach ($data as $d) {
                 $farm = Farm::find($d->farm_id);
@@ -94,11 +98,7 @@ class DashboardController extends Controller
             "current_year" => $current_year_client
         ];
 
-
-
-
         $data['farms_dums'] = $farms_dums = array('', '', '');
-
 
         //Salary
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
