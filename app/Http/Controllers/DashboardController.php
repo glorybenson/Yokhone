@@ -387,8 +387,13 @@ class DashboardController extends Controller
 
     public function trees(Request $request)
     {
+
+        $plan_name_plan = [];
+        $plan_name_death = [];
         $death_trees = Tree::where("reason", "Death")->with("farm")->get();
         $plantation_trees = Tree::where("reason", "Plantation")->with("farm")->get();
+        $plantation_trees_array = $plantation_trees->groupBy('desc')->all();
+        $death_trees_array = $death_trees->groupBy('desc')->all();
         if ($_POST) {
             $from = $request->from;
             $to = $request->to;
@@ -406,32 +411,8 @@ class DashboardController extends Controller
         $data['title'] = "Tree Report";
         $employers = Employee::all();
 
-        $plantation_result = $plantation_trees->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
-
-        $plantation_result2 = $death_trees->groupBy(['desc', function ($item) {
-            return $item['desc'];
-        }], preserveKeys: true);
-
-
-        $plan_name_plan = [];
-        $plan_name_death = [];
-        $plan_data = [];
-        $plan_data2 = [];
-
-        foreach ($plantation_result as $plantation_key => $plantation_value) {
-            # code...
-            array_push($plan_data, $plantation_value[$plantation_key]);
-        }
-
-        foreach ($plantation_result2 as $plantation_key => $plantation_value) {
-            # code...
-            array_push($plan_data2, $plantation_value[$plantation_key]);
-        }
-
         $arr = [];
-        foreach ($plan_data as $key => $data) {
+        foreach ($plantation_trees_array as $key => $data) {
             $plan_obj = (object)[];
             foreach ($data as $d) {
                 $farm = Farm::find($d->farm_id);
@@ -443,7 +424,7 @@ class DashboardController extends Controller
         }
 
         $arr2 = [];
-        foreach ($plan_data2 as $key => $data) {
+        foreach ($death_trees_array as $key => $data) {
             $plan_obj = (object)[];
             foreach ($data as $d) {
                 $farm = Farm::find($d->farm_id);
