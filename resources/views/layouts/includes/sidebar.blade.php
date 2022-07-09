@@ -79,7 +79,7 @@
                 @endif
 
 
-                @if (in_array(1, Auth::user()->roles))
+                @if (in_array(1, Auth::user()->roles) || in_array(7, Auth::user()->roles))
                     <li
                         class="{{ request()->is('report-salaries') || request()->is('report-farm') || request()->is('report-expense') || request()->is('report-income') || request()->is('report-employee') || request()->is('report-tree') || request()->is('report-client') ? 'active active-now' : '' }}">
                         <a href="#"><i class="feather-user"></i>
