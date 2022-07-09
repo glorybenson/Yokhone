@@ -274,8 +274,50 @@ class DashboardController extends Controller
         return view('report.income', $data);
     }
 
-    public function salary()
+    public function salary(Request $request)
     {
+        $data['title'] = "Employee Salary";
+        $data["employers"] = $employers = Employee::all();
+        $employee_salary = [];
+        $employee_names = [];
+        if ($_POST) {
+            $from = $request->from;
+            $to = $request->to;
+            if (isset($from) && isset($to)) {
+                $data['mode'] = "search";
+                $data['from'] = $from;
+                $data['to'] = $to;
+        foreach ($employers as $employee) {
+            # code...
+            $salary = Payment::where("employee_id", $employee->id)
+                ->whereBetween('date', [$from, $to])
+                ->get()->sum('amount');
+
+            if ($salary > 0) {
+                $name_obj = $employee->first_name . " " . $employee->last_name;
+                array_push($employee_salary, $salary);
+                array_push($employee_names, $name_obj);
+            }
+        }
+        }
+    }
+        else {
+            foreach ($employers as $employee) {
+            $salary = Payment::where("employee_id", $employee->id)->get()->sum('amount');
+            if ($salary > 0) {
+                $name_obj = $employee->first_name . " " . $employee->last_name;
+                array_push($employee_salary, $salary);
+                array_push($employee_names, $name_obj);
+            }
+        }
+    }
+        $data['employee_data'] = $d = (object) [
+            "employee" => $employee_names,
+            "all_employees_salaries" => $employee_salary
+
+        ];
+        //dd($d);
+        
         $data['title'] = "Salaries Report";
         $last_year_salary = Payment::whereYear('date', now()->subYear()->year)->get()->sum('amount');
         $current_year_salary = Payment::whereYear('date', now()->year)->get()->sum('amount');
