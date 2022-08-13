@@ -154,7 +154,7 @@ class HomeController extends Controller
             //code...
             $data['mode'] = "create";
             if ($_POST) {
-
+                //dd($request->all());
                 $rules = array(
                     'first_name' => ['required', 'string', 'max:255'],
                     'last_name' => ['required', 'string', 'max:255'],
@@ -168,12 +168,6 @@ class HomeController extends Controller
                 if ($validator->fails()) {
                     Session::flash(__('warning'), __('All fields are required'));
                     return back()->withErrors($validator)->withInput();
-                }
-
-                $super_admin = [2, 3, 4, 5, 6];
-                if ($super_admin == $request->role) {
-                    array_push($super_admin, 7);
-                    $request->role = $super_admin;
                 }
 
                 User::create([
@@ -190,7 +184,7 @@ class HomeController extends Controller
                 return redirect()->route('home');
             }
 
-            $data['roles'] = Role::where('name', '!=', 'Admin')->where('name', '!=', 'Super Admin')->get();
+            $data['roles'] = Role::where('name', '!=', 'Admin')->get();
             $data['title'] = "Create User";
             return view('users.create', $data);
         } catch (\Throwable $th) {
@@ -218,12 +212,6 @@ class HomeController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
 
-                $super_admin = [2, 3, 4, 5, 6];
-                if ($super_admin == $request->role) {
-                    array_push($super_admin, 7);
-                    $request->role = $super_admin;
-                }
-
                 $user = User::find($request->id);
                 $user->first_name = $request->first_name;
                 $user->last_name = $request->last_name;
@@ -235,7 +223,7 @@ class HomeController extends Controller
                 return redirect()->route('home');
             }
             $data['mode'] = "edit";
-            $data['roles'] = Role::where('name', '!=', 'Admin')->where('name', '!=', 'Super Admin')->get();
+            $data['roles'] = Role::where('name', '!=', 'Admin')->get();
             $data['user'] = User::where('id', $id)->with('user_role')->first();
             $data['title'] = "Edit User";
             return view('users.create', $data);
@@ -249,11 +237,10 @@ class HomeController extends Controller
     {
         try {
             //code...
-            if (!in_array(7, Auth::user()->roles) && !in_array(1, Auth::user()->roles)) {
+            if (!in_array(1, Auth::user()->roles)) {
                 Session::flash('permission_warning', __('You no not have access to delete this record'));
                 return back();
             }
-
             $user = User::find($id);
             if ($user->role == 1) {
                 Session::flash('permission_warning', __('The Admin can not be deleted'));
