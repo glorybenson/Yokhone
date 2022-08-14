@@ -45,6 +45,6 @@
 </script> --}}
 <script>
     $(document).ready(function() {
-        $('table').DataTable({!! App::getLocale() === 'fr' ? " {language: {url: '/assets/plugins/fr-FR.json'} }" : '' !!});
+        //$('table').DataTable({!! App::getLocale() === 'fr' ? " {language: {url: '/assets/plugins/fr-FR.json'} }" : '' !!});
     });
 </script>
