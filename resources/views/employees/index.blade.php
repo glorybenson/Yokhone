@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="content container-fluid">
-
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col-md-12">
@@ -35,6 +34,7 @@
                                     <th>{{ __('Email') }}</th>
                                     <th>Cell 1 #</th>
                                     <th>{{ __('Hiring Date') }}</th>
+                                    <th>{{ __('End Date') }}</th>
                                     <th>{{ __('Action') }}</th>
                                 </thead>
                                 <tbody>
@@ -47,11 +47,15 @@
                                                 <td>{{ $employee->email }}</td>
                                                 <td>{{ $employee->cell_1 }}</td>
                                                 <td>{{ $employee->hiring_date ?? '' }}</td>
+                                                <td>{{ $employee->end_date ?? '' }}</td>
                                                 <td>
                                                     <a href="{{ route('edit.employee', $employee->id) }}"
                                                         class="btn btn-sm p-2" title="Edit"><i class="fa fa-edit"></i></a>
                                                     <a href="{{ route('view.employee', $employee->id) }}"
                                                         class="btn btn-sm p-2" title="View"><i class="fa fa-eye"></i></a>
+                                                    <a href="{{ route('destroy.employee', $employee->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

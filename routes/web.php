@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], '/edit-employee/{id}', [App\Http\Controllers\HomeController::class, 'edit_employee'])->name('edit.employee');
         Route::match(['get', 'post'], '/view-employee/{id}', [App\Http\Controllers\HomeController::class, 'view_employee'])->name('view.employee');
         Route::match(['get', 'post'], '/create-employee', [App\Http\Controllers\HomeController::class, 'create_employee'])->name('create.employee');
+        Route::match(['get'], '/destroy-employee/{id}', [App\Http\Controllers\HomeController::class, 'destroy_employee'])->name('destroy.employee');
 
         //Salary Route
         Route::match(['get', 'post'], '/view-employees-salary/{id}', [App\Http\Controllers\HomeController::class, 'employee_salary'])->name('salary.employee');
@@ -106,6 +107,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/clients', [App\Http\Controllers\HomeController::class, 'clients'])->name('clients');
         Route::match(['get', 'post'], '/create-client', [App\Http\Controllers\HomeController::class, 'create_client'])->name('create.client');
         Route::match(['get', 'post'], '/edit-client/{id}', [App\Http\Controllers\HomeController::class, 'edit_client'])->name('edit.client');
+        Route::match(['get'], '/view-client/{id}', [App\Http\Controllers\HomeController::class, 'view_client'])->name('view.client');
+        Route::match(['get'], '/delete-client/{id}', [App\Http\Controllers\HomeController::class, 'destroy_client'])->name('destroy.client');
     });
 
     Route::group(['middleware' => ['finance']], function () {

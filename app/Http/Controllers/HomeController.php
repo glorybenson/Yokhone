@@ -277,6 +277,13 @@ class HomeController extends Controller
         return view('employees.index', $data);
     }
 
+    public function destroy_employee($id)
+    {
+        Employee::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
+    }
+
     public function view_employee($id)
     {
         $data['employee'] = $employee = Employee::find($id);
@@ -1052,7 +1059,6 @@ class HomeController extends Controller
             $data['clients'] = Client::with('employee:id,first_name,last_name')->orderBy('id', 'desc')->get();
             return view('clients.index', $data);
         } catch (\Throwable $th) {
-            // Session::flash('error', "Try again!");
             Session::flash('error', $th->getMessage());
             return back();
         }
@@ -1175,6 +1181,30 @@ class HomeController extends Controller
             Session::flash('error', $th->getMessage());
             return back();
         }
+    }
+
+    public function view_client($id)
+    {
+        try {
+            //code...
+            $data['client'] = $client = Client::find($id);
+            if (!isset($client)) {
+                Session::flash('warning', __('Client not found'));
+                return redirect()->route('clients');
+            }
+            $data['mode'] = $client->client_name . " Data";
+            return view('clients.view', $data);
+        } catch (\Throwable $th) {
+            Session::flash("error", $th->getMessage());
+            return redirect()->route('clients');
+        }
+    }
+
+    public function destroy_client($id)
+    {
+        Client::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
     }
 
     public function expenses()

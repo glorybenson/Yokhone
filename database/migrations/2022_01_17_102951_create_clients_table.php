@@ -24,6 +24,7 @@ class CreateClientsTable extends Migration
             $table->string('referred_by');
             $table->foreignId('employee_id')->nullable()->constrained('employees')->cascadeOnDelete();
             $table->longText('note')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

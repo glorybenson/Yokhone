@@ -29,6 +29,7 @@ class CreateEmployeesTable extends Migration
             $table->string('contact_full_name');
             $table->string('contact_1_cell');
             $table->string('contact_1_cell2');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
