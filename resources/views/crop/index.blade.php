@@ -28,7 +28,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered dt-responsive  nowrap w-100">
                                 <thead class="thead-light">
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>{{ __('Farm Name') }}</th>
                                     <th>{{ __('Type Of Crop') }}</th>
                                     <th>{{ __('Description') }}</th>

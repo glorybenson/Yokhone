@@ -27,7 +27,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered dt-responsive  nowrap w-100">
                                 <thead class="thead-light">
-                                    <th>#</th>
+                                    <th>ID</th>
                                     <th>{{ __('Client Name') }}</th>
                                     <th>{{ __('Full Address') }}</th>
                                     <th>{{ __('Contact Full Name') }}</th>
