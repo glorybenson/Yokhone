@@ -56,7 +56,7 @@
                             <div class="card-header">
 
                                 <div class="card-body">
-                                    <div class="table-responsive">
+                                    <div class="table table-bordered table-striped">
                                         <table>
                                             <tr>
                                                 <td>{{ __('Client Name') }}:</td>
