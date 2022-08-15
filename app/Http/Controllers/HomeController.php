@@ -170,7 +170,7 @@ class HomeController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
 
-                $super_admin = [2, 3, 4, 5, 6];
+                $super_admin = [2, 3, 4, 5, 6, 8];
                 if ($super_admin == $request->role) {
                     array_push($super_admin, 7);
                     $request->role = $super_admin;
@@ -218,7 +218,7 @@ class HomeController extends Controller
                     return back()->withErrors($validator)->withInput();
                 }
 
-                $super_admin = [2, 3, 4, 5, 6];
+                $super_admin = [2, 3, 4, 5, 6, 8];
                 if ($super_admin == $request->role) {
                     array_push($super_admin, 7);
                     $request->role = $super_admin;
