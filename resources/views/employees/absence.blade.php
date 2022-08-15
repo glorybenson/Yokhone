@@ -255,7 +255,7 @@
 
                                                     <a href="{{ route('destroy.absence', $absence->id) }}"
                                                         class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
-                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
+                                                            onclick="return confirm('{{ __('Are you sure you want to delete this record?') }}')"></i></a>
                                                 </td>
                                             </tr>
 
