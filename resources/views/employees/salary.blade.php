@@ -8,7 +8,7 @@
                         <h5 class="page-title">{{ __('Dashboard') }}</h5>
                         <ul class="breadcrumb ml-2">
                             <li class="breadcrumb-item"><a href="{{ route('employees') }}">{{ __('Employees') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('Employee Salary History') }}</li>
+                            <li class="breadcrumb-item active">{{ __('Salary History') }}</li>
                         </ul>
                     </div>
                 </div>
