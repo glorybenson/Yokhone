@@ -62,7 +62,7 @@
                         <h4 class="card-title float-left">{{ __('Number of Clients') }}</h4>
                     </div>
                     <div class="card-body">
-                        <canvas id="client_div" width="300" height="200"></canvas>
+                        <canvas id="client_div" width="300" height="150"></canvas>
                     </div>
                 </div>
             </div>
