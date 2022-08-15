@@ -223,7 +223,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-bordered dt-responsive  nowrap w-100">
+                            <table class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -233,6 +233,7 @@
                                         <th>{{ __('Total number of days') }}</th>
                                         <th>{{ __('Total Price to be cut') }}</th>
                                         <th>{{ __('Comment') }}</th>
+                                        <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -251,6 +252,10 @@
                                                         data-bs-target="#EditRecord{{ $absence->id }}"
                                                         class="btn btn-sm p-2" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
+
+                                                    <a href="{{ route('destroy.absence', $absence->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
 

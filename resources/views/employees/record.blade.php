@@ -199,6 +199,9 @@
                                                         data-bs-target="#EditRecord{{ $record->id }}"
                                                         class="btn btn-sm p-2" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('destroy.record', $record->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
 

@@ -69,18 +69,22 @@ Route::group(['middleware' => ['auth']], function () {
         //Salary Route
         Route::match(['get', 'post'], '/view-employees-salary/{id}', [App\Http\Controllers\HomeController::class, 'employee_salary'])->name('salary.employee');
         Route::post('/add-salary', [App\Http\Controllers\HomeController::class, 'add_salary'])->name('add.salary');
+        Route::get('/destroy-salary/{id}', [App\Http\Controllers\HomeController::class, 'destroy_employee_salary'])->name('destroy.salary');
 
         //Record Route
         Route::match(['get', 'post'], '/view-employees-record/{id}', [App\Http\Controllers\HomeController::class, 'employee_record'])->name('record.employee');
         Route::post('/add-record', [App\Http\Controllers\HomeController::class, 'add_record'])->name('add.record');
+        Route::get('/destroy-record/{id}', [App\Http\Controllers\HomeController::class, 'destroy_employee_record'])->name('destroy.record');
 
         //Payment Route
         Route::match(['get', 'post'], '/view-employees-payment/{id}', [App\Http\Controllers\HomeController::class, 'employee_payment'])->name('payment.employee');
         Route::post('/add-payment', [App\Http\Controllers\HomeController::class, 'add_payment'])->name('add.payment');
+        Route::get('/destroy-payment/{id}', [App\Http\Controllers\HomeController::class, 'destroy_employee_payment'])->name('destroy.payment');
 
         //Absence Route
         Route::match(['get', 'post'], '/view-employees-absence/{id}', [App\Http\Controllers\HomeController::class, 'employee_absence'])->name('absence.employee');
         Route::post('/add-absence', [App\Http\Controllers\HomeController::class, 'add_absence'])->name('add.absence');
+        Route::get('/destroy-absence/{id}', [App\Http\Controllers\HomeController::class, 'destroy_employee_absence'])->name('destroy.absence');
     });
 
 

@@ -308,6 +308,13 @@ class HomeController extends Controller
         return view('employees.salary', $data);
     }
 
+    public function destroy_employee_salary($id)
+    {
+        Salary::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
+    }
+
     public function add_salary(Request $request)
     {
         try {
@@ -371,6 +378,13 @@ class HomeController extends Controller
         return view('employees.record', $data);
     }
 
+    public function destroy_employee_record($id)
+    {
+        Record::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
+    }
+
     public function add_record(Request $request)
     {
         try {
@@ -432,6 +446,13 @@ class HomeController extends Controller
         $data['payments'] = Payment::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
         $data['title'] = $employee->first_name . " " . $employee->last_name . " Payments";
         return view('employees.payment', $data);
+    }
+
+    public function destroy_employee_payment($id)
+    {
+        Payment::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
     }
 
     public function add_payment(Request $request)
@@ -509,6 +530,13 @@ class HomeController extends Controller
         $data['absences'] = Absence::where('employee_id', $employee->id)->orderBy('id', 'desc')->get();
         $data['title'] = $employee->first_name . " " . $employee->last_name . " absences";
         return view('employees.absence', $data);
+    }
+
+    public function destroy_employee_absence($id)
+    {
+        Absence::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
     }
 
     public function add_absence(Request $request)
@@ -1216,7 +1244,6 @@ class HomeController extends Controller
             $data['expenses'] = Expense::with(['employee:id,first_name,last_name', 'farm:id,farm_name'])->orderBy('id', 'desc')->get();
             return view('expenses.index', $data);
         } catch (\Throwable $th) {
-            // Session::flash('error', "Try again!");
             Session::flash('error', $th->getMessage());
             return back();
         }

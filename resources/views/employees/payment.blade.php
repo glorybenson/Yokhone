@@ -212,7 +212,7 @@
                                         <th>{{ __('Details') }}</th>
                                         <th>{{ __('Payment Method') }}</th>
                                         <th>{{ __('Payment Proof') }}</th>
-                                        <th>Action</th>
+                                        <th>{{ __('Action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -245,6 +245,9 @@
                                                         data-bs-target="#AddNewPayment{{ $payment->id }}"
                                                         class="btn btn-sm p-2" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('destroy.payment', $payment->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
 

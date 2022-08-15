@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __("Salary History") }}</h4>
+                        <h4 class="card-title float-left">{{ __('Salary History') }}</h4>
                         <div class="text-right">
                             <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">
                                 {{ __('Back to Employees') }}
@@ -190,6 +190,9 @@
                                                         data-bs-target="#AddNewSalary{{ $salary->id }}"
                                                         class="btn btn-sm p-2" title="Edit"><i
                                                             class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('destroy.salary', $salary->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
 
