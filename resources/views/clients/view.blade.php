@@ -51,12 +51,9 @@
                                 class="btn btn-outline-dark p-2">{{ __('Back to Clients') }}</a>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card">
-                            <div class="card-header">
 
                                 <div class="card-body">
-                                    <div class="table-responsive">
+                                    <div class="table table-bordered table-striped">
                                         <table>
                                             <tr>
                                                 <td>{{ __('Client Name') }}:</td>
@@ -94,8 +91,6 @@
                                             </tr>
                                         </table>
                                     </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
