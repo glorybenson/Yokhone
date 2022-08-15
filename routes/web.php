@@ -116,11 +116,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/expenses', [App\Http\Controllers\HomeController::class, 'expenses'])->name('expenses');
         Route::match(['get', 'post'], '/create-expense', [App\Http\Controllers\HomeController::class, 'create_expense'])->name('create.expense');
         Route::match(['get', 'post'], '/edit-expense/{id}', [App\Http\Controllers\HomeController::class, 'edit_expense'])->name('edit.expense');
+        Route::match(['get'], '/destroy-expense/{id}', [App\Http\Controllers\HomeController::class, 'destroy_expense'])->name('destroy.expense');
 
         //Invoice Routes
         Route::get('/invoices', [App\Http\Controllers\HomeController::class, 'invoices'])->name('invoices');
         Route::match(['get', 'post'], '/create-invoice', [App\Http\Controllers\HomeController::class, 'create_invoice'])->name('create.invoice');
         Route::match(['get', 'post'], '/edit-invoice/{id}', [App\Http\Controllers\HomeController::class, 'edit_invoice'])->name('edit.invoice');
+        Route::match(['get'], '/destroy-invoice/{id}', [App\Http\Controllers\HomeController::class, 'destroy_invoice'])->name('destroy.invoice');
         Route::match(['post'], '/get_farm_crop', [App\Http\Controllers\HomeController::class, 'get_farm_crop'])->name('get.crop.farm');
     });
 

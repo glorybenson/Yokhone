@@ -46,7 +46,7 @@
                                         @foreach ($invoices as $invoice)
                                             <tr>
                                                 <td>{{ $sn++ }}</td>
-                                                <td>{{ $invoice->client->client_name }}</td>
+                                                <td>{{ $invoice->client->client_name ?? '' }}</td>
                                                 <td>{{ $invoice->date }}</td>
                                                 <td>{{ $invoice->desc }}</td>
                                                 <td>{{ $invoice->quantity }}</td>
@@ -60,6 +60,9 @@
                                                 <td>
                                                     <a href="{{ route('edit.invoice', $invoice->id) }}"
                                                         class="btn btn-sm p-2" title="Edit"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ route('destroy.invoice', $invoice->id) }}"
+                                                        class="btn btn-sm p-2" title="Delete"><i class="fa fa-trash"
+                                                            onclick="return confirm('Are you sure you want to delete this record?')"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

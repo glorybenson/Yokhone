@@ -1315,6 +1315,13 @@ class HomeController extends Controller
         }
     }
 
+    public function destroy_expense($id)
+    {
+        Expense::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
+    }
+
     public function invoices()
     {
         try {
@@ -1441,6 +1448,13 @@ class HomeController extends Controller
             Session::flash('error', $th->getMessage());
             return back();
         }
+    }
+
+    public function destroy_invoice($id)
+    {
+        Invoice::find($id)->delete();
+        Session::flash('success', "Deleted successfully");
+        return redirect()->back();
     }
 
     public function get_farm_crop(Request $request)
