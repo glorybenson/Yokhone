@@ -10,40 +10,7 @@
                 </div>
             </div>
         </div>
-        <style>
-            <!--/* Extra small devices (phones, 600px and down) */
-            @media only screen and (max-width: 600px) {
-              .client {display: none;}
-              .client_mobile {width: 100%;}
-            }
-            
-            /* Small devices (portrait tablets and large phones, 600px and up) */
-            @media only screen and (min-width: 600px) {
-              .client {width: 100%;}
-              .client_mobile {display: none;}
-            }
-            
-            /* Medium devices (landscape tablets, 768px and up) */
-            @media only screen and (min-width: 768px) {
-              .client {width: 100%;}
-              .client_mobile {display: none;}
-            } 
-            
-            /* Large devices (laptops/desktops, 992px and up) */
-            @media only screen and (min-width: 992px) {
-              .client {width: 100%;}
-              .client_mobile {display: none;}
-            } 
-            
-            /* Extra large devices (large laptops and desktops, 1200px and up) */
-            @media only screen and (min-width: 1200px) {
-              .client {width: 100%;}
-              .client_mobile {display: none;}
-            }
-            </style>
-
         <div class="row">
-            <div class="client">
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
@@ -53,20 +20,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-            <div class="client_mobile">
-            <div class="col-xl-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('Number of Clients') }}</h4>
-                    </div>
-                    <div class="card-body" id="client_div">
-                        <canvas width="300" height="300"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
             <div class="col-xl-6">
                 <div class="card">
                     <div class="card-header">
