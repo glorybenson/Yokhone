@@ -34,7 +34,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __("Employee's Salary History") }}</h4>
+                        <h4 class="card-title float-left">{{ __("Salary History") }}</h4>
                         <div class="text-right">
                             <a href="{{ route('employees') }}" class="btn btn-outline-dark p-2">
                                 {{ __('Back to Employees') }}
