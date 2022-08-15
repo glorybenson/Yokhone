@@ -367,7 +367,7 @@
                 bar: {
                     groupWidth: '50%'
                 },
-                height: 500,
+                height: 200,
                 colors: ['#6590aa', '#1b435d'],
             };
 
