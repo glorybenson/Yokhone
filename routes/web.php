@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -44,17 +45,28 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::group(['middleware' => ['user']], function () {
-        //Dashboard
-
-        // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
-        // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
-        // Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
-
         //User Routes
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
         Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
         Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
+    });
+
+    Route::group(['middleware' => ['user']], function () {
+        //Inventroy Routes
+
+        Route::resource('inventory', InventoryController::class)->names([
+            'index' => 'inventory.index',
+            'create' => 'inventory.create',
+            'store' => 'inventory.store',
+            'edit' => 'inventory.edit',
+            'destory' => 'inventory.destory',
+            'update' => 'inventory.update'
+        ]);
+        // Route::get('/inventory', [App\Http\Controllers\InventoryController::class, 'index'])->name('inventory');
+        // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
+        // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
+        // Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
     });
 
 

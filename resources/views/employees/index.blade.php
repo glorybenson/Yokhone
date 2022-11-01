@@ -32,7 +32,7 @@
                                     <th>{{ __('First Name') }}</th>
                                     <th>{{ __('Last Name') }}</th>
                                     <th>{{ __('Email') }}</th>
-                                    <th>Cell 1 #</th>
+                                    <th>{{ __('Cell 1 #') }}</th>
                                     <th>{{ __('Hiring Date') }}</th>
                                     <th>{{ __('End Date') }}</th>
                                     <th>{{ __('Action') }}</th>

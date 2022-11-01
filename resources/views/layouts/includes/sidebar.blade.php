@@ -56,6 +56,15 @@
                     </li>
                 @endif
 
+                @if (in_array(1, Auth::user()->roles) || in_array(5, Auth::user()->roles))
+                    <li
+                        class="{{ request()->is('inventory') || request()->is('inventory/*') || request()->is('view-employees-record/*') || request()->is('view-employees-payment/*') || request()->is('view-employee/*') || request()->is('edit-employee/*') || request()->is('create-employee') ? 'active active-now' : '' }}">
+                        <a href="{{ route('inventory.index') }}"><i class="feather-lock"></i>
+                            <span class="shape1"></span><span class="shape2"></span>
+                            <span> {{ __('Inventory') }}</span></a>
+                    </li>
+                @endif
+
 
                 @if (in_array(1, Auth::user()->roles) || in_array(6, Auth::user()->roles))
                     <li
