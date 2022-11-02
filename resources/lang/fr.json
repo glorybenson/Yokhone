@@ -988,7 +988,29 @@
     "Make": "Make",
     "Model": "Model",
     "Serie": "Serie",
-    "Year": "An"
+    "Year": "An",
+    "Insurance": "L' assurance",
+    "Insurance Company Name": "Nom de la compagnie d'assurance",
+    "Date insurance started": "Date de début de l'assurance",
+    "Date insurance ending": "Date de fin de l'assurance",
+    "Insurance company contact name": "Nom de la personne-ressource de la compagnie d'assurance",
+    "Insurance company contact tel": "Compagnie d'assurance contact tél",
+    "Insurance company email": "Courriel de la compagnie d'assurance",
+    "Other details": "Autres détails",
+    "Technical visit": "Visite technique",
+    "Date of Technical visit": "Date de la visite technique",
+    "Technical visit expiration date": "Date d'expiration de la visite technique",
+    "Assignment": "Assignment",
+    "Name of the driver": "Nom du chauffeur",
+    "Date assigned": "Date d'attribution",
+    "Date revoked": "Date de révocation",
+    "Details of revokation": "Détails de la révocation",
+    "Maintenance": "Entretien",
+    "Date of maintenance": "Date d'entretien",
+    "Reason of maintenance": "Raison de l'entretien",
+    "Amount paid": "Le montant payé",
+    "Diagnostics": "Diagnostique"
+
 
 
 }
