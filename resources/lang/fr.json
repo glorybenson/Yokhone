@@ -975,7 +975,21 @@
     "Income Report": "Rapport sur les revenus",
     "Total Income": "Total Revenus",
     "Expense Report": "Depense Report",
-    "Client's Data": "Données du client"
-    
+    "Client's Data": "Données du client",
+    "Inventories": "Inventaires",
+    "Inventory": "Inventaire",
+    "Add New Inventory": "Ajouter un nouvel inventaire",
+    "Immatriculation Number": "Numéro d'immatriculation",
+    "Create Inventory": "Créer un inventaire",
+    "Back to Inventories": "Retour aux inventaires",
+    "Date of Acquisition": "Date de l'acquisition",
+    "Acquisition cost": "Coût d'acquisition",
+    "Millage on Acquisition": "Millage à l'acquisition",
+    "Make": "Make",
+    "Model": "Model",
+    "Serie": "Serie",
+    "Year": "An"
+
+
 }
 
