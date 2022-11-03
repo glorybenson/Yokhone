@@ -59,57 +59,7 @@
                     <div class="card-body">
                         <div class="card">
                             <div class="card-header">
-                                <div class="row mb-4 mobile-tab">
-                                    <div class="col-xm-2"
-                                        style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
-                                        <div class="text-center">
-                                            <a href="#" class="btn btn-primary p-2 mobile-tab-text"
-                                                style="border-radius: 18px 18px 0px 0px;">{{ __("Inventory Data") }} ({{$inventory->immatriculation_number }})</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xm-2"
-                                        style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
-                                        <div class="text-center">
-                                            <a href="{{ route('inventory.index', $inventory->id) }}"
-                                                class="btn btn-light active mobile-tab-text"
-                                                style="border-radius: 18px 18px 0px 0px;">
-                                                {{ __('Insurance') }}
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-xm-2"
-                                        style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
-                                        <div class="text-center">
-                                            <a href="{{ route('inventory.index', $inventory->id) }}"
-                                                class="btn btn-light active mobile-tab-text"
-                                                style="border-radius: 18px 18px 0px 0px;">
-                                                {{ __('Technical visit') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xm-2"
-                                        style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
-                                        <div class="text-center">
-                                            <a href="{{ route('inventory.index', $inventory->id) }}"
-                                                class="btn btn-light active mobile-tab-text"
-                                                style="border-radius: 18px 18px 0px 0px;">
-                                                {{ __('Assignment') }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-xm-2"
-                                        style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
-                                        <div class="text-center">
-                                            <a href="{{ route('inventory.index', $inventory->id) }}"
-                                                class="btn btn-light active mobile-tab-text"
-                                                style="border-radius: 18px 18px 0px 0px;">
-                                                {{ __('Maintenance') }}
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                </div>
+                        @include('inventory.tabs.index')
 
                                 <div class="card-body">
                                     <div id="employeee-details">

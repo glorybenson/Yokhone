@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\InventoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,19 +55,28 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::group(['middleware' => ['user']], function () {
         //Inventroy Routes
-
         Route::resource('inventory', InventoryController::class)->names([
             'index' => 'inventory.index',
             'create' => 'inventory.create',
             'store' => 'inventory.store',
             'edit' => 'inventory.edit',
-            'destory' => 'inventory.destory',
+            'destroy' => 'inventory.destroy',
             'update' => 'inventory.update'
         ]);
-        // Route::get('/inventory', [App\Http\Controllers\InventoryController::class, 'index'])->name('inventory');
-        // Route::match(['get', 'post'], '/edit-user/{id}', [App\Http\Controllers\HomeController::class, 'edit_user'])->name('edit.user');
-        // Route::match(['get', 'post'], '/create-user', [App\Http\Controllers\HomeController::class, 'create_user'])->name('create.user');
-        // Route::get('/delete-user/{id}', [App\Http\Controllers\HomeController::class, 'delete_user'])->name('delete.user');
+
+        //Insurance Route
+
+        Route::get('/insurance/{id}', [App\Http\Controllers\InsuranceController::class, 'index'])->name('insurance.index');
+        Route::post('/insurance', [App\Http\Controllers\InsuranceController::class, 'store'])->name('insurance.store');
+        Route::delete('/insurance', [App\Http\Controllers\InsuranceController::class, 'destroy'])->name('insurance.destroy');
+        // Route::resource('insurance', InsuranceController::class)->names([
+        //     'index' => 'insurance.index',
+        //     'create' => 'insurance.create',
+        //     'store' => 'insurance.store',
+        //     'edit' => 'insurance.edit',
+        //     'destory' => 'insurance.destory',
+        //     'update' => 'insurance.update'
+        // ]);
     });
 
 
