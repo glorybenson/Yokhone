@@ -77,6 +77,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/visit', [App\Http\Controllers\VisitController::class, 'store'])->name('visit.store');
         Route::delete('/visit', [App\Http\Controllers\VisitController::class, 'destroy'])->name('visit.destroy');
 
+        //Maintenance Route
+
+        Route::get('/maintenance/{id}', [App\Http\Controllers\MaintenanceController::class, 'index'])->name('maintenance.index');
+        Route::post('/maintenance', [App\Http\Controllers\MaintenanceController::class, 'store'])->name('maintenance.store');
+        Route::delete('/maintenance', [App\Http\Controllers\MaintenanceController::class, 'destroy'])->name('maintenance.destroy');
+
 
         //Assignment Route
         Route::get('/assignment/{id}', [App\Http\Controllers\AssignmentController::class, 'index'])->name('assignment.index');
