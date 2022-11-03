@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Insurance;
+use App\Models\Assignment;
+use App\Models\Employee;
 use App\Models\Inventory;
 use App\Notifications\GeneralNotification;
 use Illuminate\Http\Request;
@@ -11,8 +12,9 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class InsuranceController extends Controller
+class AssignmentController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -26,7 +28,6 @@ class InsuranceController extends Controller
             Notification::send(Auth::user(), new GeneralNotification($data));
         }
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -39,10 +40,11 @@ class InsuranceController extends Controller
             Session::flash(__('warning'), __('No Inventory found for the ID'));
             return redirect()->back();
         }
-        $data['title'] = "Insurance";
+        $data['title'] = "Assignment";
         $data['sn'] = 1;
-        $data['insurance_array'] = Insurance::where('inventory_id', $id)->get();
-        return view('inventory.tabs.insurance', $data);
+        $data['assignment_array'] = $a = Assignment::with('employee')->where('inventory_id', $id)->get();
+        $data['employees'] = Employee::orderBy('id', 'desc')->get();
+        return view('inventory.tabs.assignment', $data);
     }
 
     /**
@@ -63,18 +65,16 @@ class InsuranceController extends Controller
      */
     public function store(Request $request)
     {
-
         $rules = array(
-            'company_name' => ['required', 'string', 'max:255'],
-            'date_started' => ['required', 'string', 'max:255'],
-            'company_contact_name' => ['required', 'string', 'max:255'],
-            'company_contact_tel_no' => ['required', 'string', 'max:255'],
-            'company_email' => ['required', 'string', 'max:255'],
-            'date_ending' => ['required', 'string', 'max:255'],
-            'other_details' => ['required', 'string', 'max:255'],
+            'driver_id' => ['required', 'string', 'max:255'],
+            'assigned_date' => ['required', 'string', 'max:255'],
+            'revoked_date' => ['required', 'string', 'max:255'],
+            'details_of_revokation' => ['required', 'string', 'max:255'],
         );
 
-        $messages = [];
+        $messages = [
+            'driver_id.required' => __('The driver name is required')
+        ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -90,43 +90,37 @@ class InsuranceController extends Controller
         }
 
         if ($request->id) {
-            $data['insurance'] = $insurance = Insurance::where([$request->inventory_id => 'inventory_id', $request->id =>  'id']);
-            if (!$insurance) {
-                Session::flash(__('warning'), __('No Insurance found for the ID'));
+            $data['assignment'] = $assignment = Assignment::where([$request->inventory_id => 'inventory_id', $request->id =>  'id']);
+            if (!$assignment) {
+                Session::flash(__('warning'), __('No Assignment found for the ID'));
                 return redirect()->back();
             }
 
-            Insurance::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->update([
-                'company_name' => $request->company_name,
-                'date_started' => $request->date_started,
-                'date_ending' => $request->date_ending,
-                'company_contact_name' => $request->company_contact_name,
-                'company_contact_tel_no' => $request->company_contact_tel_no,
-                'company_email' => $request->company_email,
-                'other_details' => $request->other_details
+            Assignment::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->update([
+                'driver_id' => $request->driver_id,
+                'assigned_date' => $request->assigned_date,
+                'revoked_date' => $request->revoked_date,
+                'details_of_revokation' => $request->details_of_revokation
             ]);
 
-            send_notification(__('Updated an Insurance'), $request->company_name);
+            send_notification(__('Updated an Assignment'), $request->driver_id);
 
-            Session::flash(__('success'), __('Insurance updated successfully'));
-            return redirect()->route('insurance.index', $request->inventory_id);
+            Session::flash(__('success'), __('Assignment updated successfully'));
+            return redirect()->route('assignment.index', $request->inventory_id);
         }
 
-        Insurance::create([
+        Assignment::create([
             'inventory_id' => $request->inventory_id,
-            'company_name' => $request->company_name,
-            'date_started' => $request->date_started,
-            'date_ending' => $request->date_ending,
-            'company_contact_name' => $request->company_contact_name,
-            'company_contact_tel_no' => $request->company_contact_tel_no,
-            'company_email' => $request->company_email,
-            'other_details' => $request->other_details
+            'driver_id' => $request->driver_id,
+            'assigned_date' => $request->assigned_date,
+            'revoked_date' => $request->revoked_date,
+            'details_of_revokation' => $request->details_of_revokation,
         ]);
 
-        send_notification(__('Created a new Insurance'), $request->company_name);
+        send_notification(__('Created a new Assignment'), $request->driver_id);
 
-        Session::flash(__('success'), __('Insurance created successfully'));
-        return redirect()->route('insurance.index', $request->inventory_id);
+        Session::flash(__('success'), __('Assignment created successfully'));
+        return redirect()->route('assignment.index', $request->inventory_id);
     }
 
     /**
@@ -171,12 +165,12 @@ class InsuranceController extends Controller
      */
     public function destroy(Request $request)
     {
-        $insurance = Insurance::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->get();
+        $insurance = Assignment::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->get();
         if (!$insurance) {
-            Session::flash(__('warning'), __('No Inventory found for the ID'));
+            Session::flash(__('warning'), __('No Assignment found for the ID'));
             return redirect()->back();
         }
-        Insurance::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->delete();
+        Assignment::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->delete();
         Session::flash(__('success'), __("Deleted successfully"));
         return redirect()->back();
     }

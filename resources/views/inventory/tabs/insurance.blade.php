@@ -8,7 +8,7 @@
                         <h5 class="page-title">{{ __('Dashboard') }}</h5>
                         <ul class="breadcrumb ml-2">
                             <li class="breadcrumb-item"><a href="{{ route('inventory.index') }}">{{ __('Inventories') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('insurance') }}</li>
+                            <li class="breadcrumb-item active">{{ __('Insurance') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
 
                                             <div class="row mb-3">
                                                 <label for="other_details"
-                                                    class="col-md-4 col-form-label text-md-end">{{ __('other_details') }}<span
+                                                    class="col-md-4 col-form-label text-md-end">{{ __('Other Details') }}<span
                                                         style="color:#ff0000">*</span></label>
                                                 <div class="col-md-8">
                                                     <textarea id="other_details" required2 class="form-control @error('other_details') is-invalid @enderror"
@@ -357,7 +357,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="other_details"
-                                                                        class="col-md-4 col-form-label text-md-end">{{ __('other_details') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Other Details') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
                                                                         <textarea id="other_details" required2 class="form-control @error('other_details') is-invalid @enderror"
@@ -374,7 +374,7 @@
                                                                 <button type="button" class="btn btn-secondary"
                                                                     data-bs-dismiss="modal">
                                                                     {{ __('Close') }}</button>
-                                                                <button type="submit" class="btn btn-success"
+                                                                <button type="submit" class="btn btn-primary"
                                                                     onclick="return confirm('{{ __('Are you sure you want to submit this form?') }}')">
                                                                     {{ __('Update') }}</button>
                                                             </div>

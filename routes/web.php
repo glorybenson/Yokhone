@@ -76,6 +76,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/visit/{id}', [App\Http\Controllers\VisitController::class, 'index'])->name('visit.index');
         Route::post('/visit', [App\Http\Controllers\VisitController::class, 'store'])->name('visit.store');
         Route::delete('/visit', [App\Http\Controllers\VisitController::class, 'destroy'])->name('visit.destroy');
+
+
+        //Assignment Route
+        Route::get('/assignment/{id}', [App\Http\Controllers\AssignmentController::class, 'index'])->name('assignment.index');
+        Route::post('/assignment', [App\Http\Controllers\AssignmentController::class, 'store'])->name('assignment.store');
+        Route::delete('/assignment', [App\Http\Controllers\AssignmentController::class, 'destroy'])->name('assignment.destroy');
     });
 
 
