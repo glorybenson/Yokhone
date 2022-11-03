@@ -131,10 +131,10 @@
 
                                             <div class="row mb-3">
                                                 <label for="company_contact_tel_no"
-                                                    class="col-md-4 col-form-label text-md-end">{{ __('Company Contact Tel N0') }}<span
+                                                    class="col-md-4 col-form-label text-md-end">{{ __('Company Contact Tel') }}<span
                                                         style="color:#ff0000">*</span></label>
                                                 <div class="col-md-8">
-                                                    <input id="company_contact_tel_no" type="text"
+                                                    <input id="company_contact_tel_no" type="number"
                                                         name="company_contact_tel_no"
                                                         value="{{ old('company_contact_tel_no') }}"
                                                         class="form-control @error('company_contact_tel_no') is-invalid @enderror">
@@ -199,7 +199,7 @@
                                         <th>{{ __('Date Started') }}</th>
                                         <th>{{ __('Date Ending') }}</th>
                                         <th>{{ __('Company Contact Name') }}</th>
-                                        <th>{{ __('Company Contact Tel N0') }}</th>
+                                        <th>{{ __('Company Contact Tel') }}</th>
                                         <th>{{ __('Company Email') }}</th>
                                         <th>{{ __('Other Details') }}</th>
                                         <th>{{ __('Action') }}</th>
