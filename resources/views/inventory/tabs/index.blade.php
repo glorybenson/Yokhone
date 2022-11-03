@@ -43,8 +43,8 @@
                             <div class="col-xm-2"
                                 style="justify-content: space-between; margin: 0 auto; padding: 8px 0;">
                                 <div class="text-center">
-                                    <a href="{{ route('insurance.index', $inventory->id) }}"
-                                        class="btn {{  request()->is('insurance2/*') ? 'btn-primary' : 'btn-light active p-2' }}  mobile-tab-text"
+                                    <a href="{{ route('maintenance.index', $inventory->id) }}"
+                                        class="btn {{  request()->is('maintenance/*') ? 'btn-primary' : 'btn-light active p-2' }}  mobile-tab-text"
                                         style="border-radius: 18px 18px 0px 0px;">
                                         {{ __('Maintenance') }}
                                     </a>
