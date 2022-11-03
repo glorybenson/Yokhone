@@ -7,8 +7,7 @@
                     <div class="d-flex align-items-center">
                         <h5 class="page-title">{{ __('Dashboard') }}</h5>
                         <ul class="breadcrumb ml-2">
-                            <li class="breadcrumb-item"><a
-                                    href="{{ route('assignment.index', $inventory->id) }}">{{ __('Assignment') }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('inventory.index') }}">{{ __('Inventories') }}</a></li>
                             <li class="breadcrumb-item active">{{ __('Assignment') }}</li>
                         </ul>
                     </div>

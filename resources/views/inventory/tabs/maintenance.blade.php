@@ -7,8 +7,9 @@
                     <div class="d-flex align-items-center">
                         <h5 class="page-title">{{ __('Dashboard') }}</h5>
                         <ul class="breadcrumb ml-2">
-                            <li class="breadcrumb-item"><a href="{{ route('inventory.index') }}">{{ __('Inventories') }}</a></li>
-                            <li class="breadcrumb-item active">{{ __('maintenance') }}</li>
+                            <li class="breadcrumb-item"><a href="{{ route('inventory.index') }}">{{ __('Inventories') }}</a>
+                            </li>
+                            <li class="breadcrumb-item active">{{ __('Maintenance') }}</li>
                         </ul>
                     </div>
                 </div>
@@ -35,7 +36,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title float-left">{{ __('maintenance') }}</h4>
+                        <h4 class="card-title float-left">{{ __('Maintenance') }}</h4>
                         <div class="text-right">
                             <a href="{{ route('inventory.index') }}"
                                 class="btn btn-outline-dark p-2">{{ __('Back to Inventories') }}</a>
@@ -50,8 +51,8 @@
                             </button>
                         </div>
                         <!-- Modal -->
-                        <div class="modal fade" id="AddNewMaintenance" tabindex="-1" aria-labelledby="AddNewMaintenanceLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="AddNewMaintenance" tabindex="-1"
+                            aria-labelledby="AddNewMaintenanceLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -60,7 +61,7 @@
                                     <form method="POST" action="{{ route('maintenance.store') }}">
                                         <input type="hidden" name="inventory_id" value="{{ $inventory->id }}">
                                         <div class="modal-body">
-                                            @csrf                                            
+                                            @csrf
                                             <div class="row mb-3">
                                                 <label for="date_maintenance"
                                                     class="col-md-4 col-form-label text-md-end">{{ __('Date of maintenance') }}<span
@@ -82,8 +83,7 @@
                                                     class="col-md-4 col-form-label text-md-end">{{ __('Reason of maintenance') }}<span
                                                         style="color:#ff0000">*</span></label>
                                                 <div class="col-md-8">
-                                                    <textarea id="reason" required2 class="form-control @error('reason') is-invalid @enderror"
-                                                        name="reason">{{ old('reason') }}</textarea>
+                                                    <textarea id="reason" required2 class="form-control @error('reason') is-invalid @enderror" name="reason">{{ old('reason') }}</textarea>
                                                     @error('reason')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -92,13 +92,17 @@
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
-                                                <label for="amount_paid" class="col-md-4 col-form-label text-md-end">{{ __('Amount paid') }}<span style="color:#ff0000">*</span></label>
+                                                <label for="amount_paid"
+                                                    class="col-md-4 col-form-label text-md-end">{{ __('Amount paid') }}<span
+                                                        style="color:#ff0000">*</span></label>
                                                 <div class="col-md-8">
-                                                    <input id="amount_paid" type="number" class="form-control @error('amount_paid') is-invalid @enderror" required2 name="amount_paid" value="{{ old('amount_paid') }}">
+                                                    <input id="amount_paid" type="number"
+                                                        class="form-control @error('amount_paid') is-invalid @enderror"
+                                                        required2 name="amount_paid" value="{{ old('amount_paid') }}">
                                                     @error('amount_paid')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
                                                     @enderror
                                                 </div>
                                             </div>
@@ -108,8 +112,7 @@
                                                     class="col-md-4 col-form-label text-md-end">{{ __('Diagnostics') }}<span
                                                         style="color:#ff0000">*</span></label>
                                                 <div class="col-md-8">
-                                                    <textarea id="diagnostics" required2 class="form-control @error('diagnostics') is-invalid @enderror"
-                                                        name="diagnostics">{{ old('diagnostics') }}</textarea>
+                                                    <textarea id="diagnostics" required2 class="form-control @error('diagnostics') is-invalid @enderror" name="diagnostics">{{ old('diagnostics') }}</textarea>
                                                     @error('diagnostics')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -117,7 +120,6 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -128,15 +130,16 @@
                                                 {{ __('Add') }}
                                             </button>
                                         </div>
-                                    </form>
                                 </div>
+                                </form>
                             </div>
                         </div>
+
                         <div class="table-responsive">
                             <table class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                     <tr>
-                                        <th>#</th>                                       
+                                        <th>#</th>
                                         <th>{{ __('Date of maintenance') }}</th>
                                         <th>{{ __('Reason of maintenance') }}</th>
                                         <th>{{ __('Amount paid') }}</th>
@@ -148,25 +151,29 @@
                                     @if (isset($maintenance_array))
                                         @foreach ($maintenance_array as $maintenance)
                                             <tr>
-                                                <td>{{ $sn++ }}</td>                                                
+                                                <td>{{ $sn++ }}</td>
                                                 <td>{{ $maintenance->date_maintenance }}</td>
-                                                <td>{{ $maintenance->reason }}</td>                                                
+                                                <td>{{ $maintenance->reason }}</td>
                                                 <td>{{ $maintenance->amount_paid }}</td>
                                                 <td>{{ $maintenance->diagnostics }}</td>
                                                 <td>
-                                                   <div class="d-flex">
-                                                    <a data-bs-toggle="modal"
-                                                    data-bs-target="#EditRecord{{ $maintenance->id }}"
-                                                    class="btn btn-sm p-2" title="Edit"><i
-                                                        class="fa fa-edit"></i></a>
-                                                        <form action="{{ route('maintenance.destroy')}}" method="POST">
+                                                    <div class="d-flex">
+                                                        <a data-bs-toggle="modal"
+                                                            data-bs-target="#EditRecord{{ $maintenance->id }}"
+                                                            class="btn btn-sm p-2" title="Edit"><i
+                                                                class="fa fa-edit"></i></a>
+                                                        <form action="{{ route('maintenance.destroy') }}" method="POST">
                                                             @csrf
                                                             @method('delete')
-                                                            <input type="hidden" name="id" value="{{$maintenance->id}}">
-                                                            <input type="hidden" name="inventory_id" value="{{$inventory->id}}">
-                                                            <button type="submit" class="btn btn-sm p-2" onclick="return confirm('{{ __('Are you sure you want to delete this record?') }}')" title="Delete"><i class="fa fa-trash"></i></button>
+                                                            <input type="hidden" name="id"
+                                                                value="{{ $maintenance->id }}">
+                                                            <input type="hidden" name="inventory_id"
+                                                                value="{{ $inventory->id }}">
+                                                            <button type="submit" class="btn btn-sm p-2"
+                                                                onclick="return confirm('{{ __('Are you sure you want to delete this record?') }}')"
+                                                                title="Delete"><i class="fa fa-trash"></i></button>
                                                         </form>
-                                                   </div>
+                                                    </div>
                                                 </td>
                                             </tr>
 
@@ -191,7 +198,8 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Date of maintenance') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="date_maintenance" type="date" required2
+                                                                        <input id="date_maintenance" type="date"
+                                                                            required2
                                                                             class="form-control @error('date_maintenance') is-invalid @enderror"
                                                                             name="date_maintenance"
                                                                             value="{{ $maintenance->date_maintenance }}"
@@ -209,8 +217,7 @@
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('reason') }}<span
                                                                             style="color:#ff0000">*</span></label>
                                                                     <div class="col-md-8">
-                                                                        <textarea id="reason" required2 class="form-control @error('reason') is-invalid @enderror"
-                                                                            name="reason">{{ $maintenance->reason }}</textarea>
+                                                                        <textarea id="reason" required2 class="form-control @error('reason') is-invalid @enderror" name="reason">{{ $maintenance->reason }}</textarea>
                                                                         @error('reason')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
@@ -218,19 +225,24 @@
                                                                         @enderror
                                                                     </div>
                                                                 </div>
-                                                            
-                                                            <div class="row mb-3">
-                                                                <label for="amount_paid" class="col-md-2 col-form-label text-md-end">{{ __('Amount paid') }}<span style="color:#ff0000">*</span></label>
-                                                                <div class="col-md-10">
-                                                                    <input id="amount_paid" type="number" class="form-control @error('amount_paid') is-invalid @enderror" required2 name="amount_paid" value="{{ $maintenance->amount_paid }}">
-                                                                    @error('amount_paid')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
+
+                                                                <div class="row mb-3">
+                                                                    <label for="amount_paid"
+                                                                        class="col-md-2 col-form-label text-md-end">{{ __('Amount paid') }}<span
+                                                                            style="color:#ff0000">*</span></label>
+                                                                    <div class="col-md-10">
+                                                                        <input id="amount_paid" type="number"
+                                                                            class="form-control @error('amount_paid') is-invalid @enderror"
+                                                                            required2 name="amount_paid"
+                                                                            value="{{ $maintenance->amount_paid }}">
+                                                                        @error('amount_paid')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                        @enderror
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row mb-3">
+                                                                <div class="row mb-3">
                                                                     <label for="diagnostics"
                                                                         class="col-md-4 col-form-label text-md-end">{{ __('Diagnostics') }}<span
                                                                             style="color:#ff0000">*</span></label>
