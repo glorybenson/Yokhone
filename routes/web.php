@@ -77,6 +77,12 @@ Route::group(['middleware' => ['auth']], function () {
         //     'destory' => 'insurance.destory',
         //     'update' => 'insurance.update'
         // ]);
+
+        //Technical Visit Route
+
+        Route::get('/visit/{id}', [App\Http\Controllers\VisitController::class, 'index'])->name('visit.index');
+        Route::post('/visit', [App\Http\Controllers\VisitController::class, 'store'])->name('visit.store');
+        Route::delete('/visit', [App\Http\Controllers\VisitController::class, 'destroy'])->name('visit.destroy');
     });
 
 
