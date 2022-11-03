@@ -149,14 +149,7 @@ class VisitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $visit = Visit::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->get();
-        if (!$visit) {
-            Session::flash(__('warning'), __('No Inventory found for the ID'));
-            return redirect()->back();
-        }
-        Visit::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->delete();
-        Session::flash(__('success'), __("Deleted successfully"));
-        return redirect()->back();
+        
         //
     }
 
@@ -166,8 +159,16 @@ class VisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $visit = Visit::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->get();
+        if (!$visit) {
+            Session::flash(__('warning'), __('No Inventory found for the ID'));
+            return redirect()->back();
+        }
+        Visit::where(['inventory_id' => $request->inventory_id, 'id' => $request->id])->delete();
+        Session::flash(__('success'), __("Deleted successfully"));
+        return redirect()->back();
         //
     }
 }
