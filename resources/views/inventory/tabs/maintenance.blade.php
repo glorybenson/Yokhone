@@ -228,9 +228,9 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="amount_paid"
-                                                                        class="col-md-2 col-form-label text-md-end">{{ __('Amount paid') }}<span
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Amount paid') }}<span
                                                                             style="color:#ff0000">*</span></label>
-                                                                    <div class="col-md-10">
+                                                                    <div class="col-md-8">
                                                                         <input id="amount_paid" type="number"
                                                                             class="form-control @error('amount_paid') is-invalid @enderror"
                                                                             required2 name="amount_paid"
