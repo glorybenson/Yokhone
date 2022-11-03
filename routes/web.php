@@ -65,21 +65,14 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
 
         //Insurance Route
-
         Route::get('/insurance/{id}', [App\Http\Controllers\InsuranceController::class, 'index'])->name('insurance.index');
         Route::post('/insurance', [App\Http\Controllers\InsuranceController::class, 'store'])->name('insurance.store');
-        Route::delete('/insurance', [App\Http\Controllers\InsuranceController::class, 'destroy'])->name('insurance.destroy');
-        // Route::resource('insurance', InsuranceController::class)->names([
-        //     'index' => 'insurance.index',
-        //     'create' => 'insurance.create',
-        //     'store' => 'insurance.store',
-        //     'edit' => 'insurance.edit',
-        //     'destory' => 'insurance.destory',
-        //     'update' => 'insurance.update'
-        // ]);
+        Route::delete(
+            '/insurance',
+            [App\Http\Controllers\InsuranceController::class, 'destroy']
+        )->name('insurance.destroy');
 
         //Technical Visit Route
-
         Route::get('/visit/{id}', [App\Http\Controllers\VisitController::class, 'index'])->name('visit.index');
         Route::post('/visit', [App\Http\Controllers\VisitController::class, 'store'])->name('visit.store');
         Route::delete('/visit', [App\Http\Controllers\VisitController::class, 'destroy'])->name('visit.destroy');

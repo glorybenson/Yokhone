@@ -102,7 +102,6 @@ class VisitController extends Controller
 
             Session::flash(__('success'), __('Technical Visit updated successfully'));
             return redirect()->route('visit.index', $request->inventory_id);
-        //
     }
 
     Visit::create([

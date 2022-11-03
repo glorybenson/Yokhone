@@ -130,7 +130,7 @@
                                                     data-bs-target="#EditRecord{{ $visit->id }}"
                                                     class="btn btn-sm p-2" title="Edit"><i
                                                         class="fa fa-edit"></i></a>
-                                                        <form action="{{ route('visit.destroy')}}" method="POST">
+                                                        <form action="{{ route('visit.destroy') }}" method="POST">
                                                             @csrf
                                                             @method('delete')
                                                             <input type="hidden" name="id" value="{{$visit->id}}">
