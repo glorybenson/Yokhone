@@ -68,8 +68,8 @@ class AssignmentController extends Controller
         $rules = array(
             'driver_id' => ['required', 'string', 'max:255'],
             'assigned_date' => ['required', 'string', 'max:255'],
-            'revoked_date' => ['required', 'string', 'max:255'],
-            'details_of_revokation' => ['required', 'string', 'max:255'],
+            'revoked_date' => ['nullable', 'string', 'max:255'],
+            'details_of_revokation' => ['nullable', 'string', 'max:255'],
         );
 
         $messages = [

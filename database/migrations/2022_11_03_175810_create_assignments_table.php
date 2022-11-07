@@ -18,8 +18,8 @@ class CreateAssignmentsTable extends Migration
             $table->foreignId('inventory_id')->constrained('inventories')->cascadeOnDelete();
             $table->foreignId('driver_id')->constrained('employees')->cascadeOnDelete();
             $table->string('assigned_date');
-            $table->string('revoked_date');
-            $table->text('details_of_revokation');
+            $table->string('revoked_date')->nullable();
+            $table->text('details_of_revokation')->nullable();
             $table->timestamps();
         });
     }

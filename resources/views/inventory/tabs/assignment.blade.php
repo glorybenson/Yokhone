@@ -107,8 +107,7 @@
 
                                             <div class="row mb-3">
                                                 <label for="revoked_date"
-                                                    class="col-md-4 col-form-label text-md-end">{{ __('Date Revoked') }}<span
-                                                        style="color:#ff0000">*</span></label>
+                                                    class="col-md-4 col-form-label text-md-end">{{ __('Date Revoked') }}</label>
                                                 <div class="col-md-8">
                                                     <input id="revoked_date" type="date" required2
                                                         class="form-control @error('revoked_date') is-invalid @enderror"
@@ -125,8 +124,7 @@
 
                                             <div class="row mb-3">
                                                 <label for="details_of_revokation"
-                                                    class="col-md-4 col-form-label text-md-end">{{ __('Details of revokation') }}<span
-                                                        style="color:#ff0000">*</span></label>
+                                                    class="col-md-4 col-form-label text-md-end">{{ __('Details of revokation') }}</label>
                                                 <div class="col-md-8">
                                                     <textarea id="details_of_revokation" required2 class="form-control @error('details_of_revokation') is-invalid @enderror"
                                                         name="details_of_revokation">{{ old('details_of_revokation') }}</textarea>
@@ -254,8 +252,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="revoked_date"
-                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Date Revoked') }}<span
-                                                                            style="color:#ff0000">*</span></label>
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Date Revoked') }}</label>
                                                                     <div class="col-md-8">
                                                                         <input id="revoked_date" type="date" required2
                                                                             class="form-control @error('revoked_date') is-invalid @enderror"
@@ -272,8 +269,7 @@
 
                                                                 <div class="row mb-3">
                                                                     <label for="details_of_revokation"
-                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Details of Revokation') }}<span
-                                                                            style="color:#ff0000">*</span></label>
+                                                                        class="col-md-4 col-form-label text-md-end">{{ __('Details of Revokation') }}</label>
                                                                     <div class="col-md-8">
                                                                         <textarea id="details_of_revokation" required2 class="form-control @error('details_of_revokation') is-invalid @enderror"
                                                                             name="details_of_revokation">{{ $assignment->details_of_revokation }}</textarea>
